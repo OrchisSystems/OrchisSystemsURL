@@ -211,6 +211,7 @@ footer{
     display: grid;
     grid-template-columns: 33,3% 33,3% 33,3%;
     padding: 2%;
+ 
 }
 
 #footerMenu{
@@ -243,5 +244,5 @@ footer{
 }
 
 .opcaoFooter{
-    text-decoration: underline;
+    text-decoration:none;
 }
