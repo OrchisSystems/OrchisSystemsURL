@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;   
+}
+
+.container{
+    position: relative;
+    width: 460px;
+    height: 600px;
+    border-radius: 14px;
+    padding: 20px 30px 120px;
+    background-color: #B81476;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);   
+    overflow: hidden;
+}
+
+.cadastro-login, 
+.secao-login{
+    gap: 10;
+}
+
+.secao-login{
+    position: absolute;
+    left: 50%;
+    bottom: -88;
+    transform: translateX(-50%);
+    width: calc(100% + 180px);
+    padding: 20px 140px;
+    margin-top: 130px;
+    background: #ffff;
+    border-radius: 200px;
+    height: 100%;
+    transition: all 0.6s ease;
+
+}
+
+.secao-login header,
+.cadastro-login header{
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.secao-login header{
+    color: #333;
+    opacity: 0.6;
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+form input{
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.secao-login input{
+    border: 1px solid #aaa;
+}
+
+form a{
+    color: #333;
+}
+
+.cadastro-login form a{ 
+    color: #fff;
+    
+}
+
+form .btn{
+    margin-top: 15px;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 9px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.secao-login .btn{
+    background: #B81476;
+    color: floralwhite;
+    border: none;
+}
+
+.container.active .secao-login{
+    bottom: -12%;
+    border-radius: 220px;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container.active .secao-login header{
+    opacity: 1;
+}
+
+.container.active .cadastro-login header{
+    opacity: 0.6;
+}
+
+img{
+    height: 200px;
+    width: 250px;
+    margin-top: -60px;
+}
