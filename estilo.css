@@ -21,11 +21,11 @@ header{
 
 nav{
     display: flex;
-    gap: 20%;
+    gap: 7%;
 }
 
 #logo{
-    margin-right: 40%;
+    margin-right: 50%;
     margin-left: -10%;
 }
 
@@ -34,7 +34,7 @@ nav{
     font-weight: bold;
     text-decoration: none;
     font-size: 150%;
-    gap: 2%;
+    gap: 1%;
 }
 
 #secao1{
