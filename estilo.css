@@ -12,29 +12,33 @@ body {
 
 header{
     background-color: #fff;
-    position: sticky;
-    top: 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    
 }
 
 nav{
     display: flex;
-    gap: 7%;
+ 
 }
 
 #logo{
-    margin-right: 50%;
-    margin-left: -10%;
+    justify-content: flex-start;
+    padding-left: 3%;
 }
 
 .menu{
+    width: 400px;
+    justify-content: flex-end;
+    display: flex;
+}
+.menu a{
     color: #B81476;
     font-weight: bold;
     text-decoration: none;
     font-size: 150%;
-    gap: 1%;
+    margin: 20px;
 }
 
 #secao1{
