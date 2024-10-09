@@ -3,45 +3,68 @@
     src: url(./fontes/Poppins/Poppins-Regular.ttf);
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
 body {
     margin: 0;
     padding: 0;
     background-image: linear-gradient(#B81476, #672485, #ED217C);
     font-family: 'Poppins';
 }
+/* ------------------Header----------------------- */
 
 header{
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10%;
-    padding-right: 2%;
-    position: sticky;
-    top: 0;
-    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
-    border: 2px;
+    filter: drop-shadow(1px 1px 3px);
 }
 
+nav{
+    display: flex;
+ 
+}
+
+#logo{
+    justify-content: flex-start;
+    padding-left: 3%;
+}
+
+.menu{
+    width: 400px;
+    justify-content: flex-end;
+    display: flex;
+}
 .menu a{
     color: #B81476;
     font-weight: bold;
     text-decoration: none;
     font-size: 150%;
-    margin: 15px;
+    margin: 20px;
 }
+/* ------------------------------home.secao1-------------------------- */
 
 #secao1{
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 2%;
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-bottom: 5%;
+    display: grid;
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
-#secaoImagem img{
-    width: 110%;
+#secaoImagem{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+#secaoTexto{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
 }
 
 .texto{
@@ -49,8 +72,7 @@ header{
     color: white;
     font-weight: bold;
     text-align: end;
-    font-size: 150%;
-    margin-bottom: 10%;
+    margin-right: 15%;
 }
 
 .titulo{
@@ -59,9 +81,6 @@ header{
 }
 
 #botaoSimulacao{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-decoration: none;
     background-color: white;
     color: #672485;
@@ -69,12 +88,11 @@ header{
     padding: 1%;
     padding-left: 5%;
     padding-right: 5%;
-    white-space: nowrap;
     border-radius: 20px;
     font-weight: bold;
 }
 
-/* ------------------------------secao2-------------------------- */
+/* ------------------------------home.secao2-------------------------- */
 #secao2{
     background-color: white;
     padding-top: 2%;
@@ -137,7 +155,7 @@ header{
     border-radius: 20px;
 }
 
-/* ---------------------secao3------------------------- */
+/* ---------------------home.secao3------------------------- */
 #secao3{
     background-color: #B81476;
     display: grid;
@@ -165,7 +183,7 @@ header{
     grid-column-end: 3;
 }
 
-/* ------------------------------secao4-------------------------- */
+/* ------------------------------home.secao4-------------------------- */
 #secao4{
     background-color: white;
     display: grid;
@@ -195,6 +213,152 @@ header{
     padding-top: 5%;
     border: 3px solid #B81476;
     border-radius: 10px;
+}
+/* ------------------sobre_nos.secao1----------------------- */
+.containersecao1{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 700px;
+    background-color: #EEEEF0;
+    padding: 50px;
+    filter: drop-shadow(1px 1px 3px);
+}
+.itemsecao1{
+    align-items: center;
+    padding: 30px;
+}
+.itemsecao1 .titulo1{
+    text-align: left;
+    font-size: 75px;    
+    font-weight: 900;
+    color: #B81476;
+    margin-bottom: 80px;
+}
+.itemsecao1 .titulo2{
+    text-align: left;
+    height: inherit;
+    font-size: 40px;
+    color: #B81476;
+}
+
+
+/* ------------------sobre_nos.secao2----------------------- */
+.containersecao2{
+    height: 600px;
+    background-color: #EEEEF0;
+    padding-top: 5%;
+    padding-left: 6%;
+    padding-bottom: 15%;
+    padding-right: 6%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    filter: drop-shadow(1px 1px 3px);
+}
+.titulo{
+    background-color: #B81476;
+    color: white;
+    height: 90px;
+    width: 1200px;
+    font-size: 50px;
+    font-weight: 900;
+}
+.itemsecao2{
+    width: 100%;
+    padding: 40px;
+    flex: 1;
+}
+.itemsecao2 .texto1{
+    color: black;
+    font-size: 26px;
+    text-align: left;
+    flex-basis: auto;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.itemsecao2 .texto2{
+    color: #B81476;
+    font-size: 26px;
+    text-align: left;
+    flex-basis: auto;
+    padding: 10px;
+}
+.itemsecao2 .img{
+    flex-shrink: 1;
+    order: 1;
+    margin-right: 200px;
+}
+
+/* ------------------sobre_nos.secao3----------------------- */
+
+.containersecao3{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 600px;
+    background-color: #672485;
+    padding-top: 7%;
+    padding-left: 6%;
+    padding-bottom: 7%;
+    padding-right: 6%;
+    filter: drop-shadow(1px 1px 3px);
+}
+.itemsecao3{
+    flex-basis: auto;
+}
+.itemsecao3 img{
+    width: max-content;
+    height: 600px;
+}
+.itemsecao3 .titulo1{
+    text-align: left;
+    font-size: 60px;    
+    font-weight: 900;
+    color: white;
+    margin-bottom: 160px;
+}
+.itemsecao3 .texto{
+    padding: 0px;
+    text-align: right;
+    font-size: 31px;
+    color: white;
+    margin-left: 80px;
+    margin-right: 26px;
+}
+
+
+/* ------------------sobre_nos.secao4----------------------- */
+
+.containersecao4{
+    height: 400px;
+    background-color: #EEEEF0;
+    padding: 5%;
+    filter: drop-shadow(1px 1px 3px);
+    display: flex;
+}
+.itemsecao4{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    box-sizing: border-box;
+}
+.itemsecao4 .texto1{
+    color: black;
+    font-size: 26px;
+    text-align: left;
+}
+.itemsecao4 .texto2{
+    color: #B81476;
+    font-size: 26px;
+    text-align: left;
+    font-weight: 900;
+}
+.itemsecao4 .img1{
+    width: 300px;
 }
 
 /* ------------------Rodapé----------------------- */
