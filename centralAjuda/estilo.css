@@ -1,7 +1,58 @@
+/* ------ ESTILIZAÇÃO MENU ----- */
+.btn-home {
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    padding: 1em 1em;
+    position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+  
+  .btn-home::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: #B81476;
+    transition: 0.2s ease;
+  }
+  
+  .btn-home:hover {
+    color: #ffffff;
+    transition-delay: 0.2s;
+  }
+  
+  .btn-home:hover::before {
+    width: 100%;
+  }
+  
+  .btn-home::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #B81476;
+    border-radius: 40px;
+    transition: 0.2s ease;
+    z-index: -1;
+  }
+  
+  .btn-home:hover::after {
+    height: 100%;
+    transition-delay: 0.2s;
+    color: aliceblue;
+  }
+
+  /* ------ CENTRAL DE AJUDA ----- */
+
 #secaoAjudaCompleto{
     padding-top: 2%;
     background-color: white;
-    font-size: 150%;
+    font-size: 180%;
     padding-left: 4%;
     padding-right: 4%;
 }
@@ -39,15 +90,22 @@
     margin-bottom: 3%;
 }
 
+
 #secaoFormulario a{
-    background-color: #B81476;
+    
     text-decoration: none;
     color: white;
     border-radius: 10px;
     font-size: 150%;
-    padding-left: 38%;
-    padding-right: 38%;
     padding-top: 1%;
     padding-bottom: 1%;
     border-radius: 20px;
+   
+}
+
+h1{
+    font-weight: 1000;
+    font-size: 50px;
+    font-family: 'Poppins';
+    margin-bottom: 5%;
 }
