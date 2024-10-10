@@ -337,30 +337,31 @@ nav{
     height: 400px;
     background-color: #EEEEF0;
     padding: 5%;
-    filter: drop-shadow(1px 1px 3px);
     display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 .itemsecao4{
-    display: flex;
-    justify-content: space-between;
     flex: 1;
-    box-sizing: border-box;
 }
-.itemsecao4 .texto1{
-    display: flex;
+.itemsecao4 .texto1s4{
+    width: 60%;
     color: black;
     font-size: 26px;
     text-align: left;
+    margin-bottom: 50px;
 }
-.itemsecao4 .texto2{
-    display: flex;
+.itemsecao4 .texto2s4{
+    width: 60%;
     color: #B81476;
     font-size: 26px;
     text-align: left;
     font-weight: 900;
 }
-.itemsecao4 .img1{
-    width: 300px;
+.img1s4{
+    height: 80%;
+    align-self: flex-end;
+    margin-right: 80px;
 }
 /* ------------------sobre_nos.secao5----------------------- */
 
