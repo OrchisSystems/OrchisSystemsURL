@@ -3,68 +3,49 @@
     src: url(./fontes/Poppins/Poppins-Regular.ttf);
 }
 
-*{
-    margin: 0;
-    padding: 0;
-}
 body {
     margin: 0;
     padding: 0;
+    /* Criação de fundo gradiente, no qual informei 3 cores */
     background-image: linear-gradient(#B81476, #672485, #ED217C);
-    font-family: 'Poppins';
+    font-family: 'Poppins'; /*Utilizando a fonte adicionada*/
 }
-/* ------------------Header----------------------- */
 
 header{
     background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    filter: drop-shadow(1px 1px 3px);
+    padding-left: 10%;
+    padding-right: 2%;
+    /*Para fazer com que o cabeçalho siga o scroll do mouse*/
+    position: sticky;
+    top: 0;
+    /**/
+    /*Acrescenta um sombra no cabeçalho*/
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 2px;
 }
 
-nav{
-    display: flex;
- 
-}
-
-#logo{
-    justify-content: flex-start;
-    padding-left: 3%;
-}
-
-.menu{
-    width: 400px;
-    justify-content: flex-end;
-    display: flex;
-}
 .menu a{
     color: #B81476;
     font-weight: bold;
     text-decoration: none;
     font-size: 150%;
-    margin: 20px;
+    margin: 15px;
 }
-/* ------------------------------home.secao1-------------------------- */
 
 #secao1{
-    display: grid;
-    margin-top: 2%;
-    margin-bottom: 4%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 5%;
 }
 
-#secaoImagem{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 1;
-}
-
-#secaoTexto{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 2;
-    grid-column-end: 2;
+#secaoImagem img{
+    width: 110%;
 }
 
 .texto{
@@ -72,7 +53,9 @@ nav{
     color: white;
     font-weight: bold;
     text-align: end;
-    margin-right: 15%;
+    font-size: 150%;
+    margin-bottom: 10%;
+    margin-left: 10%;
 }
 
 .titulo{
@@ -81,6 +64,9 @@ nav{
 }
 
 #botaoSimulacao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     background-color: white;
     color: #672485;
@@ -88,14 +74,16 @@ nav{
     padding: 1%;
     padding-left: 5%;
     padding-right: 5%;
+    white-space: nowrap; /*Para não quebrar a linha do botao*/
     border-radius: 20px;
     font-weight: bold;
 }
 
-/* ------------------------------home.secao2-------------------------- */
+/* ------------------------------secao2-------------------------- */
 #secao2{
     background-color: white;
     padding-top: 2%;
+    padding-bottom: 5%;
 }
 
 
@@ -105,25 +93,16 @@ nav{
 }
 
 #divisaoSecao2{
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 4%;
+    padding-right: 4%;
 }
 
-#secaoTexto2{
-    grid-row-start: 2;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    margin-left: 8%;
-    margin-top: -5%;
-}
-
-#secaoImagem2{
-    grid-row-start: 2;
-    grid-row-end: 2;
-    grid-column-start: 2;
-    grid-column-end: 2;
-    margin-right: 8%;
+#divisaoSecao2 img{
+    width: 100%;
+    margin-left: 10%;
 }
 
 .topicoRoxo{
@@ -153,291 +132,98 @@ nav{
     padding-left: 5%;
     padding-right: 5%;
     border-radius: 20px;
+    white-space: nowrap;
 }
 
-/* ---------------------home.secao3------------------------- */
+/* ---------------------secao3------------------------- */
 #secao3{
     background-color: #B81476;
-    display: grid;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 5%;
+}
+
+#secao3Divisao{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#secao3 img{
+    width: 100%;
+    margin-right: 10%;
+}
+
+/* ------------------------------secao4-------------------------- */
+#secao4{
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 5%;
     padding-top: 2%;
 }
 
-#secao3Imagem{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 1;
+#inputDuvida{
+    border: 2px solid #B81476;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    font-size: 130%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    resize: none;
+    outline: none; /*Impede que a borda mude de cor ao ser clicada*/
+    margin-bottom: 3%;
 }
 
-#secao3Texto{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 2;
-    grid-column-end: 2;
-}
-
-#secao3TextoFinal{
-    grid-row-start: 2;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
-/* ------------------------------home.secao4-------------------------- */
-#secao4{
-    background-color: white;
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-#secao4Direito{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 2;
-    grid-column-end: 2;
+#secao4 img{
+    width: 100%;
 }
 
 #secao4Esquerdo{
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 1;
-}
-
-#inputDuvida{
-    margin-top: 10%;
-    font-size: 120%;
-    padding-bottom: 60%;
-    padding-right: 50%;
-    padding-left: 5%;
-    padding-top: 5%;
-    border: 3px solid #B81476;
-    border-radius: 10px;
-}
-/* ------------------sobre_nos.secao1----------------------- */
-.containersecao1{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    height: 700px;
-    background-color: #EEEEF0;
-    padding: 50px;
-    filter: drop-shadow(1px 1px 3px);
-
-}
-.itemsecao1{
-    align-items: center;
-    padding: 30px;
-}
-.itemsecao1 .titulo1{
-    text-align: left;
-    font-size: 75px;    
-    font-weight: 900;
-    color: #B81476;
-    margin-bottom: 80px;
-}
-.itemsecao1 .titulo2{
-    text-align: left;
-    height: inherit;
-    font-size: 40px;
-    color: #B81476;
-}
-
-
-/* ------------------sobre_nos.secao2----------------------- */
-.containersecao2{
     display: flex;
     flex-direction: column;
-    height: 600px;
-    background-color: #EEEEF0;
-    padding-top: 5%;
-    padding-left: 6%;
-    padding-bottom: 15%;
-    padding-right: 6%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    filter: drop-shadow(1px 1px 3px);
 }
-.containersecao2 .titulo{
-    
+
+#secao4 a{
     background-color: #B81476;
+    text-decoration: none;
     color: white;
-    width: 98%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 50px;
-    font-weight: 900; 
-    
-}
-
-.itemimg .itemsecao2{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.itemimg{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-
-.itemimg .itemsecao2{
-    text-align: left;
-}
-.imglogo img{
-    width: 600px;
-    height: 600px;
-}
-
-.itemsecao2{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 100%;
-    padding: 40px;
-    height: 300px;
-    flex: 1;
-} 
-.itemsecao2 .texto1{
-    color: black;
-    font-size: 30px;
-    text-align: left;
-    flex-basis: auto;
-    padding: 10px;
-    margin-bottom: 30px;
-    font-weight: bold;
-}
-.itemsecao2 .texto2{
-    color: #B81476;
-    font-size: 26px;
-    text-align: left;
-    flex-basis: auto;
-    padding: 10px;
-    font-weight: bold;
-}
-.itemsecao2 .img{
-    flex-shrink: 1;
-    order: 1;
-    margin-right: 200px;
-}
-
-/* ------------------sobre_nos.secao3----------------------- */
-
-.containersecao3{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    height: 600px;
-    background-color: #672485;
-    padding-top: 7%;
-    padding-left: 6%;
-    padding-bottom: 7%;
-    padding-right: 6%;
-    filter: drop-shadow(1px 1px 3px);
-
-}
-.itemsecao3{
-    flex-basis: auto;
-}
-.itemsecao3 img{
-    width: max-content;
-    height: 600px;
-}
-.itemsecao3 .titulo1{
-    text-align: center;
-    font-size: 60px;    
-    font-weight: 900;
-    color: white;
-    margin-bottom: 160px;
-}
-.itemsecao3 .texto{
-    padding: 0px;
-    text-align: right;
-    font-size: 31px;
-    color: white;
-    margin-left: 80px;
-    margin-right: 26px;
-}
-
-
-/* ------------------sobre_nos.secao4----------------------- */
-
-.containersecao4{
-    height: 400px;
-    background-color: #EEEEF0;
-    padding: 5%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-.itemsecao4{
-    flex: 1;
-}
-.itemsecao4 .texto1s4{
-    width: 60%;
-    color: black;
-    font-size: 26px;
-    text-align: left;
-    margin-bottom: 50px;
-}
-.itemsecao4 .texto2s4{
-    width: 60%;
-    color: #B81476;
-    font-size: 26px;
-    text-align: left;
-    font-weight: 900;
-}
-.img1s4{
-    height: 80%;
-    align-self: flex-end;
-    margin-right: 80px;
-}
-/* ------------------sobre_nos.secao5----------------------- */
-
-.containersecao5{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #EEEEF0;
-    filter: drop-shadow(1px 1px 3px);
-    gap: 6%;
-}
-.img1s5{
-    width: 40%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-.img2s5{
-    width: 40%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-}
-.img3s5{
-    width: 88%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    border-radius: 10px;
+    font-size: 150%;
+    padding-left: 38%;
+    padding-right: 38%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 20px;
 }
 
 /* ------------------Rodapé----------------------- */
 footer{
     background-image: linear-gradient(#B81476, #672485);
+    /*O grid aqui define o espaço onde está a tag como tabela*/
     display: grid;
+    /*Aqui eu separei em 3 colunas com 33,3% cada*/
     grid-template-columns: 33,3% 33,3% 33,3%;
     padding: 2%;
  
 }
 
 #footerMenu{
+    /*Por eu ter usado o grid, tive que definir as posições
+    de cada objeto*/
+    /*Linha inicial e final*/
     grid-row-start: 1;
     grid-row-end: 1;
+    /*Coluna inicial e final*/
     grid-column-start: 1;
     grid-column-end: 1;
     color: white;

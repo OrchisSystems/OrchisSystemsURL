@@ -1,0 +1,53 @@
+#secaoAjudaCompleto{
+    padding-top: 2%;
+    background-color: white;
+    font-size: 150%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+#secaoAjuda{
+    display: flex;
+}
+
+#secaoAjuda img{
+    width: 50%;
+    height: 50%;
+}
+
+#secaoAjuda p{
+    text-align: end;
+    margin-left: 10%;
+}
+
+#secaoFormulario{
+    padding: 4%;
+}
+
+#secaoFormulario textarea{
+    border: 2px solid #B81476;
+    border-radius: 5px;
+    width: 95%;
+    height: 100%;
+    font-size: 130%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    resize: none;
+    outline: none; /*Impede que a borda mude de cor ao ser clicada*/
+    margin-bottom: 3%;
+}
+
+#secaoFormulario a{
+    background-color: #B81476;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 150%;
+    padding-left: 38%;
+    padding-right: 38%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 20px;
+}
