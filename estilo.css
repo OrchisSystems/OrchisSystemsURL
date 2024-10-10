@@ -223,6 +223,8 @@ nav{
     height: 700px;
     background-color: #EEEEF0;
     padding: 50px;
+    filter: drop-shadow(1px 1px 3px);
+
 }
 .itemsecao1{
     align-items: center;
@@ -255,6 +257,8 @@ nav{
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    filter: drop-shadow(1px 1px 3px);
+
 }
 .titulosecao2{
     background-color: #B81476;
@@ -303,6 +307,8 @@ nav{
     padding-left: 6%;
     padding-bottom: 7%;
     padding-right: 6%;
+    filter: drop-shadow(1px 1px 3px);
+
 }
 .itemsecao3{
     flex-basis: auto;
