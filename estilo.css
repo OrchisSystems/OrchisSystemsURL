@@ -247,39 +247,71 @@ nav{
 
 /* ------------------sobre_nos.secao2----------------------- */
 .containersecao2{
+    display: flex;
+    flex-direction: column;
     height: 600px;
     background-color: #EEEEF0;
     padding-top: 5%;
     padding-left: 6%;
     padding-bottom: 15%;
     padding-right: 6%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     filter: drop-shadow(1px 1px 3px);
-
 }
-.titulosecao2{
+.containersecao2 .titulo{
+    
     background-color: #B81476;
     color: white;
-    height: 90px;
-    width: 1200px;
+    width: 98%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-size: 50px;
-    font-weight: 900;
+    font-weight: 900; 
+    
 }
+
+.itemimg .itemsecao2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemimg{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.itemimg .itemsecao2{
+    text-align: left;
+}
+.imglogo img{
+    width: 600px;
+    height: 600px;
+}
+
 .itemsecao2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     width: 100%;
     padding: 40px;
+    height: 300px;
     flex: 1;
-}
+} 
 .itemsecao2 .texto1{
     color: black;
-    font-size: 26px;
+    font-size: 30px;
     text-align: left;
     flex-basis: auto;
     padding: 10px;
     margin-bottom: 30px;
+    font-weight: bold;
 }
 .itemsecao2 .texto2{
     color: #B81476;
@@ -287,6 +319,7 @@ nav{
     text-align: left;
     flex-basis: auto;
     padding: 10px;
+    font-weight: bold;
 }
 .itemsecao2 .img{
     flex-shrink: 1;
@@ -318,7 +351,7 @@ nav{
     height: 600px;
 }
 .itemsecao3 .titulo1{
-    text-align: left;
+    text-align: center;
     font-size: 60px;    
     font-weight: 900;
     color: white;

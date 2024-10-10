@@ -11,6 +11,20 @@ a{
     text-decoration: none;
 }
 
+.back header a{
+    height: auto;
+    width: 150px;
+    border-radius: 15px;
+    font-size: 30px;
+    gap: 10px;
+    display: flex;
+    margin-right: 180vh;
+    justify-content: start;
+    align-items: flex-start;
+    text-align: start;
+    cursor: pointer;
+}
+
 body{
     height: 100vh;
     display: flex;
