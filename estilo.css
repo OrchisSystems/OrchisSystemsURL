@@ -258,7 +258,7 @@ nav{
     align-items: center;
     filter: drop-shadow(1px 1px 3px);
 }
-.titulo{
+.titulosecao2{
     background-color: #B81476;
     color: white;
     height: 90px;
@@ -347,11 +347,13 @@ nav{
     box-sizing: border-box;
 }
 .itemsecao4 .texto1{
+    display: flex;
     color: black;
     font-size: 26px;
     text-align: left;
 }
 .itemsecao4 .texto2{
+    display: flex;
     color: #B81476;
     font-size: 26px;
     text-align: left;
@@ -359,6 +361,32 @@ nav{
 }
 .itemsecao4 .img1{
     width: 300px;
+}
+/* ------------------sobre_nos.secao5----------------------- */
+
+.containersecao5{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #EEEEF0;
+    filter: drop-shadow(1px 1px 3px);
+    gap: 6%;
+}
+.img1s5{
+    width: 40%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.img2s5{
+    width: 40%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+.img3s5{
+    width: 88%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 /* ------------------Rodapé----------------------- */
