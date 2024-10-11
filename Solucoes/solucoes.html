@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../estilo.css">
     <title>Soluções</title>
 </head>
 <style>
@@ -24,12 +25,12 @@
         <header>
             <img id="logo" src="./imagens/logo.png" alt="">
             <div class="menu">
-                <a href="">Home</a>
-                <a href="">Soluções</a>
-                <a href="">Sobre</a>
-                <a href="">Dashboards</a>
-                <a href="">Ajuda</a>
-                <a href="teladelogin/index.html">Login</a>
+                <a class="btn-home" href="../index.html">Home</a>
+                <a class="btn-home" href="../Solucoes/solucoes.html">Soluções</a>
+                <a class="btn-home" href="../sobreNos/sobre_nos.html">Sobre</a>
+                <a class="btn-home" href="">Dashboards</a>
+                <a class="btn-home" href="../centralAjuda/centralAjuda.html">Ajuda</a>
+                <a class="btn-home" href="../login/index.html">Entrar</a>
             </div>
         </header>
 
@@ -37,88 +38,7 @@
          <div id="ContainerTitulo">
             <h1 id="tituloS1">Brotando Soluções para o seu negócio</h1> 
         </div>
-             <!-- Primeiro quadrante -->
-    <style>
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:2%;
-    background-color: rgb(255, 255, 255);
-    padding-top: 1%;
-    padding-left: 5%;
-    padding-right: 5%;
-    height: 900px;
 
-}
-.box1{
-    width:900px;
-    height:900px;
-    background-color: #ffffff;
-    border-radius: 50px;
-}
-.box1 img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50px;
-}
-.box2{
-    display: flex;
-    flex-direction: column;
-    width:900px;
-    height:900px;
-    background-color: #EB95C9;
-    border-radius: 50px;
-}
-.box2 #imagemGrande img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50px;
-}
-.box2 #imagensPequenas{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300px;
-    /* object-fit: cover; */
-    border-radius: 50px;
-}
-.box3{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    width:900px;
-    height:900px;
-    background-color: white;
-    border-radius: 50px;
-}
-#imagensD {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin: 0;
-    
-}
-#imagensD img {
-    height: 1000PX;
-    width: 100%;
-    border-radius: 50px;
-    flex: 1;
-    margin: 0;
-    object-fit: cover;
-    
-    
-}
-    </style>
         <div class="container">
            <div class="box1">
                 <img src="imagens/vertical-closeup-shot-beautiful-pink-orchids.png">
@@ -127,20 +47,20 @@
            
            <div class="box2">
                 <div id="imagemGrande">
-                    <img src="imagens/imagem10.png">
+                    <img src="imagens/imagem10.png" style="height: 570px;">
                 </div>
 
                 <div id="imagensPequenas">
-                    <img src="imagens/woman-decorating-her-house-with-orchids (1).png">
-                    <img src="imagens/image 2.png">
+                    <img src="imagens/philip-graves-9IanJG60RAI-unsplash.jpg" style="width: 190px; height: 280px; border-radius: 30px; ">
+                    <img src="imagens/doug-kelley-fLJoQ3woBU0-unsplash.jpg" style="width: 320px; height: 280px;border-radius: 30px;">
                 </div>
            </div>
 
 
            <div class="box3">
                 <div id="imagensD">
-                    <img src="imagens/image 11.png">
-                    <img src="imagens/cc609-secoes66-01.png">
+                    <img src="imagens/hang-hoang-iy5pgt69xyw-unsplash.jpg" style="padding-bottom: 4%;">
+                    <img src="imagens/kevin-noel-gonzalez-Ro1CvLo3e4Y-unsplash.jpg">
                 </div>
                 
            </div>
@@ -158,14 +78,16 @@
     padding-left: 5%;
     padding-right: 5%;
     height: 800px;
+    margin-left: -15%;
 }
 #div_img{
-    background-color: #EB95C9;
+    width: 30%;
     height: 500px;
     border-radius: 50px;
 } 
 #div_img img{
     height: 100%;
+    width: 100%;
     border-radius: 50px;
 }
 #quad2Texto{
@@ -174,36 +96,43 @@
     justify-self: center;
     align-items: center;
     background-color: #ffffff;
-    height: 500px;
-    width: 500px;
+    height: 800px;
+    width: 800px;
 }
 #quad2TextoPP{
     height: 200px;
     width: 200px;
+
 }
 #quad2TextoP{
     color: #B81476;
-    font-size: 200%
+    font-size: 350%;
+    font-weight: bolder;
+    margin-right: -30%;
+    margin-top: 20%;
 }
 .blocos{
     width: 80%;
-    height: 80%;
+    height: 50%;
     background-color: rgb(255, 255, 255);
+    
 }
 .topicoRosa{
     background-color: #B81476;
     color: white;
-    font-size: 100%;
+    font-size: 140%;
     width: 60%;
+    height: 10%;
     padding: 1%;
     font-weight: bold;
 }
 .topicoCinzaS{
     background-color: #D9D9D9;
     color: #B81476;
-    font-size: 100%;
+    font-size: 140%;
     font-weight:  bold;
     width: 55%;
+    height: 10%;
     padding: 1%;
 }
 </style>
@@ -218,10 +147,10 @@
                     <p id="quad2TextoP">Vantagens que afloram o desenvolvimento da sua estufa</p>
                 </div>
                     <div class="blocos">
-                        <div style="width: 50%; margin-top: 20%;" class="topicoRosa">Redução dos Custos</div>
-                        <div style="width: 50%; margin-right: 30%;" class="topicoCinzaS">Aumento do Lucro</div>
-                        <div style="margin-left: 8%; padding-right: 3%;"class="topicoRosa">Redução do Tempo de Cultivo</div>
-                        <div style="margin-left: 10%; margin-bottom: 10%;" class="topicoCinzaS">Aumento da Produtividade</div>
+                        <div style="width: 50%; margin-right: -45%;" class="topicoRosa">Redução dos Custos</div>
+                        <div style="width: 50%; margin-right: -28%;" class="topicoCinzaS">Aumento do Lucro</div>
+                        <div style="width: 70%; margin-right: -30%;"class="topicoRosa">Redução do Tempo de Cultivo</div>
+                        <div style="width: 60%; margin-right: -50%;" class="topicoCinzaS">Aumento da Produtividade</div>
                     </div>
             </div>
         </div>
@@ -246,49 +175,61 @@
     flex-direction: column;
     text-align: center;
     gap: 5px;
+    margin-top: 3%;
     width: 45%;
-    height: 50%;
+    height: 40%;
     border-radius: 50px;
-    
     padding: 20px;
+    font-size: 18px;
 }
 
 #quad3 #caixa1 h3{
     align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color:#B81476;
+    color: #D9D9D9;
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 200px;
+    width: 300px;
 }
 #quad3 #caixa2 h3{
     align-items: center;
-    background-color: #B81476;
+    background-color: #ffffff;
+    color: #B81476;
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 200px;
+    width: 300px;
 }
 #quad3 #caixa3 h3{
     align-items: center;
-    background-color: #B81476;
+    background-color: #ffffff;
+    color: #B81476;
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 200px;
+    width: 300px;
 }
 #quad3 #caixa4 h3{
     align-items: center;
-    background-color:#ffffff;
+    background-color:#B81476;
+    color: #ffffff;
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 200px;
-}
+    width: 400px;
+} 
  .CorRosa{
     background-color: #B81476;
     width: 100%;
     height: 100;
+}
+span{
+    font-size: 23px;
+    width: 90%;
+    display: flex;
+    margin-bottom: 5%;
+    font-weight: bolder;
 }
 
 </style>     
