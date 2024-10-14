@@ -9,26 +9,27 @@
     
 </head>
 <body>
-    <div class="back">
-        <header>
+        <div class="back-button">
             <a href="../index.html" class='bx bx-arrow-back'>
-                Voltar
-            </a>
-        </header>   
-    </div>
-    <div class="imglogo">
-        <img src="icon/logo1.png" >
-    </div>
-    
+                <span class="back">Voltar</span>
+            </a>    
+        </div>
+        <div class="imglogo">
+            <img src="icon/logo1.png" >
+        </div>
     <div class="container">
         <div class="cadastro-login">
             <header>
-                Crie sua conta
+                
+                Criação de conta empresarial
             </header>
             <form>
-                <input type="text" placeholder="Nome Completo">
-                <input type="email"  placeholder="Email" required>
-                <input type="password" placeholder="Senha" required>
+                <input type="text" placeholder="Nome da empresa">
+                <input type="number" placeholder="CNPJ da Empresa">
+                <input type="email"  placeholder="Email Empresarial" required>
+                <input type="password" placeholder="Senha" required id="senhaGerada">
+                <input type="password" placeholder="Insira sua senha novamente" required id="senhaGerada">
+                <a href="#" class="senhaAleatoria" id="senha">Gerar uma senha aleatória</a>
                 <button type="submit" class="btn">Cadastre-se</button>
             </form>
         </div>
@@ -39,7 +40,7 @@
             <form>
                 <input type="email"  placeholder="Email" required>
                 <input type="password" placeholder="Senha" required>
-                <a href="#">Esqueçeu sua senha ?</a>
+                <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
                 <button type="submit" class="btn">Login</button>
             </form>
         </div>
