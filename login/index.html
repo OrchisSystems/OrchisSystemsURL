@@ -15,7 +15,7 @@
             </a>    
         </div>
         <div class="imglogo">
-            <img src="icon/logo1.png" >
+            <img src="icon/logo1.png" class="logo">
         </div>
     <div class="container">
         <div class="cadastro-login">
@@ -27,8 +27,18 @@
                 <input type="text" placeholder="Nome da empresa">
                 <input type="number" placeholder="CNPJ da Empresa">
                 <input type="email"  placeholder="Email Empresarial" required>
-                <input type="password" placeholder="Senha" required id="senhaGerada">
-                <input type="password" placeholder="Insira sua senha novamente" required id="senhaGerada">
+                
+                <div class="passwd">    
+                    <div class="showpwd">
+                        <input type="password" placeholder="Senha" required id="senhaGerada">  
+                        <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png" onclick="pass()" id="pass-icon1">
+                    </div>
+                    <div class="showpwd2">
+                        <input type="password" placeholder="Insira sua senha novamente" required id="senhaGerada2">
+                        <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png" onclick="pass()" id="pass-icon2">
+                    </div>
+                </div>
+                
                 <a href="#" class="senhaAleatoria" id="senha">Gerar uma senha aleatória</a>
                 <button type="submit" class="btn">Cadastre-se</button>
             </form>
