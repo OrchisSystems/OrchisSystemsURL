@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./estilo_dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>Dashboards</title>
 </head>
@@ -74,6 +75,10 @@
         </div>
         
     </div>
+    <div class="graficoLuminosidade">
+        <canvas id="luminosidadeLinha"></canvas>
+        <canvas id="luminosidadeBarra"></canvas>
+      </div>
 
     <!-- ETILENO -->
 
@@ -126,7 +131,42 @@
         </div>
         
     </div>
+    <div class="graficoEtileno">
+        <canvas id="etilenoLinha"></canvas>
+        <canvas id="etilenoBarra"></canvas>
+      </div>
 
+      <center>
+      <footer>
+        <div id="footerMenu">
+            <p style="font-weight: bold;">Menu</p>
+            <p class="opcaoFooter">Home</p>
+            <p class="opcaoFooter">Soluções</p>
+            <p class="opcaoFooter">Sobre</p>
+            <p class="opcaoFooter">Ajuda</p>
+        </div>
+        <div id="footerTermos">
+            <p style="font-weight: bold;">Termos e Privacidade</p>
+            <p class="opcaoFooter">Normas da comunidade</p>
+            <p class="opcaoFooter">Termos de uso</p>
+            <p class="opcaoFooter">Privacidade</p>
+        </div>
+        <div id="footerRedesSociais">
+            <p style="font-weight: bold;">Redes Sociais</p>
+            <p class="opcaoFooter">Instagram</p>
+            <p class="opcaoFooter">Facebook</p>
+            <p class="opcaoFooter">WhatsApp</p>
+        </div>
+        <p style="grid-row-start: 2;
+                grid-row-end: 2;
+                grid-column-start: 2;
+                grid-column-end: 2;
+                color: white;
+                font-weight: bold;">
+                Copyright
+        </p>
+    </footer>
+      </center>
 </body>
-
+<script src="./dashboard.js"></script>
 </html>

@@ -332,3 +332,72 @@ header{
   padding-right: 100px;
   font-weight: 1000;
 }
+
+/*---------- ESTILIZAÇÃO DO GRAFICO ----------*/
+
+.graficoLuminosidade{
+  margin-top: 5%;
+  width: 45%;
+  display: flex;
+  margin-left: 5%;
+  justify-content: space-around;
+}
+.graficoEtileno{
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 45%;
+  display: flex;
+  margin-left: 5%;
+  justify-content: space-around;
+}
+
+
+
+/*---------- FOOTER ----------*/
+
+footer{
+  background-image: linear-gradient(#B81476, #672485);
+  /*O grid aqui define o espaço onde está a tag como tabela*/
+  display: grid;
+  /*Aqui eu separei em 3 colunas com 33,3% cada*/
+  grid-template-columns: 33,3% 33,3% 33,3%;
+  padding: 2%;
+
+}
+
+#footerMenu{
+  /*Por eu ter usado o grid, tive que definir as posições
+  de cada objeto*/
+  /*Linha inicial e final*/
+  grid-row-start: 1;
+  grid-row-end: 1;
+  /*Coluna inicial e final*/
+  grid-column-start: 1;
+  grid-column-end: 1;
+  color: white;
+  text-align: start;
+  margin-left: 10%;
+  
+}
+
+#footerTermos{
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  color: white;
+}
+
+#footerRedesSociais{
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  color: white;
+  text-align: end;
+  margin-right: 10%;
+}
+
+.opcaoFooter{
+  text-decoration:none;
+}
