@@ -137,9 +137,10 @@ form .btn{
 }
 
 .secao-login .btn{
-    background: floralwhite;
+    background: #f0f0f0;
+    border: 2px solid #00000069;
     color: #B81476;
-    border: none;
+    
 }
 
 .container.active .secao-login{
