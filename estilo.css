@@ -1,8 +1,11 @@
-@font-face { /*Adicionando fonte*/
+@font-face {
+    /*Adicionando fonte*/
     font-family: 'Poppins';
     src: url(./fontes/Poppins/Poppins-Regular.ttf);
-    
-}@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 
 body {
@@ -11,10 +14,11 @@ body {
     /* Criação de fundo gradiente, no qual informei 2 cores */
     background-image: linear-gradient(#B81476 1%, #672485 99%);
     height: 200vh;
-    font-family: 'Poppins'; /*Utilizando a fonte adicionada*/
+    font-family: 'Poppins';
+    /*Utilizando a fonte adicionada*/
 }
 
-header{
+header {
     background-color: #fff;
     display: flex;
     justify-content: space-between;
@@ -38,9 +42,9 @@ header{
     position: relative;
     transition: 0.5s ease;
     cursor: pointer;
-  }
-  
-  .btn-home::before {
+}
+
+.btn-home::before {
     content: "";
     position: absolute;
     left: 0;
@@ -48,18 +52,18 @@ header{
     width: 0;
     background-color: #B81476;
     transition: 0.2s ease;
-  }
-  
-  .btn-home:hover {
+}
+
+.btn-home:hover {
     color: #ffffff;
     transition-delay: 0.2s;
-  }
-  
-  .btn-home:hover::before {
+}
+
+.btn-home:hover::before {
     width: 100%;
-  }
-  
-  .btn-home::after {
+}
+
+.btn-home::after {
     content: "";
     position: absolute;
     left: 0;
@@ -70,15 +74,15 @@ header{
     border-radius: 40px;
     transition: 0.2s ease;
     z-index: -1;
-  }
-  
-  .btn-home:hover::after {
+}
+
+.btn-home:hover::after {
     height: 100%;
     transition-delay: 0.2s;
     color: aliceblue;
-  }
+}
 
-.menu a{
+.menu a {
     color: #B81476;
     font-weight: bold;
     text-decoration: none;
@@ -86,7 +90,7 @@ header{
     margin: 15px;
 }
 
-#secao1{
+#secao1 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 2%;
@@ -95,11 +99,11 @@ header{
     padding-bottom: 5%;
 }
 
-#secaoImagem img{
+#secaoImagem img {
     width: 110%;
 }
 
-.texto{
+.texto {
     font-size: 160%;
     color: white;
     font-weight: 450;
@@ -110,17 +114,18 @@ header{
     letter-spacing: 1px;
 }
 
-.titulo{
+.titulo {
     color: white;
     font-size: 400%;
-    font-family: "JetBrains Mono", monospace; 
-    
+    font-family: "JetBrains Mono", monospace;
+
 }
-.titulo b{
+
+.titulo b {
     font-weight: 2000;
 }
 
-#botaoSimulacao{
+#botaoSimulacao {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,31 +137,34 @@ header{
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 20%;
-    white-space: nowrap; /*Para não quebrar a linha do botao*/
+    white-space: nowrap;
+    /*Para não quebrar a linha do botao*/
     border-radius: 45px;
     font-weight: bold;
     transition: all 0.3s;
 }
-#botaoSimulacao:hover{
+
+#botaoSimulacao:hover {
     background: #672485;
     color: white;
     font-size: 1.85em;
+    transition: 0.2s ease;
 }
-  
+
 /* ------------------------------secao2-------------------------- */
-#secao2{
+#secao2 {
     background-color: white;
     padding-top: 2%;
     padding-bottom: 5%;
 }
 
 
-#titulo2{
+#titulo2 {
     color: #672485;
     font-size: 350%;
 }
 
-#divisaoSecao2{
+#divisaoSecao2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -164,12 +172,12 @@ header{
     padding-right: 4%;
 }
 
-#divisaoSecao2 img{
+#divisaoSecao2 img {
     width: 100%;
     margin-left: 10%;
 }
 
-.topicoRoxo{
+.topicoRoxo {
     background-color: #672485;
     color: white;
     font-size: 200%;
@@ -178,29 +186,61 @@ header{
     font-weight: bold;
 }
 
-.topicoCinza{
+.topicoCinza {
     background-color: #D9D9D9;
     color: 672485;
     font-size: 200%;
-    font-weight:  bold;
+    font-weight: bold;
     width: 65%;
     padding: 1%;
 }
 
-#botaoSecao2{
+#botaoSecao2 {
+    width: 600px;
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #672485;
     color: white;
-    font-weight: bold;
-    font-size: 200%;
-    padding: 1%;
-    padding-left: 5%;
-    padding-right: 5%;
-    border-radius: 20px;
-    white-space: nowrap;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.404);
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.5s;
 }
 
+#botaoSecao2::before {
+    width: 600px;
+    height: 140px;
+    position: absolute;
+    content: "";
+    background: linear-gradient(#B81476, #672485);
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: 0.5s;
+    mix-blend-mode: color;
+}
+
+#botaoSecao2:hover:before {
+    transition-duration: 0.5s;
+    transform: translate(100%, -50%);
+    border-radius: 25px;
+}
+
+#botaoSecao2:active{
+    transform: translate(5px,5px);
+  transition-duration: 0.5s;
+}
+
+
 /* ---------------------secao3------------------------- */
-#secao3{
+#secao3 {
     background-color: #B81476;
     padding-top: 2%;
     padding-left: 4%;
@@ -208,20 +248,20 @@ header{
     padding-bottom: 5%;
 }
 
-#secao3Divisao{
+#secao3Divisao {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-#secao3 img{
+#secao3 img {
     width: 100%;
     margin-right: 10%;
 }
 
 
 /* ------------------------------secao4-------------------------- */
-#secao4{
+#secao4 {
     background-color: white;
     display: flex;
     justify-content: space-around;
@@ -232,7 +272,7 @@ header{
     padding-top: 2%;
 }
 
-#inputDuvida{
+#inputDuvida {
     border: 2px solid #B81476;
     border-radius: 5px;
     width: 100%;
@@ -243,15 +283,16 @@ header{
     padding-top: 2%;
     padding-bottom: 2%;
     resize: none;
-    outline: none; /*Impede que a borda mude de cor ao ser clicada*/
+    outline: none;
+    /*Impede que a borda mude de cor ao ser clicada*/
     margin-bottom: 3%;
 }
 
-#secao4 img{
+#secao4 img {
     width: 100%;
 }
 
-#secao4Esquerdo{
+#secao4Esquerdo {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -269,14 +310,14 @@ header{
     font-weight: 1000;
     font-size: 17px;
     font-family: 'Poppins';
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     transition: all 250ms;
     overflow: hidden;
-    cursor:pointer;
+    cursor: pointer;
 
-   }
-   
+}
+
 .btn_enviar::before {
     content: "";
     position: absolute;
@@ -287,31 +328,31 @@ header{
     border-radius: 15px;
     background-image: linear-gradient(#8b0e59, #45185a);
     z-index: -1;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     transition: all 250ms
-   }
-   
-   .btn_enviar:hover {
+}
+
+.btn_enviar:hover {
     color: #e8e8e8;
-   }
-   
- .btn_enviar:hover::before {
+}
+
+.btn_enviar:hover::before {
     width: 100%;
-   }
+}
 
 /* ------------------Rodapé----------------------- */
-footer{
+footer {
     background-image: linear-gradient(#B81476, #672485);
     /*O grid aqui define o espaço onde está a tag como tabela*/
     display: grid;
     /*Aqui eu separei em 3 colunas com 33,3% cada*/
-    grid-template-columns: 33,3% 33,3% 33,3%;
+    grid-template-columns: 33, 3% 33, 3% 33, 3%;
     padding: 2%;
- 
+
 }
 
-#footerMenu{
+#footerMenu {
     /*Por eu ter usado o grid, tive que definir as posições
     de cada objeto*/
     /*Linha inicial e final*/
@@ -323,10 +364,10 @@ footer{
     color: white;
     text-align: start;
     margin-left: 10%;
-    
+
 }
 
-#footerTermos{
+#footerTermos {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 2;
@@ -334,7 +375,7 @@ footer{
     color: white;
 }
 
-#footerRedesSociais{
+#footerRedesSociais {
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 3;
@@ -344,6 +385,6 @@ footer{
     margin-right: 10%;
 }
 
-.opcaoFooter{
-    text-decoration:none;
+.opcaoFooter {
+    text-decoration: none;
 }
