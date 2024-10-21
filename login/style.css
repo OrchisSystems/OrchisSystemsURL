@@ -52,7 +52,7 @@ body{
 
 .container{
     position: relative;
-    width: 460px;
+    width: 650px;
     height: 700px;
     border-radius: 14px;
     padding: 20px 30px 120px;
@@ -107,7 +107,10 @@ form input{
     padding: 10px 15px;
     font-size: 16px;
     color: #333;
+    width: 400px;
+    display: flex;
     font-weight: 400;
+    align-self: center;
     border-radius: 8px;
     background: #fff;
     
@@ -184,15 +187,22 @@ form .btn{
 
 .passwd input{
     border: none;
+    
 }
-
+.senhaAleatoria{
+    justify-content: center;
+    display: flex;
+}
 
 
 form .showpwd, 
 form .showpwd2{
     border: 2px solid #0000004b;
-    border-radius: 5px;
+    border-radius: 8px;
+    display: flex;
     background-color: #fff;
+    width: 400px;
+    align-self: center;
     
 }
 
@@ -202,7 +212,7 @@ form .passwd #pass-icon1,#pass-icon2{
     width: 24px;
     cursor: pointer;
     height: 24px;
-    right: 40px;
+    right: 150px;
     margin-top: 10px;
     
 
