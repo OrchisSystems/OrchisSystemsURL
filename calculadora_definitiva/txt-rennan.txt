@@ -1,0 +1,92 @@
+} else if (possuiMonitoramentoLuminosidade == false) {
+                    body.innerHTML = `
+                    <p>
+                        Sério que você não tem um sistema de monitoramento de luminosidade para as suas orquídeas?
+                    </p>
+                <p>
+                    Se você tivesse introduzido o
+                    <strong>
+                        monitoramento de luminosidade
+                    </strong>
+                    , você poderia ter uma 
+                    <strong>
+                        redução
+                    </strong> 
+                    em seu custo de produção de até 
+                    <strong>
+                        35%
+                    </strong>
+                    .
+                <p/>
+                <p>
+                    Supondo que 
+                    <strong>
+                    40%
+                    </strong> 
+                    do seu faturamento (
+                    <strong>
+                        R$${(faturamentoAnual * 0.4).toFixed(2)}
+                    </strong>
+                        ) correspondem à suas despesas com as orquídeas, com um sistema de monitoramento de luminosidade eficiente, 
+                    <strong>
+                        Orchis System
+                    </strong> você poderia ter economizado 
+                    <strong>
+                        R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)}
+                    </strong> no valor de produção!
+                </p>
+                `
+
+                if (possuiMonitoramentoEtileno == true) {
+                    // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                    if (tipoMonitoramentoEtileno == 'manual') {
+                        body.innerHTML = `
+                    <p>
+                        Imagine ter o monitoramento total de etileno da sua estufa, sem se preocupar com medições manuais e imprecisas.
+                        Com a automatização do monitoramento de etileno, você garante:
+                    </p>
+                <ul>
+                    <li>
+                        <strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.
+                    </li>
+                    <li>
+                        <strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.
+                    </li>
+                    <li>
+                        <strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.
+                    </li>
+                </ul>
+                        `
+                    //SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                    } else if (tipoMonitoramentoEtileno == 'automático') {
+                            body.innerHTML = `
+                            <p>
+                                Imagine a praticidade de ter todas as informações sobre a quantidade de etileno e a intensidade luminosa da sua estufa em um só lugar!
+                                 <strong>
+                                    Ao optar pela Orchis System e pelo nosso sistema unificado que monitora tanto a luz quanto o etileno, 
+                                    você estará dando um grande passo rumo à otimização dos seus 
+                                    processos e à melhoria da qualidade das suas orquídeas.
+                                </strong>
+                            </p>`
+
+                    }
+
+                // SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                } else if (possuiMonitoramentoEtileno == false) {
+                    body.innerHTML = `<p>Sério que você não tem um sistema de monitoramento de etileno para as suas orquídeas?</p>
+                <p>
+                    <strong>
+                        Sua produção de orquídeas pode estar correndo grande perigo.</strong> Você sabia que se suas orquídeas 
+                sofrerem qualquer tipo de estresses elas começam a produzir altas taxas de etileno e se não forem tratadas a tempo 
+                elas param de florir, pondendo inclusive morrer?
+                </strong></p>
+                <p>Se usarmos o seu faturamento anual e os seus ciclos de venda como base e imaginarmos que a produção de etileno causada pelo 
+                    estresse afetou metade das suas orquideas no seu primeiro ciclo de faturamento, sem o monitoramento de etileno você 
+                    não saberia com antecendência como tratar a tempo suas orquídeas e teria um prejuízo de aproximadamente 
+                    <strong>
+                        R$${(faturamentoAnual / cicloVendaAnual / 2).toFixed(2)}
+                        </strong>
+                    </p>
+                `
+                }
+            }

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Orchis System</title>
+    <link rel="stylesheet" href="style_simulador.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body id="body">
+    <div class="container">
+        <h1 class="titulo">Simulador Orchis System</h1>
+
+        <img class="corpo img" src='img/logo.png' width = "300px" height = "300px">
+
+        <button class="botao" onclick="iniciar()">Iniciar</button>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    // CÁLCULOS 
+
+    /* Para a criação da cálculadora, usou se as seguintas informações com base em estudos e pesquisas, contudo, usamos uma projeção conservadora onde reduzimos em até 25% os dados coletados:
+
+        - CRIAÇÃO DE MUDAS DE ORQUÍDEAS:
+
+            - Caso haja apenas o monitoramento de etileno, haverá um amento de 18,75% produtividade e de faturamento (estudos constam um aumento de 25%, mas reduzimos em 25% esse valor)
+
+                aumento de produtividade/ciclo de venda anual = ciclo * 18,75%
+
+                aumento de faturamento anual = faturamento anual * 18,75%
+
+                aumento de faturamento mensal = faturamento anual/12 * 18,75%
+
+                aumento de faturamento por ciclo de venda = faturamento anual/ciclo * 18,75%
+            
+            - Caso haja apenas o monitoramento de luminosidade, haverá uma redução de custo de 35% (pesquisas constam um aumento de até 46%, mas reduzimos em 25% esse valor)
+
+                redução de custo anual = faturamento anual * 35%
+
+                redução de custo ciclo = faturamento anual/ciclo * 35%
+
+            - Caso haja monitoramento de ambos, haverá um amento de 40% produtividade e de faturamento (estudos constam um aumento de até 50%, mas reduzimos em 20% esse valor)
+
+                aumento de produtividade/ciclos de venda anual = ciclo de venda * 40%
+
+                aumento de faturamento anual = faturamento anual * 40%
+
+                aumento de faturamento mensal = faturamento anual/12 * 40%
+
+                aumento de faturamento por ciclo = faturamento anual/ciclo * 40%
+
+
+        - CRIAÇÃO DE ORQUÍDEAS ADULTAS:
+
+            - Caso haja apenas o monitoramento de etileno, pode evitar a perda total da produção 
+                
+                #adotamos uma medida cautelosa onde usamos como simulação que metade da produção de 1 ciclo foi afetada
+
+                perda de metade da produção em 1 ciclo de venda= faturamento anual / ciclo * 50%
+
+                perda de metade do faturamento de 1 ciclo de venda = faturamento anual/ - (faturamento anual / ciclo * 50%)
+
+            - Caso haja apenas o monitoramento de luminosidade, haverá uma redução de custo de 35% (pesquisas constam um aumento de até 46%, mas reduzimos em 25% esse valor)
+
+                redução de custo anual = faturamento anual * 35%
+
+                redução de custo ciclo = faturamento anual/ciclo * 35%
+
+            - Caso haja monitoramento de ambos, haverá uma redução de custo de 35% (pesquisas constam um aumento de até 46%, mas reduzimos em 25% esse valor) e pode evitar a perda total da produção 
+
+                #adotamos uma medida cautelosa onde usamos como simulação que metade da produção de 1 ciclo foi afetada
+
+                perda de metade da produção em 1 ciclo de venda= faturamento anual / ciclo * 50%
+
+                perda de metade do faturamento de 1 ciclo de venda = faturamento anual/ - (faturamento anual / ciclo * 50%)
+
+                redução de custo anual = faturamento anual * 35%
+
+                redução de custo ciclo = faturamento anual/ciclo * 35%
+
+                
+    
+    */
+
+    // FUNÇÃO PARA INICIAR O SIMULADOR
+
+    function iniciar(){
+
+        body.innerHTML = `<div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <h2 class="subtitulo">Precisaremos que você responda algumas perguntas:</h2>
+            <h4>Você já trabalha com orquídeas?</h4>
+            <div class="opcoes">
+               <span> <input onclick="verificarEscolhaTrabalhaOrquideas()" type="radio" id="input_trabalha_orquideas_true"
+                    name="trabalha_orquideas" value="true" />
+                <label for="input_trabalha_orquideas_true">Sim, eu trabalho com orquídeas.</label> <span>
+                <br>
+                <br>
+
+               <span> <input onclick="verificarEscolhaTrabalhaOrquideas()" type="radio" id="input_trabalha_orquideas_false"
+                    name="trabalha_orquideas" value="false" />
+            <label for="input_trabalha_orquideas_false">Não, eu não trabalho com orquídeas.</label> <span>
+            </div>
+            <br>
+
+            <div id="div_button_trabalha_orquideas">
+                <button type="button">Próximo</button>
+            </div>
+        </div>`
+    }
+
+
+
+    // FUNÇÃO PARA VERIFICAR SE O CLIENTE TRABALHA OU NÃO COM ORQUÍDEAS E SETA A FUNÇÃO DO BOTÃO
+
+    function verificarEscolhaTrabalhaOrquideas() {
+
+        if (input_trabalha_orquideas_true.checked) {
+            div_button_trabalha_orquideas.innerHTML = '<button onclick = "adicionarPerguntasTrabalhaOrquideasTrue()" type="button">Próximo</button>'
+
+        } else if (input_trabalha_orquideas_false.checked) {
+            div_button_trabalha_orquideas.innerHTML = '<button onclick = "adicionarPerguntasTrabalhaOrquideasFalse()" type="button">Próximo</button>'
+        }
+
+    }
+
+    // FUNÇÃO PARA ADICIONAR AS PERGUNTAS DO CLIENTE SE ELE JÁ TRABALHA COM ORQUÍDEAS
+
+    function adicionarPerguntasTrabalhaOrquideasTrue() {
+
+        body.innerHTML = `<div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <div class="centralizar" id="faturamento_anual">
+                <h4>Qual o seu faturamento anual?</h4>
+                <span> R$<input type="number" id="input_faturamento_anual" /> </span>
+            </div>
+
+            <div class="centralizar" id="div_ciclo_venda_anual">
+                <span> <h4>Qual o seu ciclo de venda, em quantos meses num período de 1 ano você vende orquídeas?</h4> <span>
+                <div class ="centralizar"> <span> <input type="number" id="input_ciclo_venda_anual" /> mes(es)</span>
+                    <br>
+                    <i>Exemplo: Se você vende orquideas em 4 meses do ano, o seu ciclo de venda é 4.</i>
+                    </span> 
+                </div>
+            </div>
+
+            <div class="centralizar" id="div_segmento">
+                <h4>Em qual segmento você opera?</h4>
+                <span>
+                <input type="radio" id="input_segmento_mudas" name="segmento" value="mudas de oquídeas" />
+                <label for="input_segmento_mudas">Venda de mudas de orquídeas.</label>
+                <br></span>
+                <span> <input type="radio" id="input_segmento_orquideas_adultas" name="segmento" value="orquídeas adultas" />
+                <label for="input_segmento_orquideas_adultas">Venda de orquídeas adultas.</label> </span>
+            </div>
+
+            <div class="centralizar" id="div_possui_monitoramento_luminosidade">
+                <h4>Sua estufa possui monitoramento de luminosidade?</h4>
+                <span> <input onclick = "veirificarSituacaoMonitoramentoLuminosidade()" type="radio" id="input_possui_monitoramento_luminosidade_true" name="monitoramento_luminosidade" value="true"/>
+                <label for="input_possui_monitoramento_luminosidade_true">Sim, a minha estufa tem monitoramento de luminosidade.</label> </span>
+                <span> <input onclick = "veirificarSituacaoMonitoramentoLuminosidade()" type="radio" id="input_possui_monitoramento_luminosidade_false" name="monitoramento_luminosidade" value="false"/>
+                <label for="input_possui_monitoramento_luminosidade_false">Não, a minha estufa não tem monitoramento de luminosidade.</label> </span>
+                <div class="centralizar" id="div_tipo_monitoramento_luminosidade"></div>
+            </div>
+            <div class="centralizar" id="div_possui_monitoramento_gas_etileno">
+                <h4>Sua estufa possui monitoramento de gás etileno?</h4>
+                <span> <input onclick = 'veirificarSituacaoMonitoramentoEtileno()' type="radio" id="input_possui_monitoramento_gas_etileno_true" name="monitoramento_gas_etileno" value="possui monitoramento de gás etileno"/>
+                <label for="input_possui_monitoramento_gas_etileno_true">Sim, a minha estufa tem monitoramento do gás etileno.</label> </span>
+                <span> <input onclick = 'veirificarSituacaoMonitoramentoEtileno()' type="radio" id="input_possui_monitoramento_gas_etileno_false" name="monitoramento_gas_etileno" value="não possui monitoramneto de gás etileno"/>
+                <label for="input_possui_monitoramento_gas_etileno_false">Não, a minha estufa não tem monitoramento do gás etileno.</label> </span>
+                <div class="centralizar" id="div_tipo_monitoramento_etileno"></div>
+            </div>
+            <br>
+            <button id='button_simular' onclick= "simularExibirResultadoTrabalhaOrquideasTrue()" >Simular</button>
+            </div>`
+
+    }
+
+    // FUNÇÃO PARA ANALISAR SE O CLIENTE POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+
+    function veirificarSituacaoMonitoramentoLuminosidade() {
+
+        const monitoramentoLuminosidadeTrue = input_possui_monitoramento_luminosidade_true
+        const monitoramentoLuminosidadeFalse = input_possui_monitoramento_luminosidade_false
+
+
+        if (monitoramentoLuminosidadeTrue.checked) {
+            div_tipo_monitoramento_luminosidade.innerHTML = ` 
+                <h4>Seu monitoramento de luminosidade é automático ou manual?</h4>
+                <span> <input type="radio" id="input_monitoramento_luminosidade_manual" name="tipo_monitoramento_luminosidade" value="manual" />
+                <label for="input_monitoramento_luminosidade_manual">Manual.</label> </span> 
+                <span> <input type="radio" id="input_monitoramento_luminosidade_automatico" name="tipo_monitoramento_luminosidade" value="automático" />
+                <label for="input_monitoramento_luminosidade_automatico">Automático.</label> </span>`
+        }
+
+        if (monitoramentoLuminosidadeFalse.checked) {
+            div_tipo_monitoramento_luminosidade.innerHTML = ''
+        }
+    }
+
+    // FUNÇÃO PARA ANALISAR SE O CLIENTE POSSUÍ MONITORAMENTO DE ETILENO
+
+    function veirificarSituacaoMonitoramentoEtileno() {
+
+        const monitoramentoEtilenoTrue = input_possui_monitoramento_gas_etileno_true
+        const monitoramentoEtilenoFalse = input_possui_monitoramento_gas_etileno_false
+
+        if (monitoramentoEtilenoTrue.checked) {
+            div_tipo_monitoramento_etileno.innerHTML = ` 
+                <h4>Seu monitoramento de etileno é automático ou manual?</h4>
+                <span> <input type="radio" id="input_monitoramento_etilenoe_manual" name="tipo_monitoramento_etileno" value="manual" />
+                <label for="input_monitoramento_etilenoe_manual">Manual.</label> </span>
+                <span> <input type="radio" id="input_monitoramento_etileno_automatico" name="tipo_monitoramento_etileno" value="automático" />
+                <label for="input_monitoramento_etileno_automatico">Automático.</label> </span>`
+        }
+
+        if (monitoramentoEtilenoFalse.checked) {
+            div_tipo_monitoramento_etileno.innerHTML = ``
+        }
+    }
+
+    // FUNÇÃO PARA SIMULAR CENÁRIOS DE LUCRO, PREJUÍZO OU PRODUTIVIDADE DE ACORDO COM AS RESPOSTAS DO USUÁRIO QUE TRABALHAM COM ORQUÍDEAS
+
+    function simularExibirResultadoTrabalhaOrquideasTrue() {
+
+        var segmento
+
+        if (input_segmento_orquideas_adultas.checked) {
+            segmento = "orquídeas adultas"
+        } else if (input_segmento_mudas.checked) {
+            segmento = "mudas de orquídeas"
+        }
+
+        const faturamentoAnual = Number(input_faturamento_anual.value);
+
+        const cicloVendaAnual = Number(input_ciclo_venda_anual.value);
+
+        const faturamentoCiclo = faturamentoAnual / cicloVendaAnual;
+
+        // SE POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+        var possuiMonitoramentoLuminosidade
+
+        // TIPO DE MONITORAMENTO DE LUMINOSIDADE
+        var tipoMonitoramentoLuminosidade
+
+        if (input_possui_monitoramento_luminosidade_true.checked) {
+            possuiMonitoramentoLuminosidade = true
+            //SE POSSUÍ MONITORAMENTO DE LUMINOSIDADE MANUAL
+            if (input_monitoramento_luminosidade_manual.checked) {
+                tipoMonitoramentoLuminosidade = input_monitoramento_luminosidade_manual.value
+
+                //SE POSSUÍ MONITORAMENTO DE LUMINOSIDADE AUTOMÁTICO
+            } else if (input_monitoramento_luminosidade_automatico.checked) {
+                tipoMonitoramentoLuminosidade = input_monitoramento_luminosidade_automatico.value
+            }
+        } else if (input_possui_monitoramento_luminosidade_false.checked) {
+            possuiMonitoramentoLuminosidade = false
+        }
+
+
+
+        // SE POSSUÍ MONITORAMENTO DE ETILENO
+        var possuiMonitoramentoEtileno
+
+        // TIPO DE MONITORAMENTO DE ETILENO
+        var tipoMonitoramentoEtileno
+
+        if (input_possui_monitoramento_gas_etileno_true.checked) {
+            possuiMonitoramentoEtileno = true
+            // SE POSSUÍ MONITORAMENTO DE ETILENO MANUAL
+            if (input_monitoramento_etilenoe_manual.checked) {
+                tipoMonitoramentoEtileno = input_monitoramento_etilenoe_manual.value
+
+                //SE POSSUÍ MONITORAMENTO DE ETILENO AUTOMÁTICO
+            } else if (input_monitoramento_etileno_automatico.checked) {
+                tipoMonitoramentoEtileno = input_monitoramento_etileno_automatico.value
+            }
+        } else if (input_possui_monitoramento_gas_etileno_false.checked) {
+            possuiMonitoramentoEtileno = false
+        }
+
+        // SE O SEGMENTO FOR ORQUÍDEAS ADULTAS
+
+        if (segmento == "orquídeas adultas") {
+
+
+            // SE POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+            if (possuiMonitoramentoLuminosidade == true) {
+
+                // SE POSSUÍ MONITORAMENTO MANUAL DE LUMINOSIDADE 
+                if (tipoMonitoramentoLuminosidade == 'manual') {
+
+                    // SE POSSUÍ MONITORAMENTO DE ETILENO
+                    if (possuiMonitoramentoEtileno == true) {
+
+                        // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                        if (tipoMonitoramentoEtileno == 'manual') {
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Vi que você já possuí um monitoramento manual da luminosidade e de gás etileno!</p>
+                                    <strong> <p>Mas imagine ter todo esse monitoramento, sem se preocupar com medições manuais e imprecisas! </p> </strong> <br>
+                                        <p>Com o nosso sistema, você garante:</p> <br>
+                                        <ul>
+                                            <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                            <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                                            <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                        </ul><br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+
+                            // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                        } else if (tipoMonitoramentoEtileno == 'automático') {
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar"
+                                    <p>Vi que você já possuí um monitoramento automático de etileno e que você já faz um monitoramento manual de luminosidade!</p>
+                                    <strong> Mas imagine ter o monitoramento automatizado da sua estufa, sem se preocupar com medições manuais e imprecisas. </strong> </p> 
+                                    <p> Com o sistema de monitoramento de luminosidade e do gás etileno, você garante:</p> <br>
+                                    <ul>
+                                        <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                        <li><strong>Eficiência:</strong> Permite você otimizar o consumo de energia e redução de custos do seu orquidário.</li>
+                                        <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas e instantâneas. </li>
+                                    </ul> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+                        }
+
+                        //  SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+
+                    } else if (possuiMonitoramentoEtileno == false) {
+                        body.innerHTML = ` <div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Vi que você já possuí um monitoramento manual da luminosidade e que você não possuí monitoramento do gás etileno!</p> <br>
+                                <p><strong>Saiba que sua produção de orquídeas pode estar correndo grande perigo. </strong> </p> <br>
+                                <p>Você sabia que se suas orquídeas sofrerem qualquer tipo de estresses elas começam a produzir altas taxas de etileno e se não forem tratadas a tempo elas param de florir, pondendo inclusive morrer?</p>
+                                <p>Se usarmos o seu faturamento anual e os seus ciclos de venda como base e imaginarmos que a produção de etileno causada pelo estresse afetou metade das suas orquideas no seu primeiro ciclo de faturamento, sem o monitoramento de etileno você não saberia com antecendência como tratar a tempo suas orquídeas e teria um prejuízo de aproximadamente <strong>R$${(faturamentoAnual / cicloVendaAnual / 2).toFixed(2)}</strong></p>
+                                <br>
+                                <p>Agora imagine ter o monitoramento total de etileno e luminosidade da sua estufa, sem se preocupar com medições manuais e imprecisas.</p> 
+                                <p>Com o nosso sistema isso é possível! Com ele você garante:</p>
+                                <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+                    }
+
+                // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE LUMINOSIDADE 
+                } else if (tipoMonitoramentoLuminosidade == 'automático') {
+
+                    // SE POSSUÍ MONITORAMENTO DE ETILENO                    
+                    if (possuiMonitoramentoEtileno == true) {
+
+                        // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                        if (tipoMonitoramentoEtileno == 'manual') {
+
+                            body.innerHTML = ` <div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Vi que você já possuí um monitoramento automático de luminosidade e que você já faz um monitoramento manual de etileno! </p>
+                                    <p> <strong> Mas imagine ter o monitoramento automatizado da sua estufa, sem se preocupar com medições manuais e imprecisas. </strong> </p>
+                                    <p> Com a automatização do monitoramento de luminosidade e do gás etileno, você garante:</p>
+                                    <ul>
+                                        <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                        <li><strong>Eficiência:</strong> Permite você otimizar o consumo de energia e redução de custos do seu orquidário.</li>
+                                        <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas e instantâneas.</li>
+                                    </ul> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+
+                            // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                        } else if (tipoMonitoramentoEtileno == 'automático') {
+
+                            body.innerHTML = ` <div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Vi que você já possuí um monitoramento automático de luminosidade e etileno e isso é muito bom!</p>
+                                    <p><strong> Mas imagine ter o monitoramento automatizado e unificado da sua estufa. </strong> </p>
+                                    <p>Com o nosso sistema, você saberá o que ocorre na sua estufa em um só lugar! <strong>Ao optar pela Orchis System, você estará dando um grande passo rumo à otimização dos seus 
+                                    processos e à melhoria da qualidade das suas orquídeas.</strong> </p> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div> 
+                            </div>`
+
+                        }
+
+                        // SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                    } else if (possuiMonitoramentoEtileno == false) {
+                        body.innerHTML = ` <div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Vi que você já possuí um monitoramento automático da luminosidade e que você não possuí monitoramento do gás etileno!</p>
+                                <p><strong>Saiba que sua produção de orquídeas pode estar correndo grande perigo.</strong> </p>
+                                <p> Você sabia que se suas orquídeas sofrerem qualquer tipo de estresses elas começam a produzir altas taxas de etileno e se não forem tratadas a tempo elas param de florir, pondendo inclusive morrer?</p>
+                                <p>Se usarmos o seu faturamento anual e os seus ciclos de venda como base e imaginarmos que a produção de etileno causada pelo estresse afetou metade das suas orquideas no seu primeiro ciclo de faturamento, sem o monitoramento de etileno você não saberia com antecendência como tratar a tempo suas orquídeas e teria um prejuízo de aproximadamente <strong>R$${(faturamentoAnual / cicloVendaAnual / 2).toFixed(2)}</strong></p>
+                                <br>
+                                <p>Agora imagine ter o monitoramento total de etileno e luminosidade da sua estufa, sem se preocupar com medições manuais e imprecisas.</p> 
+                                <p>Com o nosso sistema isso é possível! Com ele você garante:</p>
+                                <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+                    }
+                }
+
+
+                // SE NÃO POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+            } else if (possuiMonitoramentoLuminosidade == false) {
+
+
+                // SE POSSUÍ MONITORAMENTO DE ETILENO
+                if (possuiMonitoramentoEtileno == true) {
+
+                    // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                    if (tipoMonitoramentoEtileno == 'manual') {
+                        body.innerHTML = ` <div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Vi que você já possuí um monitoramento manual do etileno, mas vi também que você não possuí um monitoramento de Luminosidade!</p>
+                                <p> <strong> Se você tivesse introduzido o monitoramento de luminosidade na sua estufa, você poderia ter uma redução em seu custo de produção de até 35%. </strong> </p>
+                                <p>Supondo que 40% do seu faturamento (R$${(faturamentoAnual * 0.4).toFixed(2)}) correspondem à suas despesas com as orquídeas, com um sistema de monitoramentp de luminosidade eficiente, 
+                                Orchis System você poderia ter economizado R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)} no valor de produção!</p>
+                                <br>
+                                <p>Agora imagine ter o monitoramento total da sua estufa, sem se preocupar com medições manuais e imprecisas.</p> 
+                                <p>Com o nosso sistema isso é possível! Com ele você garante:</p>
+                                <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+
+                        //SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                    } else if (tipoMonitoramentoEtileno == 'automático') {
+                        body.innerHTML = ` <div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Vi que você já possuí um monitoramento automático do etileno, mas vi também que você não possuí um monitoramento de Luminosidade!<strong></p>
+                                <p> <strong> Se você tivesse introduzido o monitoramento de luminosidade na sua estufa, você poderia ter uma redução em seu custo de produção de até 35%.</p>
+                                <p>Supondo que 40% do seu faturamento (R$${(faturamentoAnual * 0.4).toFixed(2)}) correspondem à suas despesas com as orquídeas, com um sistema de monitoramentp de luminosidade eficiente, 
+                                Orchis System você poderia ter economizado R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)} no valor de produção!</p>
+                                <br>
+                                <p>Agora imagine ter o monitoramento total da sua estufa, sem se preocupar com medições manuais e imprecisas.</p> 
+                                <p>Com o nosso sistema isso é possível! Com ele você garante:</p>
+                                <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+                    }
+
+                    // SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                } else if (possuiMonitoramentoEtileno == false) {
+                    body.innerHTML = `<div class="container">
+                    <h1 class="titulo">Simulador Orchis System</h1>
+                    <div class="centralizar">
+                        <p>Sério que você não tem um sistema de monitoramento de etileno e nem de luminosidade para as suas orquídeas?</p>
+                        <p><strong>Sua produção de orquídeas está correndo grande perigo e você está perdendo dinheiro.</strong></p>
+                        <p>Você sabia que se suas orquídeas sofrerem qualquer tipo de estresses elas começam a produzir altas taxas de etileno e se não forem tratadas a tempo elas param de florir, pondendo inclusive morrer?</p>
+                        <p>Se usarmos o seu faturamento anual e os seus ciclos de venda como base e imaginarmos que a produção de etileno causada pelo estresse afetou metade das suas orquideas no seu primeiro ciclo de faturamento, sem o 
+                        monitoramento de etileno você não saberia com antecendência como tratar a tempo suas orquídeas e teria um prejuízo de aproximadamente R$${(faturamentoAnual / cicloVendaAnual / 2).toFixed(2)}</p>
+                        <p>Agora, se você tivesse introduzido o monitoramento de luminosidade na sua estufa, você poderia ter uma redução em seu custo de produção de até 35%.<p/>
+                        <br>
+                        <p>Com o sistema da Orchis System isso tudo é possível! Com ele você garante:</p>
+                        <ul>
+                            <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                            <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo etileno antes mesmo que afete suas orquídeas.</li>
+                            <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                        </ul> <br> <br>
+                        <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                    </div>
+                </div>`
+                }
+            }
+
+            // SE O SEGMENTO FOR MUDAS DE ORQUÍDEAS
+        } else if (segmento == "mudas de orquídeas") {
+
+            // SE POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+            if (possuiMonitoramentoLuminosidade == true) {
+
+                // SE POSSUÍ MONITORAMENTO MANUAL DE LUMINOSIDADE 
+                if (tipoMonitoramentoLuminosidade == 'manual') {
+
+                    // SE POSSUÍ MONITORAMENTO DE ETILENO
+                    if (possuiMonitoramentoEtileno == true) {
+
+                        // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                        if (tipoMonitoramentoEtileno == 'manual') {
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Que bom que você possui um sistema de monitoramento tanto de luminosidade quanto de etileno!</p> 
+                                    <p>Agora, imagine ter o monitoramento total de etileno da sua estufa, sem se preocupar com medições manuais e imprecisas. Com a automatização do monitoramento de luminosidade e etileno, você garante:</p>
+                                    <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo e etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                    </ul> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+
+                            // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE LUMINOSIDADE 
+                        } else if (tipoMonitoramentoEtileno == 'automático') {
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Que bom que você possui um sistema de monitoramento tanto de luminosidade quanto de etileno!</p> 
+                                    <p>Agora, imagine ter o monitoramento total de luminosidade da sua estufa, sem se preocupar com medições manuais e imprecisas. Com a automatização do monitoramento de luminosidade, você garante:</p>
+                                    <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo excesso ou falta de luminosidade antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                    </ul> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+                        }
+
+                        // SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                    } else if (possuiMonitoramentoEtileno == false) {
+                        body.innerHTML = `<div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Sério que você não tem um sistema de monitoramento automatizado para luminosidade e um sistema de monitoramento de etileno para as suas orquídeas?</p>
+                                <p>Se você tivesse introduzido o monitoramento automatizado para etileno, e aplicado técnicas de indução de etileno, você poderia reduzir o tempo de produção de mudas de orquídeas em até 18.75% e aumentado o seu faturamento.<p/>
+                                <p>Supondo que cada ciclo de venda seu fature aproximadamente R$${(faturamentoAnual / cicloVendaAnual).toFixed(2)}, com o acompanhamento de etileno e a aplicação de etileno para acelerar o processo de germinação, você teria um ciclo de venda anual de aproximadamente ${parseInt(cicloVendaAnual * 1.1875)} e um faturamento de R$${(faturamentoAnual * 1.1875).toFixed(2)}</p>
+                                <p>Com a automatização do monitoramento de luminosidade, você garante:</p>
+                                <ul>
+                                <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo excesso ou falta de luminosidade antes mesmo que afete suas orquídeas.</li>
+                                <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+
+                    }
+                    // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE LUMINOSIDADE
+                } else if (tipoMonitoramentoLuminosidade == 'automático') {
+
+                    // SE POSSUÍ MONITORAMENTO DE ETILENO
+                    if (possuiMonitoramentoEtileno == true) {
+
+                        // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                        if (tipoMonitoramentoEtileno == 'manual') {
+
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Que bom que você possui um sistema de monitoramento tanto de luminosidade quanto de etileno!</p> 
+                                    <p>Agora, imagine ter o monitoramento total de etileno da sua estufa, sem se preocupar com medições manuais e imprecisas. Com a automatização do monitoramento de luminosidade e etileno, você garante:</p>
+                                    <ul>
+                                    <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                    <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo e etileno antes mesmo que afete suas orquídeas.</li>
+                                    <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                    </ul> <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+
+
+                            // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                        } else if (tipoMonitoramentoEtileno == 'automático') {
+                            body.innerHTML = `<div class="container">
+                                <h1 class="titulo">Simulador Orchis System</h1>
+                                <div class="centralizar">
+                                    <p>Que bom que você possui um sistema de monitoramento tanto de luminosidade quanto de etileno!</p>
+                                    <p>Mas imagine a praticidade de ter todas as informações sobre a quantidade de etileno e a intensidade luminosa da sua estufa em um só lugar! <strong>Ao optar pela Orchis System e pelo nosso sistema unificado que monitora tanto a luz quanto o etileno, você estará dando um grande passo rumo à otimização dos seus processos e à melhoria da qualidade das suas orquídeas.</strong></p>
+                                    <br> <br>
+                                    <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                                </div>
+                            </div>`
+
+                        }
+                        // SE NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                    } else if (possuiMonitoramentoEtileno == false) {
+                        body.innerHTML = `<div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Sério que você não tem um sistema de monitoramento de etileno para as suas orquídeas?</p>
+                                <p>Se você tivesse introduzido o monitoramento de etileno e aplicado técnicas de indução de etileno, você poderia reduzir o tempo de produção de mudas de orquídeas em até 18,75% e aumentado o seu faturamento.<p/>
+                                <p>Supondo que cada ciclo de venda seu fature aproximadamente R$${(faturamentoAnual / cicloVendaAnual).toFixed(2)}, com o acompanhamento de etileno e a aplicação de etileno para acelerar o processo de germinação, você teria um ciclo de venda anual de ${parseInt(cicloVendaAnual * 1.1875)} e um faturamento de R$${(faturamentoAnual * 1.1875).toFixed(2)}</p>
+                                <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+
+                    }
+                }
+
+
+                // SE NÃO POSSUÍ MONITORAMENTO DE LUMINOSIDADE
+            } else if (possuiMonitoramentoLuminosidade == false) {
+                
+                // SE POSSUÍ MONITORAMENTO DE ETILENO
+                if (possuiMonitoramentoEtileno == true) {
+
+                    // SE POSSUÍ MONITORAMENTO MANUAL DE ETILENO 
+                    if (tipoMonitoramentoEtileno == 'manual') {
+                        body.innerHTML = `<div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Que bom que você tem um sistema de monitoramento manual de etileno, mas saiba que você está perdendo dinheiro e eficiência.</p>
+                                <p>Se você tivesse introduzido o monitoramento de luminosidade, você poderia ter uma redução em seu custo de produção de até 35%.<p/>
+                                <p>Supondo que 40% do seu faturamento (R$${(faturamentoAnual * 0.4).toFixed(2)}) correspondem à suas despesas com as orquídeas, com um sistema de monitoramentp de luminosidade eficiente, Orchis System você poderia ter economizado R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)} no valor de produção!</p>
+                                <p>Agora, imagine ter o monitoramento total de etileno da sua estufa, sem se preocupar com medições manuais e imprecisas. Com a automatização do monitoramento de luminosidade e etileno, você garante:</p>
+                                <ul>
+                                <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo e etileno antes mesmo que afete suas orquídeas.</li>
+                                <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+
+
+                        // SE POSSUÍ MONITORAMENTO AUTOMÁTICO DE ETILENO 
+                    } else if (tipoMonitoramentoEtileno == 'automático') {
+
+                        body.innerHTML = `<div class="container">
+                            <h1 class="titulo">Simulador Orchis System</h1>
+                            <div class="centralizar">
+                                <p>Que bom que você tem um sistema de monitoramento automático de etileno, mas saiba que você está perdendo dinheiro.</p>
+                                <p>Se você tivesse introduzido o monitoramento de luminosidade, você poderia ter uma edução em seu custo de produção de até 35%.<p/>
+                                <p>Supondo que >40% do seu faturamento (R$${(faturamentoAnual * 0.4).toFixed(2)}) correspondem à suas despesas com as orquídeas, com um sistema de monitoramentp de luminosidade eficiente, Orchis System você poderia ter economizado R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)} no valor de produção!</p>
+                                <p>Agora, imagine ter o monitoramento total de etileno da sua estufa, sem se preocupar com medições manuais e imprecisas. Com a automatização do monitoramento de luminosidade e etileno, você garante:</p>
+                                <ul>
+                                <li><strong>Precisão:</strong> Medições exatas e confiáveis para as suas orquídeas, eliminando erros humanos.</li>
+                                <li><strong>Eficiência:</strong> Permite você contornar problemas causados pelo e etileno antes mesmo que afete suas orquídeas.</li>
+                                <li><strong>Produtividade:</strong> Melhora do desempenho, medições rápidas, constantes e instantâneas.</li>
+                                </ul> <br> <br>
+                                <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                            </div>
+                        </div>`
+
+
+                    }
+
+                    // SE  NÃO POSSUÍ MONITORAMENTO DE ETILENO
+                } else if (possuiMonitoramentoEtileno == false) {
+                    body.innerHTML = `<div class="container">
+                        <h1 class="titulo">Simulador Orchis System</h1>
+                        <div class="centralizar">
+                            <p>Sério que você não tem um sistema de monitoramento de luminosidade e etileno para as suas orquídeas?</p>
+                            <p>Se você tivesse introduzido o monitoramento de luminosidade e etileno, você poderia ter uma redução em seu custo de produção de até 35%<p/>
+                            <p>Supondo que 40% do seu faturamento (R$${(faturamentoAnual * 0.4).toFixed(2)}) correspondem à suas despesas com as orquídeas, com o sistema da Orchis System você poderia ter economizado R$${(faturamentoAnual * 0.4 * 0.35).toFixed(2)} no valor de produção!</p>
+                            <p>E seu ciclo de venda que foi de ${cicloVendaAnual} aumentaria para aproximadamente ${parseInt(cicloVendaAnual*1.4)}, aumentando o seu faturamento para R$${faturamentoAnual * 1.35 * 1.4}</p>
+                            <br> <br>
+                            <p class="subtitulo"> Entre em contato conosco e solicite mais informações! </p>
+                        </div>
+                    </div>`
+
+                }
+            }
+        }
+
+    }
+   
+    // FUNÇÃO PARA ADICIONAR AS PERGUNTAS SE O CLIENTE NÃO TRABALHA COM ORQUÍDEAS
+
+    function adicionarPerguntasTrabalhaOrquideasFalse() {
+
+        body.innerHTML = `
+        <div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <h4>Certo, primeiro vamos entender suas condições</h4>
+            <div class="centralizar" id="area_plantio">
+                <h4>Informe sua área disponível ou a área que você planeja ter para o cultivo de orquídeas, em metros²</h4>  
+                <span> <input type="number" id="input_area_cultivo"/>m² </span>
+            </div>
+
+            <div class="centralizar" id='sensores_desejaveis'>
+                <h4>Quais sensores você deseja utilizar?</h4> <br>
+                <span> <input type="radio" id="input_desejo_luminosidade" name="desejo_sensores" value="luminosidade"/>
+                    <label for="monitoramento_luminosidade">Desejo utilizar apenas o monitoramento de luminosidade.</label> </span>
+                    <br>
+                <span> <input type="radio" id="input_desejo_etileno" name="desejo_sensores" value="etileno"/>
+                    <label for="monitoramento_luminosidade">Desejo utilizar apenas o monitoramento de etileno.</label> </span>
+                    <br>
+                <span> <input type="radio" id="input_desejo_ambos" name="desejo_sensores" value="ambos"/>
+                    <label for="monitoramento_luminosidade">Desejo utilizar ambos os sensores.</label> </span>
+                    <br>
+                    <br>
+                   <button onclick="simularExibirResultadoTrabalhaOrquideasFalse()">Descubra as vantagens de usar o Orchis System</button> 
+            </div>
+        </div>`
+    }
+
+    // FUNÇÃO PARA ANALISAR AS RESPOSTAS DAS PERGUNTAS DO CLIENTE SE ELE NÃO TRABALHA COM ORQUÍDEAS E EXIBE UMA SIMULAÇÃO COM BASE EM VALORES DO MERCADO
+
+    function simularExibirResultadoTrabalhaOrquideasFalse() {
+
+        const areaPlantio = input_area_cultivo.value
+
+        const desejoLuminosidade = input_desejo_luminosidade
+        const desejoEtileno = input_desejo_etileno
+        const desejoAmbos = input_desejo_ambos
+        const qtdOrquideas = parseInt(areaPlantio / 0.0176715); // CADA ORQUÍDEA OCUPA UM ESPAÇO DE APROXIMADAMENTE 15CM DE DIAMETRO - ÁREA DA CIRCUNFERÊNCIA = pi * r^2 = 3,14... * 7,5cm ^ 2 =~ 176,715cm2 = 0,0176715m2
+        const valorBrutoFaturamentoAnual = qtdOrquideas * 21.8 // 21,80 CORRESPONDE AO VALOR BASE DE CUSTO ANUAL DE UMA ORQUÍDEA
+        const faturamentoBrutoAnual = (qtdOrquideas * 45).toFixed(2) // 45,00 CORRESPONDE A MÉDIA DO VALOR BRUTO DE FATURAMENTO POR ORQUÍDEAS
+        
+
+        if (desejoEtileno.checked) {
+            body.innerHTML = `<div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <div class="centralizar" id="custo_base">
+                <img src='img/logo.png' width = "300px" height = "300px">
+                <p>Para costextualizar, hoje, o mercado de orquídeas trabalha com um preço base de custo anual de R$ 21,80 e com um faturamento bruto de R$45,00 por orquídea, então partiremos desse ponto.
+                Seguindo o espaçamento médio de 15cm de diametro de cada orquídea, você poderá plantar cerca de ${qtdOrquideas} em sua área disponível. </p>
+                <br>
+                <p>Com essa produção, em um período de 1 ano você teria um faturamento bruto de aproximadamente R$${faturamentoBrutoAnual}.</p>
+            </div>
+                <div class="centralizar">
+                    <p>Com a implementação do gás etileno, trabalhando corretamente
+                    você poderia ter um aumento de 18,75% na sua produção, atingindo um faturamento de R$${(faturamentoBrutoAnual*18.75).toFixed(2)}, tendo uma diminuição no tempo de cultivo de suas orquídeas em 16%.
+                    </p>
+                    <h4>Apesar de muito bom, sem um monitoramento adequado, o etileno pode ser prejudicial, levando a perda todal da sua produção em menos de 5 dias.</h4>
+                    <br> <br>
+                    <p class="subtitulo"> Nós da Orchis System estamos ansiosos para trabalhar com você, entre em contato conosco e comece a cultivar incríveis orquídeas! </p>
+                </div>
+            </div>`
+        }
+
+
+
+        if (desejoLuminosidade.checked) {
+            body.innerHTML = `<div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <div class="centralizar" id="custo_base">
+                <img src='img/logo.png' width = "300px" height = "300px">
+                <p>Para costextualizar, hoje, o mercado de orquídeas trabalha com um preço base de custo anual de R$ 21,80 e com um faturamento bruto de R$45,00 por orquídea, então partiremos desse ponto.
+                Seguindo o espaçamento médio de 15cm de diametro de cada orquídea, você poderá plantar cerca de ${qtdOrquideas} em sua área disponível. </p>
+                <br>
+                <p>Com essa produção, em um período de 1 ano você teria um faturamento bruto de aproximadamente R$${faturamentoBrutoAnual}.</p>
+            </div>
+                <div class="centralizar">
+                    <p>Com o nosso monitoramento de luminosidade você poderia reduzir o tempo de colheita de sua estufa em 35% e consequentemente uma 
+                    redução no valor de custo total do seu cultivo de aproximadamente R$${(valorBrutoFaturamentoAnual * 0.35).toFixed(2)}.</p>
+                    <br> <br>
+                    <p class="subtitulo"> Nós da Orchis System estamos ansiosos para trabalhar com você, entre em contato conosco e comece a cultivar incríveis orquídeas! </p>
+                </div>
+            </div>`
+        }
+
+        if (desejoAmbos.checked) {
+            body.innerHTML = `<div class="container">
+            <h1 class="titulo">Simulador Orchis System</h1>
+            <div class="centralizar" id="custo_base">
+                <img src='img/logo.png' width = "300px" height = "300px">
+                <p>Para costextualizar, hoje, o mercado de orquídeas trabalha com um preço base de custo anual de R$ 21,80 e com um faturamento bruto de R$45,00 por orquídea, então partiremos desse ponto.
+                Seguindo o espaçamento médio de 15cm de diametro de cada orquídea, você poderá plantar cerca de ${qtdOrquideas} em sua área disponível.</p>
+                <br>
+                <p>Com essa produção, em um período de 1 ano você teria um faturamento bruto de aproximadamente R$${faturamentoBrutoAnual}.</p>
+            </div>
+                <div class="centralizar">
+                    <p>Que legal! Quando você juntas as duas soluções: O controle de etileno e luminosidade
+                    você conseguirá atingir resultados excelentes em seu cultivo caso monitore e tenha uma boa gestão de 
+                    suas orquídeas. Você conseguirá diminuir em até 40% o tempo do cultivo de sua produção de brotos, assim,
+                    reduzindo seus ciclos anuais de colheita das orquídease aumentando o giro de vendas de seu comércio. Nesse cenário, com o monitoramento da OrchisSystem você conseguiria um aumento de R$${(valorBrutoFaturamentoAnual * 0.4).toFixed(2)} no seu faturamento anual.
+                    <h4>Sem um monitoramento adequado, o etileno pode ser prejudicial, levando a perda todal da sua produção em menos de 5 dias.</h4>
+                    </p>
+                    <br> <br>
+                    <p class="subtitulo"> Nós da Orchis System estamos ansiosos para trabalhar com você, entre em contato conosco e comece a cultivar incríveis orquídeas! </p>
+              </div>
+            </div>`
+        }
+    }
+
+</script>

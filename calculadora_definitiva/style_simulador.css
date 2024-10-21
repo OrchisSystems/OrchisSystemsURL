@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background-color: #D9D9D9;
+    padding: 0.5rem;
+    display: flex;
+    min-width: 50%;
+    max-width: 75%;
+    max-height: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+.titulo{
+    background-color: #B81476;
+    color: white;
+    max-width: 70%;
+    max-height: 15%;
+    text-align: center;
+    border-radius: 15px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.corpo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.corpo p{
+    max-width: 30%;
+    color: #672485;
+    height: fit-content;
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.5rem;
+    margin-left: 2rem;
+}
+.corpo img{
+    max-width: 30%;
+}
+.botao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.botao h2{
+    background-color: #672485;
+    font-size: large;
+    padding: 0.5rem;
+    color: white;
+    margin: 1rem;
+    border-radius: 5px;
+}
+button{
+    background-image: linear-gradient(#B81476 1%, #672485 99%);
+    min-width: 32%;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    max-height: fit-content;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.botao button a{
+    color: white;
+    text-decoration: none;
+}
+.subtitulo{
+    color: black;
+    max-width: 60%;
+    max-height: 15%;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.opcoes{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+.opcoes span{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+}
+.centralizar{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.1rem;
+    margin-bottom: 0.2rem;
+    padding: 0.5rem;
+}
+.centralizar span{
+    align-self: center;
+}
+.centralizar h4{
+    font-size: 1.3rem;
+}
+.faleconosco{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
