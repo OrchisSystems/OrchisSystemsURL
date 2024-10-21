@@ -6,6 +6,16 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;   
+}
+
 
 a{
     text-decoration: none;
@@ -17,48 +27,90 @@ a{
     gap:100px;
 } */
 
-.back-button {
-    display:block;
-    height: auto;
+
+.img-background{
+    width: 100%;
+    height: 100%;
+    background-image: url(./imgs/echo-q-i48ajz254-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
     
-    font-family: 'poppins', sans-serif;
-    border-radius: 15px;
-    font-weight: 600;
-    font-size: 25px;
-    gap: 10px;
-    margin-top: 2vh;
-    margin-right: 180vh;
-    margin-bottom: 1vh;
-    justify-content: start;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
+}
+.bloco{
+    width: 100%;
+    height: 70rem;
+    background-color: #00000093;
 }
 
-
-.back-button .back{
-    font-family: 'poppins',sans-serif;
-    font-weight: 100px;   
-}
-
-body{
-    height: 100vh;
+.cssbuttons-io-button {
+    background: #B81476;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    margin-left: -80%;
+    margin-top: -130px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #B81476;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;   
-}
-
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #B81476;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #B81476;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
 .container{
     position: relative;
     width: 650px;
-    height: 700px;
-    border-radius: 14px;
+    height: 650px;
+    border-radius: 20px;
     padding: 20px 30px 120px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);   
     overflow: hidden;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 10%;
 }
 
 .cadastro-login, 
@@ -74,7 +126,7 @@ body{
     width: calc(100% + 180px);
     padding: 20px 140px;
     background: #B81476;
-    border-radius: 250px;
+    border-radius: 35%;
     height: 100%;
     transition: all 0.6s ease;
 
@@ -90,7 +142,7 @@ body{
 }
 
 .secao-login header{
-    color: #333;
+    color: white;
     opacity: 0.6;
 }
 
@@ -121,7 +173,13 @@ form input{
 }
 
 form a{
-    color: #333;
+    color: #ffffff;
+}
+
+.esqueceuSenha{
+    display: flex;
+    justify-content: center;
+
 }
 
 .cadastro-login form a{ 
@@ -160,11 +218,16 @@ form .btn{
     opacity: 0.8;
 }
 
+.imglogo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .logo{
     height: 200px;
     width: 250px;
-    margin-top: -100px;
-    margin-bottom: -40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .cadastro-login form .showpd{
