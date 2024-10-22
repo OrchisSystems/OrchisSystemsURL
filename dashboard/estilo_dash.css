@@ -25,12 +25,26 @@ header{
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
     border: 2px;
 }
-
+.estufa{
+  color: #ffffff;
+  font-weight: 1000;
+  font-size: 40px;
+  display: flex;
+  
+  justify-content: center;
+  margin-top: 3%;
+}
+h1{
+  width: 50%;
+  text-align: center;
+  background:#B81476;
+  border-radius: 50px;
+}
 .btn-home {
-    font-size: 17px;
+    font-size: 20px;
     background: transparent;
     border: none;
-    padding: 1em 1em;
+    padding: 0.8em 2.5em;
     position: relative;
     transition: 0.5s ease;
     cursor: pointer;
@@ -63,7 +77,7 @@ header{
     height: 0;
     width: 100%;
     background-color: #B81476;
-    border-radius: 40px;
+    border-radius: 55px;
     transition: 0.2s ease;
     z-index: -1;
   }
@@ -78,7 +92,7 @@ header{
     color: #B81476;
     font-weight: bold;
     text-decoration: none;
-    font-size: 150%;
+    font-size: 28px;
     margin: 15px;
 }
 
@@ -91,8 +105,8 @@ header{
     padding-bottom: 5%;
 }
 
-#secaoImagem img{
-    width: 110%;
+img{
+    width: 6%;
 }
 
 .texto{
@@ -156,7 +170,7 @@ header{
   background-color: #B81476;
   border-radius: 25px;
   color: #fff;
-  margin-top: 8%;
+  margin-top: 5%;
 }
 .containerEtileno{
   width: 100%;
@@ -191,7 +205,7 @@ header{
 }
   
 .valoresFora{
-  width: 15%;
+  width: 14%;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 15px;
