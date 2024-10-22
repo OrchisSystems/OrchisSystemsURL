@@ -34,7 +34,7 @@ a{
     height: 100%;
     background-image: url(./imgs/echo-q-i48ajz254-unsplash.jpg);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
     
 }
 .bloco{
@@ -112,6 +112,7 @@ a{
     justify-content: center;
     align-self: center;
     margin-bottom: 10%;
+
 }
 
 .cadastro-login, 
@@ -225,8 +226,8 @@ form .btn{
     justify-content: center;
 }
 .logo{
-    height: 200px;
-    width: 200px;
+    height: 8%;
+    width: 8%;
     margin-top: 1%;
     margin-bottom: 1%;
     justify-content: center;
