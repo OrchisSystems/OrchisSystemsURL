@@ -28,7 +28,7 @@ header{
 .estufa{
   color: #ffff;
   font-weight: 1000;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -37,6 +37,7 @@ header{
 
 h1{
   width: 50%;
+  height: 60px;
   text-align: center;
   background:#B81476;
   box-shadow: 15px 10px 5px  #47082e;
@@ -159,21 +160,21 @@ img{
 /*---------- SEÇÃO DASHBOARD ----------*/
 .containerLuminosidade{
   width: 100%;
-  height: 50%;
+  height: 100px;
   display: flex;
   justify-content: center;
 }
 .menuLuminosidade{
-  width: 93%;
-  height: 10%;
+  width: 70%;
+  height: 60px;
   text-align: center;
   padding: 15px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
   background-color: #B81476;
   box-shadow: 15px 10px 5px  #47082e;
   color: #fff;
-  margin-top: 5%;
+  margin-top: 2.2%;
 }
 .containerEtileno{
   width: 100%;
@@ -182,16 +183,17 @@ img{
   justify-content: center;
 }
 .menuEtileno{
-  width: 93%;
-  height: 10%;
+  width: 70%;
+  height: 60px;
   text-align: center;
   padding: 15px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
   background-color: #B81476;
   box-shadow: 15px 10px 5px  #47082e;
   color: #fff;
-  margin-top: 8%;
+  margin-top: 2.4%;
+  margin-bottom: 5px;
 }
 
 .kpis{
