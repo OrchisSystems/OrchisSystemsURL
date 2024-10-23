@@ -26,21 +26,23 @@ header{
     border: 2px;
 }
 .estufa{
-  color: #ffffff;
+  color: #ffff;
   font-weight: 1000;
   font-size: 30px;
   display: flex;
-  
   justify-content: center;
   margin-top: 10px;
   margin-bottom: -29px;
 }
+
 h1{
   width: 50%;
   text-align: center;
   background:#B81476;
-  border-radius: 50px;
+  box-shadow: 15px 10px 5px  #47082e;
+  
 }
+ 
 .btn-home {
     font-size: 20px;
     background: transparent;
@@ -169,7 +171,7 @@ img{
   font-size: 50px;
   font-weight: 600;
   background-color: #B81476;
-  border-radius: 25px;
+  box-shadow: 15px 10px 5px  #47082e;
   color: #fff;
   margin-top: 5%;
 }
@@ -187,7 +189,7 @@ img{
   font-size: 50px;
   font-weight: 600;
   background-color: #B81476;
-  border-radius: 25px;
+  box-shadow: 15px 10px 5px  #47082e;
   color: #fff;
   margin-top: 8%;
 }
