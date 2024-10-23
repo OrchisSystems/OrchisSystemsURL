@@ -64,7 +64,19 @@ var a = 0; // Inicializa a variável 'a'
 
 
 
-
+        function mascaraCNPJ(cnpj) {
+            let valor = cnpj.value.replace(/\D/g, '');  // Remove tudo que não for dígito
+        
+            // Formata o CNPJ conforme o número de dígitos
+            if (valor.length <= 14) {
+                valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+                valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+                valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+                valor = valor.replace(/(\d{4})(\d)/, "$1-$2");
+            }
+        
+            cnpj.value = valor;  // Atualiza o valor no input com o formato
+        }
 
 
 

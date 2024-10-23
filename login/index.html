@@ -46,8 +46,8 @@
                         </header>
                         <form>
                             <input type="text" placeholder="Nome da empresa">
-                            <input type="number" placeholder="CNPJ da Empresa">
-                            <input type="email" placeholder="Email Empresarial" >
+                            <input type="text" id="cnpj" maxlength="18" oninput="mascaraCNPJ(this)" placeholder="CNPJ da Empresa">
+                            <input type="email" placeholder="Email Empresarial">
 
                             <div class="passwd">
                                 <div class="showpwd">
