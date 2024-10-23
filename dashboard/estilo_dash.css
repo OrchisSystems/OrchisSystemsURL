@@ -28,11 +28,12 @@ header{
 .estufa{
   color: #ffffff;
   font-weight: 1000;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 10px;
+  margin-bottom: -29px;
 }
 h1{
   width: 50%;
