@@ -11,11 +11,10 @@
 body {
     margin: 0;
     padding: 0;
-    /* Criação de fundo gradiente, no qual informei 2 cores */
     background-image: linear-gradient(#B81476 1%, #672485 99%);
     height: 200vh;
     font-family: 'Poppins';
-    /*Utilizando a fonte adicionada*/
+    
 }
 
 header {
@@ -25,13 +24,11 @@ header {
     align-items: center;
     padding-left: 5%;
     padding-right: 2%;
-    /*Para fazer com que o cabeçalho siga o scroll do mouse*/
     position: sticky;
     top: 0;
-    /**/
-    /*Acrescenta um sombra no cabeçalho*/
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
     border: 2px;
+   
 }
 
 .btn-home {
@@ -52,6 +49,7 @@ header {
     width: 0;
     background-color: #B81476;
     transition: 0.2s ease;
+    
 }
 
 .btn-home:hover {

@@ -42,22 +42,21 @@
                 <div class="container">
                     <div class="cadastro-login">
                         <header>
-
                             Criação de conta empresarial
                         </header>
                         <form>
                             <input type="text" placeholder="Nome da empresa">
                             <input type="number" placeholder="CNPJ da Empresa">
-                            <input type="email" placeholder="Email Empresarial" required>
+                            <input type="email" placeholder="Email Empresarial" >
 
                             <div class="passwd">
                                 <div class="showpwd">
-                                    <input type="password" placeholder="Senha" required id="senhaGerada">
+                                    <input type="password" placeholder="Senha"  id="senhaGerada">
                                     <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png"
                                         onclick="pass()" id="pass-icon1">
                                 </div>
                                 <div class="showpwd2">
-                                    <input type="password" placeholder="Insira sua senha novamente" required
+                                    <input type="password" placeholder="Insira sua senha novamente" 
                                         id="senhaGerada2">
                                     <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png"
                                         onclick="pass()" id="pass-icon2">
@@ -65,7 +64,7 @@
                             </div>
 
                             <a href="#" class="senhaAleatoria" id="senha">Gerar uma senha aleatória</a>
-                            <button type="submit" class="btn" id="botaoCadastro"><a href="../dashboard/dashboard.html">Cadastre-se</a></button>
+                            <button class="btn" id="botaoCadastro" onclick="cadastro(event)">Cadastre-se</button>
                         </form>
                     </div>
 
@@ -73,19 +72,16 @@
                         <header>Login</header>
 
                         <form>
-                            <input type="email" placeholder="Email" required>
-                            <input type="password" placeholder="Senha" required>
+                            <input type="email" placeholder="Email" >
+                            <input type="password" placeholder="Senha">
                             <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
-                            <button type="submit" class="btn" id="botaoLogin"><a href="../dashboard/dashboard.html">Login</a></button>
+                            <button class="btn" id="botaoLogin" onclick="cadastro(event)">Login</button> 
                         </form>
                     </div>
-
-
                 </div>
             </center>
         </div>
     </section>
-
 
     <script src="script.js"></script>
 </body>

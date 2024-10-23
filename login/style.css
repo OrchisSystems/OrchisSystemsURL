@@ -199,6 +199,7 @@ form .btn{
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+    width: 100%;
 }
 
 .secao-login .btn{

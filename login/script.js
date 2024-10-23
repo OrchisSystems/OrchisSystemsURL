@@ -56,7 +56,11 @@ var a = 0; // Inicializa a variável 'a'
                 a = 1;
             }
         }
-
+/* Link tela dash*/
+        function cadastro(event) {
+            event.preventDefault(); // Previne o comportamento padrão de recarregar a página
+            window.location.href = '../dashboard/dashboard.html'; // Redireciona para a página do dashboard
+        }
 
 
 
