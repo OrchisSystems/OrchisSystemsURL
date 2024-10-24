@@ -177,8 +177,8 @@ new Chart(barraEtileno, {
                 annotations: {
                     limite: { // Nome da anotação
                         type: 'line', // Tipo de anotação (linha)
-                        yMin: 350, // Valor onde a linha será desenhada
-                        yMax: 350, // Valor onde a linha será desenhada (mesmo valor para uma linha horizontal)
+                        yMin: 320, // Valor onde a linha será desenhada
+                        yMax: 320, // Valor onde a linha será desenhada (mesmo valor para uma linha horizontal)
                         borderColor: 'red', // Cor da linha de limite
                         borderWidth: 1.5, // Espessura da linha
                         label: {
@@ -189,8 +189,8 @@ new Chart(barraEtileno, {
                     },
                     limite2: { // Nome da anotação
                         type: 'line', // Tipo de anotação (linha)
-                        yMin: 200, // Valor onde a linha será desenhada
-                        yMax: 200, // Valor onde a linha será desenhada (mesmo valor para uma linha horizontal)
+                        yMin: 220, // Valor onde a linha será desenhada
+                        yMax: 220, // Valor onde a linha será desenhada (mesmo valor para uma linha horizontal)
                         borderColor: 'red', // Cor da linha de limite
                         borderWidth: 1.5, // Espessura da linha
                         label: {
