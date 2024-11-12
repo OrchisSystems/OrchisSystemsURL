@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilo.css">
+    <title>Dash2</title>
+</head>
+<body>
+    <header>
+        <a onclick="abrirMenu()"><img src="./imagens/Menu.png" alt=""></a>
+        <img style="margin-left: 14%;" src="./imagens/logo.png" alt="">
+        <img style="width: 20%;" src="./imagens/Usuario.png" alt="">
+    </header>
+    <nav id="menuLateral">
+        <a onclick="fecharMenu()"><img src="./imagens/logoMenuLateral.png" alt=""></a>
+        <button >Adicionar Estufa <b>+</b></button>
+    </nav>
+    <center>
+        <h1>Estufas</h1>
+        <div id="estufas">
+            <div id="cadaEstufa">
+                <h2>Estufa 1</h2>
+                <div id="conteudoEstufa">
+                    Local: XXX <br>
+                    Status: Muito bom <br>
+                    <img src="./imagens/estufaMuitoBom.png" alt="">
+                </div>
+            </div>
+        </div>
+        <button onclick="adicionarEstufa()">+</button>
+    </center>
+</body>
+</html>
+
+<script>
+    function adicionarEstufa(){
+        estufas.innerHTML += `<div id="cadaEstufa">
+                                <h2>Estufa 1</h2>
+                                <div id="conteudoEstufa">
+                                    Local: XXX <br>
+                                    Status: Muito bom <br>
+                                    <img src="./imagens/estufaMuitoBom.png" alt="">
+                                </div>
+                            </div>`
+    }
+
+    function abrirMenu(){
+        menuLateral.style.width = '250px'
+    }
+    function fecharMenu(){
+        menuLateral.style.width = '0px'
+    }
+</script>
