@@ -123,8 +123,18 @@ button {
     flex-direction: row;
     width: 50%;
 }
+#checkBoxMarcarTodos{
+    transform: scale(4);
+    /* width: 20%;
+    height: 100%; */
+}
 .textoLabel{
     color: black;
+}
+.botaoRemover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 table {
