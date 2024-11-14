@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <center>
+    <!-- <center>
         <header>
             <img id="logo" src="../imagensHome/logo.png" alt="">
             <div class="menu">
@@ -20,71 +20,153 @@
             <a class="btn-home" href="../index.html">Home</a>
             </div>
         </header>
-    </center>
+    </center> -->
 
-    <!-- LUMINOSIDADE -->
 
-    <div class="estufa">
-        <h1>Estufa 01</h1>
-    </div>
-
-    <div class="containerLuminosidade">
-        <div class="menuLuminosidade">
-            Luminosidade
-        </div>
-    </div>
-
-    <div class="kpis">
-
-        <div class="valoresFora">
-            Valores fora da faixa optima determinada<br><br>
-            <span>2</span>
-            <div class="imgValoresFora">
-                <img src="./img/icon-1.png">
-            </div>
-
-        </div>
-        <div class="valorMaximo">
-            Valor máximo captado <br><br>
-            <span>856 </span>
-            <div class="imgValoresMaximo">
-                <img src="./img/icon-2.png">
-            </div>
-        </div>
-
-        <div class="dtValorMaximo">
-            Data do valor máximo captado <br><br>
-            <span>11:30 - 10/10</span>
-            <div class="imgValoresDtMax">
-                <img src="./img/icon-3.png">
-            </div>
-        </div>
-
-        <div class="valorMinimo">
-            Valor mínimo captado <br><br>
-            <span>598</span>
-            <div class="imgValoresMinimo">
-                <img src="./img/icon-2.png">
-            </div>
-        </div>
-
-        <div class="dtValorMinimo">
-            Data do valor mínimo captado <br><br>
-            <span>11:00 - 10/10</span>
-            <div class="imgValoresDtMin">
-                <img src="./img/icon-3.png">
-            </div>
-        </div>
+<h2>Dashboards</h2>
+    
+<div class="containerDash">
         
-    </div>
-    <div class="graficoLuminosidade">
-        <canvas id="luminosidadeLinha"></canvas>
-        <canvas id="luminosidadeBarra"></canvas>
-      </div>
 
+        <div class="box-luminosidade">
+            <div class="alert-luminosidade">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magnam impedit repellat minus doloremque
+                libero reiciendis vero commodi hic maiores.
+            </div>
+            <div class="luminosidade">
+                <button onclick="verLuminosidade()">Luminosidade</button>
+
+                <div class="kpis-luminosidade">
+                    
+                    <div class="row">
+                        <div class="valoresFora bordas espacament">
+                            Valores fora da faixa optima determinada<br><br>
+                            <span>2</span>
+                            <div class="imgValoresFora">
+                                <img src="./img/icon-1.png">
+                            </div>
+                        </div>
+                        <div class="valorMaximo bordas espacament">
+                            Valor máximo captado <br><br>
+                            <span>856 </span>
+                            <div class="imgValoresMaximo">
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="dtValorMaximo bordas espacament">
+                            Data do valor máximo captado <br><br>
+                            <span>11:30 - 10/10</span>
+                        <div class="imgValoresDtMax">
+                            <img src="./img/icon-3.png">
+                        </div>
+                        </div>
+                        <div class="valorMinimo bordas espacament">
+                            Valor mínimo captado <br><br>
+                            <span>598</span>
+                            <div class="imgValoresMinimo">
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="lastKpi">
+                        <div class="kpiUnique">
+                            Data do valor mínimo captado <br><br>
+                        <span>11:00 - 10/10</span>
+                        <div class="imgValoresDtMin">
+                            <img src="./img/icon-3.png">
+                        </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="graficoLuminosidade">
+                    <canvas id="luminosidadeLinha"></canvas>
+                    <canvas id="luminosidadeBarra"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-etileno">
+
+            <div class="alert-etileno">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magnam impedit repellat minus doloremque
+                libero reiciendis vero commodi hic maiores.
+            </div>
+            <div class="etileno">
+                <button onclick="verEtileno()">Concentração de Etileno</button>
+
+                <div class="kpis-etileno">
+                    <div class="row">
+                        <div class="valoresFora">
+                            Valores fora da faixa optima determinada<br><br>
+                            <span>2</span>
+                            <div class="imgValoresFora">
+                                <img src="./img/icon-1.png">
+                            </div>
+                        </div>
+    
+                        <div class="valorMaximo">
+                            Valor máximo captado <br><br>
+                            <span>856 </span>
+                            <div class="imgValoresMaximo">
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="dtValorMaximo">
+                            Data do valor máximo captado <br><br>
+                            <span>11:30 - 10/10</span>
+                            <div class="imgValoresDtMax">
+                                <img src="./img/icon-3.png">
+                            </div>
+                        </div>
+                        <div class="valorMinimo">
+                            Valor mínimo captado <br><br>
+                            <span>598</span>
+                            <div class="imgValoresMinimo">
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="lastKpi">
+                        Data do valor mínimo captado <br><br>
+                        <span>11:00 - 10/10</span>
+                        <div class="imgValoresDtMin">
+                            <img src="./img/icon-3.png">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="graficoLuminosidade">
+                    <canvas id="luminosidadeLinha"></canvas>
+                    <canvas id="luminosidadeBarra"></canvas>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+       
+        
+
+        
+
+         
+    </div>
     <!-- ETILENO -->
 
-    <div class="containerEtileno">
+    <!-- <div class="containerEtileno">
         <div class="menuEtileno">
             Concentração de Etileno
         </div>
@@ -136,9 +218,9 @@
     <div class="graficoEtileno">
         <canvas id="etilenoLinha"></canvas>
         <canvas id="etilenoBarra"></canvas>
-      </div>
+      </div> -->
 
-      <center>
+    <!-- <center>
       <footer>
         <div id="footerMenu">
             <p style="font-weight: bold;">Menu</p>
@@ -168,7 +250,10 @@
                 Copyright
         </p>
     </footer>
-      </center>
+      </center> -->
+
+    </div>
 </body>
-<script src="./dashboard.js"></script>
+<!-- <script src="./dashboard.js"></script> -->
+
 </html>

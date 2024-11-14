@@ -6,8 +6,6 @@
 
 body {
     background-color: #e0e0e0;
-    margin: 0;
-    top: 0;
     font-family: 'Poppins' , sans-serif;
 }
 header{
@@ -158,77 +156,125 @@ img{
 }
 
 /*---------- SEÇÃO DASHBOARD ----------*/
-.containerLuminosidade{
-  width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-}
-.menuLuminosidade{
-  width: 70%;
-  height: 60px;
-  text-align: center;
-  padding: 15px;
-  font-size: 40px;
-  font-weight: 600;
-  background-color: #B81476;
-  box-shadow: 15px 10px 5px  #47082e;
-  color: #fff;
-  margin-top: 2.2%;
-}
-.containerEtileno{
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-}
-.menuEtileno{
-  width: 70%;
-  height: 60px;
-  text-align: center;
-  padding: 15px;
-  font-size: 40px;
-  font-weight: 600;
-  background-color: #B81476;
-  box-shadow: 15px 10px 5px  #47082e;
-  color: #fff;
-  margin-top: 2.4%;
-  margin-bottom: 5px;
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.kpis{
-  width: 100%;
-  height: 70%;
+h2{
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row{
+  display: flex;
+  gap: 20px
+}
+
+.lastKpi{
+  align-self: center;
+  justify-self: center;
+  width: 50%;
+  background-color: #ffffff;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+.containerDash{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 95%;
+  height: 800px;
+  align-self: center;
+  justify-self: center;
+
+}
+
+.containerDash h2{
+  grid-template-columns: 1fr;
+}
+
+
+.box-etileno, .box-luminosidade{
+align-items: center;
+justify-self: center;
+}
+
+.box-luminosidade{
+  height: 900px;
+  grid-row: 2fr 2fr 1fr 1fr 1fr;
+  
+}
+
+.box-etileno{
+  height: 900px;
+  grid-row: 2fr 2fr 1fr 1fr 1fr;
+  }
+
+
+
+  .luminosidade, .etileno{
+    align-self: center;
+    justify-items: center;
+
+    gap: 30px;
+  }
+
+  .alert-luminosidade{
+  
+  }
+
+ .kpis-luminosidade{
+  width: 100%;
+  height: 700px;
   font-size: 15px;
   font-weight: 600;
-  justify-content: center;
-  justify-content: space-evenly;
   align-items: center;
   color: #727272;
-  margin-top: 5%;
+} 
+
+
+
+.kpis-luminosidade .row, .kpis-etileno .row{
+  gap: 50px;
+  margin-bottom: 60px;
+  margin-top: 40px;
 }
+
+.kpis-etileno{
+  width: 100%;
+  height: 70%;
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;
+  color: #727272;
+} 
   
 .valoresFora{
-  width: 14%;
+  width: 350px;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 15px;
   border-radius: 15px;
 }
 .valoresFora span{
-  font-size: 35px;
+  font-size: 20px;
   margin-left: 5%;
   font-weight: 1000;
 }
 .imgValoresFora img{
-  width: 60%;
+  width: 70%;
   padding: 10px;
   display: flex;
 }
 .imgValoresFora{
   width: 30%;
-  margin-top: -23%;
+  margin-top: -5%;
   margin-left: 65%;
   margin-bottom: 10px;
   border-radius: 20px;
@@ -237,21 +283,21 @@ img{
   justify-content: center;
   background:linear-gradient( 5.5rad ,#672485, #B81476);
 }
-.valorMaximo{
-  width: 15%;
+ .valorMaximo{
+  width: 350px;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 15px;
 }
 .imgValoresMaximo img{
-  width: 60%;
+  width: 80%;
   padding: 10px;
   display: flex;
 }
 .imgValoresMaximo{
   width: 30%;
-  margin-top: -20%;
+  margin-top: -5%;
   margin-left: 68%;
   margin-bottom: 10px;
   border-radius: 20px;
@@ -261,18 +307,18 @@ img{
   background:linear-gradient( 5.5rad ,#672485, #B81476);
 }
 .valorMaximo span{
-  font-size: 35px;
+  font-size: 20px;
   font-weight: 1000;
 }
 .dtValorMaximo{
-  width: 15%;
+  width: 350px;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 15px;
 }
 .imgValoresDtMax img{
-  width: 50%;
+  width: 70%;
   padding: 10px;
   padding-bottom: 15px;
   display: flex;
@@ -289,19 +335,20 @@ img{
   background:linear-gradient( 5.5rad ,#672485, #B81476);
 }
 .dtValorMaximo span{
-  font-size: 25px;
+  font-size: 20px;
   padding-right: 100px;
   font-weight: 1000;
 }
 .valorMinimo{
-  width: 15%;
+  width: 350px;
+  height: 20%;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 25px;
   border-radius: 15px;
 }
 .imgValoresMinimo img{
-  width: 60%;
+  width: 80%;
   padding: 10px;
   display: flex;
 }
@@ -317,19 +364,19 @@ img{
   background:linear-gradient( 5.5rad ,#672485, #B81476);
 }
 .valorMinimo span{
-  font-size: 35px;
+  font-size: 25px;
   margin-left: 5%;
   font-weight: 1000;
 }
 .dtValorMinimo{
-  width: 15%;
+  width: 300px;
   background-color: #ffffff;
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 25px;
   border-radius: 15px;
 }
 .imgValoresDtMin img{
-  width: 50%;
+  width: 70%;
   padding: 10px;
   padding-bottom: 15px;
   display: flex;
