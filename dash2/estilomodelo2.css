@@ -1,0 +1,169 @@
+@font-face { 
+    font-family: 'Poppins';
+    src: url(../fontes/Poppins/Poppins-Regular.ttf);
+}
+
+body {
+    background-color: #e0e0e0;
+    margin: 0;
+    top: 0;
+    font-family: 'Poppins';
+}
+
+header{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 2%;
+    position: sticky;
+    top: 0;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+    border: 2px;
+}
+
+h1{
+    background-image: linear-gradient(#B81476, #672485);
+    border-radius: 15px;
+    color: #ffffff;
+    padding: 15px;
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    width: 20%;
+}
+
+#banners {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 160vh;
+    height: 50vh;
+}
+
+#dados {
+    width: 59%;
+    height: 100%;
+    background-color: #B81476;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#estufa {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 39%;
+    height: 100%;
+    background-color: #B81476;
+    border-radius: 50px;
+}
+
+#medidas {
+    height: 30vh;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-medida {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.separacao {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.input_medidas{
+    height: 5vh;
+    width: 30vh;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+label {
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+button {
+    height: 5vh;
+    width: 14vh;
+    background-color: white;
+    color: #b0326a;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: x-large;
+}
+.tabelaEstufa{
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+}
+.divCheckBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 50%;
+}
+#checkBoxMarcarTodos{
+    transform: scale(4);
+    /* width: 20%;
+    height: 100%; */
+}
+.textoLabel{
+    color: black;
+}
+.botaoRemover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    margin-bottom: 3%;
+    margin-top: 1%;
+    border-collapse: collapse;
+    border: 2px solid rgb(187, 25, 25);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  thead{
+    background-color:#B81476;
+  }
+  
+  th{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px 10px;
+  }
+  
+table tr{
+    font-size: 25px;
+}
+  
+
+  

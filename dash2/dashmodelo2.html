@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashmodelo2</title>
+    <link rel="stylesheet" href="estilomodelo2.css">
+</head>
+<style>
+    @font-face {
+        font-family: 'Poppins';
+        src: url(../fontes/Poppins/Poppins-Regular.ttf);
+    }
+
+    body {
+        background-color: #e0e0e0;
+        margin: 0;
+        top: 0;
+        font-family: 'Poppins';
+    }
+
+    header {
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 5%;
+        padding-right: 2%;
+        position: sticky;
+        top: 0;
+        box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+        border: 2px;
+    }
+
+    h1 {
+        background-image: linear-gradient(#B81476, #672485);
+        border-radius: 15px;
+        color: #ffffff;
+        padding: 15px;
+        box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+        width: 20%;
+    }
+</style>
+
+<body>
+    <header>
+        <a onclick="abrirMenu()"><img src="./imagens/Menu.png" alt=""></a>
+        <img style="margin-left: 14%;" src="./imagens/logo.png" alt="">
+        <img style="width: 20%;" src="./imagens/Usuario.png" alt="">
+    </header>
+    <center>
+        <h1>Gerenciar Estufas</h1>
+        <div id="banners">
+            <div id="dados">
+
+                <div id="medidas">
+                    <div class="separacao">
+                        <div class="input-medida">
+                            <label for="gas-min">Gás Min</label>
+                            <input type="text" class="input_medidas">
+                        </div>
+                        <br>
+                        <div class="input-medida">
+                            <label for="gas-max">Luminosidade Min</label>
+                            <input type="text" class="input_medidas">
+                        </div>
+                    </div>
+
+                    <div class="separacao">
+                        <div class="input-medida">
+                            <label for="lum-min">Gás Max</label>
+                            <input type="text" class="input_medidas">
+                        </div>
+                        <br>
+                        <div class="input-medida">
+                            <label for="lum-max">Luminosidade Max</label>
+                            <input type="text" class="input_medidas">
+                        </div>
+                    </div>
+                </div>
+                <div id="botão">
+                    <button></button>
+                </div>
+            </div>
+            <div id="estufa">
+
+                <div class="input-medida">
+                    <label for="estufa-estufa">Estufa</label>
+                    <input type="text" class="input_medidas">
+                </div>
+                <div class="input-medida">
+                    <label for="estufa-local">Local</label>
+                    <input type="text" class="input_medidas">
+                </div>
+                <div id="botão">
+                    <button></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabelaEstufa">
+            <div class="divCheckBox">
+                <input id="checkBoxMarcarTodos" type="checkbox">
+                <label class="textoLabel" for="checkBoxMarcarTodos">Marcar todos</label>
+                <button class="botaoRemover">Remover</button>
+                
+            </div>
+            
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Estufa</th>
+                <th>Local</th>
+                <th>Status</th>
+                <th>Gás Min</th>
+                <th>Gás Max</th>
+                <th>Luminosidade Min</th>
+                <th>Luminosidade Max</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Estufa 1</th>
+                <th>xxx</th>
+                <th>Muito Bom</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tbody>
+        </table>
+     
+    </center>
+
+</body>
+
+</html>
