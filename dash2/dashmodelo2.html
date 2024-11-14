@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashmodelo2</title>
+    <link rel="stylesheet" href="estilomodelo2.css">
 </head>
 <style>
     @font-face {
@@ -40,89 +41,6 @@
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         width: 20%;
     }
-
-    #banners {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 160vh;
-        height: 50vh;
-    }
-
-    #dados {
-        width: 59%;
-        height: 100%;
-        background-color: #B81476;
-        border-radius: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-
-    #estufa {
-        width: 39%;
-        height: 100%;
-        background-color: #B81476;
-        border-radius: 50px;
-    }
-
-    #medidas {
-        height: 30vh;
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .input-medida {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .separacao {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    #estufa {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    input {
-        height: 5vh;
-        width: 30vh;
-        padding: 5px;
-        border: none;
-        border-radius: 5px;
-        margin-top: 5px;
-    }
-
-    label {
-        color: white;
-        font-weight: bold;
-        font-size: xx-large;
-    }
-
-    button {
-        height: 5vh;
-        width: 14vh;
-        background-color: white;
-        color: #b0326a;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: x-large;
-    }
 </style>
 
 <body>
@@ -142,17 +60,19 @@
                             <label for="gas-min">Gás Min</label>
                             <input type="text" id="gas-min">
                         </div>
+                        <br>
                         <div class="input-medida">
                             <label for="gas-max">Luminosidade Min</label>
                             <input type="text" id="gas-min">
                         </div>
                     </div>
-
+                    
                     <div class="separacao">
                         <div class="input-medida">
                             <label for="lum-min">Gás Max</label>
                             <input type="text" id="gas-min">
                         </div>
+                        <br>
                         <div class="input-medida">
                             <label for="lum-max">Luminosidade Max</label>
                             <input type="text" id="gas-min">
@@ -160,31 +80,31 @@
                     </div>
                 </div>
                 <div id="botão">
-                    <button>Aplicar</button>
+                    <button></button>
                 </div>
             </div>
             <div id="estufa">
-                <br><br>
+
                 <div class="input-medida">
                     <label for="estufa-estufa">Estufa</label>
                     <input type="text" id="Estufa">
                 </div>
-                    <div class="input-medida">
-                        <label for="estufa-local">Local</label>
-                        <input type="text" id="Local">
-                    </div>
-                    <br><br><br>
-                    
-                        <div id="botão">
-                            <button>OIII</button>
-                        </div>
-                    
-                
+                <div class="input-medida">
+                    <label for="estufa-local">Local</label>
+                    <input type="text" id="Local">
+                </div>
+
+
+                <div id="botão">
+                    <button></button>
+                </div>
+
+
             </div>
         </div>
 
-        
-        
+
+
     </center>
 
 
