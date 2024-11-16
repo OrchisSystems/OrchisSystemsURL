@@ -15,6 +15,13 @@
     <section class="img-background">
         <div class="bloco">
             <center>
+              <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                  <span id="mensagem_erro"></span>
+                </div>
+                <div class="card_erro" id="cardErroNome">
+                  <span id="mensagem_erroNome"></span>
+                </div>
                 <div class="imglogo">
                     <img src="icon/logo.png" class="logo">
                 </div>
@@ -49,7 +56,7 @@
                             <input type="text" placeholder="Nome da empresa" id="nome_input">
                             <input type="number" placeholder="CNPJ da Empresa" id="cnpj_input">
                             <input type="email" placeholder="Email Empresarial" required id="email_input">
-                            <input type="number" placeholder="Telefone Empresarial" id="input_telefone">
+                            <input type="number" placeholder="Telefone Empresarial" id="telefone_input">
 
                             <div class="passwd">
                                 <div class="showpwd">
@@ -135,7 +142,7 @@
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "../dash2/";
+                        window.location = "../dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -184,8 +191,7 @@
             telefoneVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
-            confirmacaoSenhaVar == "" ||
-            codigoVar == ""
+            confirmacaoSenhaVar == "" 
           ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
