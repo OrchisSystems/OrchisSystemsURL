@@ -7,6 +7,9 @@ function validarSessao() {
 
     if (email != null && nome != null) {
         usuario.innerHTML = nome;
+        if(email == 'orchissystem@gmail.com'){
+            window.location = "../bobIA/index.html"
+        }
     } else {
         window.location = "../login/index.html";
     }
@@ -14,7 +17,7 @@ function validarSessao() {
 
 function limparSessao() {
     sessionStorage.clear();
-    window.location = "../login.html";
+    window.location = "../login/index.html";
 }
 
 // carregamento (loading)
