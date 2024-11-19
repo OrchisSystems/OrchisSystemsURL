@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/sessao.js"></script>
   <title>Login Orchis Systems</title>
   <link rel="stylesheet" href="style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -76,8 +77,8 @@
             <header>Login</header>
 
             <orchis>
-              <input type="email" placeholder="Email" required>
-              <input type="password" placeholder="Senha" required>
+              <input id="email_input_login" type="email" placeholder="Email" required>
+              <input id="senha_input_login" type="password" placeholder="Senha" required>
               <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
               <button class="btn" id="botaoLogin" onclick="entrar()">Login</button>
             </orchis>
@@ -96,15 +97,15 @@
 
     // Autenticar Login
     function entrar() {
-      aguardar();
+      // aguardar();
 
-      var emailVar = email_input.value;
-      var senhaVar = senha_input.value;
+      var emailVar = email_input_login.value;
+      var senhaVar = senha_input_login.value;
 
       if (emailVar == "" || senhaVar == "") {
         cardErro.style.display = "block"
         mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        finalizarAguardar();
+        // finalizarAguardar();
         return false;
       }
       else {
@@ -134,11 +135,9 @@
             console.log(JSON.stringify(json));
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
             setTimeout(function () {
-              window.location = "../dashboard/dashboard.html";
+              window.location = "../dash2/dash.html";
             }, 1000); // apenas para exibir o loading
 
           });

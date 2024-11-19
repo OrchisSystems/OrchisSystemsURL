@@ -15,7 +15,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 5%;
+    padding-left: 2%;
     padding-right: 2%;
     /*Para fazer com que o cabeçalho siga o scroll do mouse*/
     position: sticky;
@@ -87,4 +87,10 @@ h2{
     color: #ffffff;
     padding: 15px;
     font-size: 130%;
+}
+
+#usuario{
+    font-size: 150%;
+    color: #B81476;
+    font-weight: bold;
 }
