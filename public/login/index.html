@@ -2,277 +2,273 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Orchis Systems</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Orchis Systems</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
 <body>
 
-    <section class="img-background">
-        <div class="bloco">
-            <center>
-              <div class="alerta_erro">
-                <div class="card_erro" id="cardErro">
-                  <span id="mensagem_erro"></span>
-                </div>
-                <div class="card_erro" id="cardErroNome">
-                  <span id="mensagem_erroNome"></span>
-                </div>
-                <div class="imglogo">
-                    <img src="icon/logo.png" class="logo">
-                </div>
+  <section class="img-background">
+    <div class="bloco">
+      <center>
 
-                <a href="../index.html">
-                    <button class="cssbuttons-io-button">
-                        Voltar
-                        <div class="icon">
-                            <svg
-                                height="24"
-                                width="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                <path
-                                    d="M7.828 11l5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2z"
-                                    fill="currentColor"
-                                ></path>
-                            </svg>
-                        </div>
-                    </button>
-                </a>
-                  </a>
-                <div class="container">
-                    <div class="cadastro-login">
-                        <header>
-
-                            Criação de conta empresarial
-                        </header>
-                        <form>
-                            <input type="text" placeholder="Nome da empresa" id="nome_input">
-                            <input type="number" placeholder="CNPJ da Empresa" id="cnpj_input">
-                            <input type="email" placeholder="Email Empresarial" required id="email_input">
-                            <input type="number" placeholder="Telefone Empresarial" id="telefone_input">
-
-                            <div class="passwd">
-                                <div class="showpwd">
-                                    <input type="password" placeholder="Senha" required id="senha_input">
-                                    <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png"
-                                        onclick="pass()" id="pass-icon1">
-                                </div>
-                                <div class="showpwd2">
-                                    <input type="password" placeholder="Insira sua senha novamente" required
-                                        id="confirmacao_senha_input">
-                                    <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png"
-                                        onclick="pass()" id="pass-icon2">
-                                </div>
-                            </div>
-
-                            <a href="#" class="senhaAleatoria" id="senha">Gerar uma senha aleatória</a>
-                            <button type="submit" class="btn" id="botaoCadastro" onclick="cadastrar()">Cadastre-se</button>
-                        </form>
-                    </div>
-
-                    <div class="secao-login">
-                        <header>Login</header>
-
-                        <form>
-                            <input type="email" placeholder="Email" required>
-                            <input type="password" placeholder="Senha" required>
-                            <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
-                            <button type="submit" class="btn" id="botaoLogin" onclick="entrar()">Login</button>
-                        </form>
-                    </div>
-
-
-                </div>
-            </center>
+        <div class="imglogo">
+          <img src="icon/logo.png" class="logo">
         </div>
-    </section>
 
+        <a href="../index.html">
+          <button class="cssbuttons-io-button">
+            Voltar
+            <div class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M7.828 11l5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2z"
+                  fill="currentColor"></path>
+              </svg>
+            </div>
+          </button>
+        </a>
+        </a>
+        <div class="container">
+          <div class="cadastro-login">
+            <header>
 
-    <script src="script.js"></script>
-    <script>
-
-        // Autenticar Login
-         function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "../dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
-
-        // Realizar Cadastro
-        // Array para armazenar empresas cadastradas para validação de código de ativação 
-        let listaEmpresasCadastradas = [];
-      
-        function cadastrar() {
-          // aguardar();
-      
-          //Recupere o valor da nova input pelo nome do id
-          // Agora vá para o método fetch logo abaixo
-          var nomeVar = nome_input.value;
-          var telefoneVar = telefone_input.value;
-          var cnpjVar =  cnpj_input.value;
-          var emailVar = email_input.value;
-          var senhaVar = senha_input.value;
-          var confirmacaoSenhaVar = confirmacao_senha_input.value;
-      
-          // Verificando se há algum campo em branco
-          if (
-            nomeVar == "" ||
-            telefoneVar == "" ||
-            emailVar == "" ||
-            senhaVar == "" ||
-            confirmacaoSenhaVar == "" 
-          ) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML =
-              "(Mensagem de erro para todos os campos em branco)";
-      
-            finalizarAguardar();
-            return false;
-          } else {
-            setInterval(sumirMensagem, 5000);
-          }
-      
-      
-          // Enviando o valor da nova input
-          fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
+              Criação de conta empresarial
+              <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro">  
+                </span>
+              </div>
+              <div class="card_acerto" id="cardAcerto">
+                <span id="mensagem_acerto">
+                </span>
+              </div>
               
-              nomeServer: nomeVar,
-              telefoneServer: telefoneVar,
-              cnpjServer: cnpjVar,
-              emailServer: emailVar,
-              senhaServer: senhaVar
+            </header>
+            <orchis>
+              <input type="text" placeholder="Nome da empresa" id="nome_input">
+              <input type="number" placeholder="CNPJ da Empresa" id="cnpj_input">
+              <input type="email" placeholder="Email Empresarial" required id="email_input">
+              <input type="number" placeholder="Telefone Empresarial" id="telefone_input">
 
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
-      
-              if (resposta.ok) {
-                cardErro.style.display = "block";
-      
-                mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-      
-                setTimeout(() => {
-                  window.location = "#";
-                }, "2000");
-      
-                limparFormulario();
-                finalizarAguardar();
-              } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-              finalizarAguardar();
+              <div class="passwd">
+                <div class="showpwd">
+                  <input type="password" placeholder="Senha" required id="senha_input">
+                  <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png" onclick="pass()"
+                    id="pass-icon1">
+                </div>
+                <div class="showpwd2">
+                  <input type="password" placeholder="Insira sua senha novamente" required id="confirmacao_senha_input">
+                  <img src="../login/icon/eye-password-hide-icon-1024x1024-d7ey18s8.png" onclick="pass()"
+                    id="pass-icon2">
+                </div>
+              </div>
+
+              <a href="#" class="senhaAleatoria" id="senha">Gerar uma senha aleatória</a>
+              <button class="btn" id="botaoCadastro" onclick="cadastrar()">Cadastre-se</button>
+            </orchis>
+          </div>
+
+          <div class="secao-login">
+            <header>Login</header>
+
+            <orchis>
+              <input type="email" placeholder="Email" required>
+              <input type="password" placeholder="Senha" required>
+              <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
+              <button class="btn" id="botaoLogin" onclick="entrar()">Login</button>
+            </orchis>
+          </div>
+
+
+
+        </div>
+      </center>
+    </div>
+  </section>
+  
+
+  <script src="script.js"></script>
+  <script>
+
+    // Autenticar Login
+    function entrar() {
+      aguardar();
+
+      var emailVar = email_input.value;
+      var senhaVar = senha_input.value;
+
+      if (emailVar == "" || senhaVar == "") {
+        cardErro.style.display = "block"
+        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        finalizarAguardar();
+        return false;
+      }
+      else {
+        setInterval(sumirMensagem, 5000)
+      }
+
+      console.log("FORM LOGIN: ", emailVar);
+      console.log("FORM SENHA: ", senhaVar);
+
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id;
+            sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+            setTimeout(function () {
+              window.location = "../dashboard/dashboard.html";
+            }, 1000); // apenas para exibir o loading
+
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.error(texto);
+            finalizarAguardar(texto);
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+
+
+    function sumirMensagem() {
+      cardErro.style.display = "none"
+    }
+
+    // Realizar Cadastro
+    // Array para armazenar empresas cadastradas para validação de código de ativação 
+    let listaEmpresasCadastradas = [];
+
+    function cadastrar() {
+      // aguardar();
+
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nomeVar = nome_input.value;
+      var telefoneVar = telefone_input.value;
+      var cnpjVar = cnpj_input.value;
+      var emailVar = email_input.value;
+      var senhaVar = senha_input.value;
+      var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+      // Verificando se há algum campo em branco
+      if (
+        nomeVar == "" ||
+        telefoneVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == ""
+      ) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+          "Preencha todas as informações para cadastrar";
+
+        finalizarAguardar();
+        return false;
+      } else {
+        setInterval(sumirMensagem, 5000);
+      }
+
+
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+
+          nomeServer: nomeVar,
+          telefoneServer: telefoneVar,
+          cnpjServer: cnpjVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            cardAcerto.style.display = "block";
+
+            mensagem_acerto.innerHTML =
+              "Cadastro realizado com sucesso!";
+
+            setTimeout(() => {
+              window.location = "#";
+            }, "2000");
+
+            limparFormulario();
+            finalizarAguardar();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+
+      return false;
+    }
+
+    // Listando empresas cadastradas 
+    function listar() {
+      fetch("/empresas/listar", {
+        method: "GET",
+      })
+        .then(function (resposta) {
+          resposta.json().then((empresas) => {
+            empresas.forEach((empresa) => {
+              listaEmpresasCadastradas.push(empresa);
+
+              console.log("listaEmpresasCadastradas")
+              console.log(listaEmpresasCadastradas[0].codigo_ativacao)
             });
-      
-          return false;
-        }
-      
-        // Listando empresas cadastradas 
-        function listar() {
-          fetch("/empresas/listar", {
-            method: "GET",
-          })
-            .then(function (resposta) {
-              resposta.json().then((empresas) => {
-                empresas.forEach((empresa) => {
-                  listaEmpresasCadastradas.push(empresa);
-      
-                  console.log("listaEmpresasCadastradas")
-                  console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-                });
-              });
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
-        }
-      
-        function sumirMensagem() {
-          cardErro.style.display = "none";
-        }
-      </script>
+          });
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function sumirMensagem() {
+      cardErro.style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
