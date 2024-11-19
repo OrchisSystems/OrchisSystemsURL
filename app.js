@@ -16,7 +16,7 @@ var HOST_APP = process.env.APP_HOST;
 
 var app = express();
 
-const chatIA = new GoogleGenerativeAI(caminho_env.MINHA_CHAVE);
+const chatIA = new GoogleGenerativeAI(process.env.MINHA_CHAVE);
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
