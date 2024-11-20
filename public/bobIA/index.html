@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/sessao.js"></script>
+    <title>BobIA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="validarSessao()">
+    <div>
+        <button onclick="limparSessao()" id="botaoSair">
+            Sair
+            <div class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M7.828 11l5.364-5.364-1.414-1.414L4 12l7.778 7.778 1.414-1.414L7.828 13H20v-2z"
+                  fill="currentColor"></path>
+              </svg>
+            </div>
+          </button>
+    </div>
+    <div id="container">
+        <h1>BobIA</h1>
+        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <br><br>
+        <button onclick="gerarResposta()">Gerar Resposta</button>
+        <h3>Resposta da IA:</h3>
+        <div id="resposta"></div>
+    </div>
+
+    <script>
+        
+        async function gerarResposta() {
+            const pergunta = document.getElementById('pergunta').value;
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta })
+            });
+
+            const data = await response.json();
+
+            resposta.style.display = 'block';
+            document.getElementById('resposta').innerText = data.resultado;
+        }
+
+    </script>
+    
+</body>
+</html>

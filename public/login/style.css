@@ -103,7 +103,7 @@ a{
 .container{
     position: relative;
     width: 650px;
-    height: 650px;
+    height: 700px;
     border-radius: 20px;
     padding: 20px 30px 120px;
     background-color: rgb(255, 255, 255);
@@ -150,14 +150,14 @@ a{
     opacity: 0.6;
 }
 
-.container form{
+.container orchis{
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 30px;
 }
 
-form input{
+orchis input{
     outline: none;
     border: 2px solid #0000004b;
     padding: 10px 15px;
@@ -176,7 +176,7 @@ form input{
     border: 1px solid #aaa;
 }
 
-form a{
+orchis a{
     color: #ffffff;
 }
 
@@ -186,12 +186,12 @@ form a{
 
 }
 
-.cadastro-login form a{ 
+.cadastro-login orchis a{ 
     color: #000000;
     
 }
 
-form .btn{
+orchis .btn{
     margin-top: 15px;
     border: 2px solid #00000069;
     padding: 10px 15px;
@@ -237,7 +237,7 @@ form .btn{
     align-items: center;
 }
 
-.cadastro-login form .showpd{
+.cadastro-login orchis .showpd{
     display: flex;
     gap: 5px;
     align-items: self-start;
@@ -265,8 +265,8 @@ form .btn{
 }
 
 
-form .showpwd, 
-form .showpwd2{
+orchis .showpwd, 
+orchis .showpwd2{
     border: 2px solid #0000004b;
     border-radius: 8px;
     display: flex;
@@ -277,7 +277,7 @@ form .showpwd2{
 }
 
 
-form .passwd #pass-icon1,#pass-icon2{
+orchis .passwd #pass-icon1,#pass-icon2{
     position: absolute;
     width: 24px;
     cursor: pointer;
@@ -288,5 +288,46 @@ form .passwd #pass-icon1,#pass-icon2{
 
 }
 
+/* CARDS DE ERROS E VALIDAÇÕES */
 
+.card_erro {
+    display: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f4796b8e ;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 600;
+    font-size: 18px;
+    color: #971f1fd8;
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.7s ease-in-out;
+  }
 
+  .card_acerto {
+    display: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #94e27ac4 ;
+  }
+  
+  .card_acerto #mensagem_acerto{
+    font-weight: 600;
+    font-size: 18px;
+    color: #2a7a19d8;
+    text-align: center;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.7s ease-in-out;
+  }
+  #div_aguardar img{
+    width: 100px;
+    margin-top: 15%;
+  }
