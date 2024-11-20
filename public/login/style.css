@@ -327,4 +327,7 @@ orchis .passwd #pass-icon1,#pass-icon2{
     font-family: 'Fredoka', sans-serif;
     transition: all 0.7s ease-in-out;
   }
-  
+  #div_aguardar img{
+    width: 100px;
+    margin-top: 15%;
+  }

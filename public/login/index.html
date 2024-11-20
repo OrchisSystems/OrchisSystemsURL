@@ -81,6 +81,10 @@
               <input id="senha_input_login" type="password" placeholder="Senha" required>
               <a href="#" class="esqueceuSenha">Esqueçeu sua senha ?</a>
               <button class="btn" id="botaoLogin" onclick="entrar()">Login</button>
+              <div id="div_aguardar" class="loading-div">
+                <img autoplay loop src="./imgs/lv-0-20241119204807-unscreen.gif">
+            </div>
+              
             </orchis>
           </div>
 
@@ -97,14 +101,14 @@
 
     // Autenticar Login
     function entrar() {
-      // aguardar();
+       aguardar();
 
       var emailVar = email_input_login.value;
       var senhaVar = senha_input_login.value;
 
       if (emailVar == "" || senhaVar == "") {
-        cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        cardAcertoLogin.style.display = "block"
+        mensagem_acertoLogin.innerHTML = "Mensagem de erro para todos os campos em branco";
         // finalizarAguardar();
         return false;
       }
@@ -138,7 +142,7 @@
 
             setTimeout(function () {
               window.location = "../dash2/dash.html";
-            }, 1000); // apenas para exibir o loading
+            }, 2000);
 
           });
 
@@ -161,7 +165,7 @@
 
 
     function sumirMensagem() {
-      cardErro.style.display = "none"
+      cardAcertostyle.display = "none"
     }
 
     // Realizar Cadastro
@@ -191,6 +195,10 @@
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
           "Preencha todas as informações para cadastrar";
+        
+          setTimeout(() => {
+            cardErro.style.display = "none";
+          },3000);
 
         finalizarAguardar();
         return false;
@@ -226,9 +234,9 @@
             mensagem_acerto.innerHTML =
               "Cadastro realizado com sucesso!";
 
-            setTimeout(() => {
-              window.location = "#";
-            }, "2000");
+              setTimeout(() => {
+            cardAcerto.style.display = "none";
+          },3000);
 
             limparFormulario();
             finalizarAguardar();
