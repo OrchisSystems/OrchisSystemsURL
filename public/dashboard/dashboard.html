@@ -16,28 +16,29 @@
         <header>
             <img id="logo" src="../imagensHome/logo.png" alt="">
             <div class="menu">
-             <a class="btn-home" href="../centralAjuda/centralAjuda.html">Ajuda</a>
-            <a class="btn-home" href="../index.html">Home</a>
+                <a class="btn-home" href="../centralAjuda/centralAjuda.html">Ajuda</a>
+                <a class="btn-home" href="../index.html">Home</a>
             </div>
         </header>
+        <h2>Dashboards</h2>
     </center>
 
 
-<h2>Dashboards</h2>
-    
-<div class="containerDash">
+
+
+    <div class="containerDash">
         <div class="containerLuminosidade">
             <div class="alert-luminosidade">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magnam impedit repellat minus doloremque
-                libero reiciendis vero commodi hic maiores.
+                Sua estufa apresentou um período de aumento de luminosidade.
+                Cuidado, isso pode prejudicar a sua produção!<img src="./img/image 13.png">
             </div>
             <div class="box-luminosidade">
 
                 <button id="botaoluminosidade" onclick="verLuminosidade()">Luminosidade</button>
 
                 <div id="luminosidade" class="luminosidade">
-                    <div class="kpis-luminosidade">
-                        
+                    <div id="kpi" class="kpis-luminosidade">
+
                         <div class="row">
                             <div class="valoresFora bordas espacament">
                                 Valores fora da faixa optima determinada<br><br>
@@ -54,14 +55,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="dtValorMaximo bordas espacament">
                                 Data do valor máximo captado <br><br>
                                 <span>11:30 - 10/10</span>
-                            <div class="imgValoresDtMax">
-                                <img src="./img/icon-3.png">
-                            </div>
+                                <div class="imgValoresDtMax">
+                                    <img src="./img/icon-3.png">
+                                </div>
                             </div>
                             <div class="valorMinimo bordas espacament">
                                 Valor mínimo captado <br><br>
@@ -71,20 +72,21 @@
                                 </div>
                             </div>
                         </div>
-    
-                        
-    
+
+
+
                         <div class="lastKpi">
                             <div class="kpiUnique">
                                 Data do valor mínimo captado <br><br>
-                            <span>11:00 - 10/10</span>
-                            <div class="imgValoresDtMin">
-                                <img src="./img/icon-3.png">
+                                <span>11:00 - 10/10</span>
+                                <div class="imgValoresDtMin">
+                                    <img src="./img/icon-3.png">
+                                </div>
                             </div>
-                            </div>
-                            
+
                         </div>
-    
+
+
                     </div>
                     <div class="graficoLuminosidade">
                         <canvas id="luminosidadeLinha"></canvas>
@@ -93,101 +95,102 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="containerEtileno">
             <div class="alert-etileno">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magnam impedit repellat minus doloremque
-                libero reiciendis vero commodi hic maiores.
+                Sua estufa apresentou um período de baixa concentração de etileno.
+                Cuidado, isso pode prejudicar a sua produção! <img src="./img/image 13.png">
             </div>
-            
-        <div class="box-etileno">
 
-            <button id="botaoetileno "onclick="verEtileno()">Concentração de Etileno</button>
+            <div class="box-etileno">
 
-            <div id="etileno" class="etileno">
-                <div class="kpis-etileno">
-                    <div class="row">
-                        <div class="valoresFora">
-                            Valores fora da faixa optima determinada<br><br>
-                            <span>2</span>
-                            <div class="imgValoresFora">
-                                <img src="./img/icon-1.png">
+                <button id="botaoetileno" onclick="verEtileno()">Concentração de Etileno</button>
+
+                <div id="etileno" class="etileno">
+                    <div class="kpis-etileno">
+                        <div class="row">
+                            <div class="valoresFora">
+                                Valores fora da faixa optima determinada<br><br>
+                                <span>2</span>
+                                <div class="imgValoresFora">
+                                    <img src="./img/icon-1.png">
+                                </div>
+                            </div>
+
+                            <div class="valorMaximo">
+                                Valor máximo captado <br><br>
+                                <span>856 </span>
+                                <div class="imgValoresMaximo">
+                                    <img src="./img/icon-2.png">
+                                </div>
                             </div>
                         </div>
-    
-                        <div class="valorMaximo">
-                            Valor máximo captado <br><br>
-                            <span>856 </span>
-                            <div class="imgValoresMaximo">
-                                <img src="./img/icon-2.png">
+
+                        <div class="row">
+                            <div class="dtValorMaximo">
+                                Data do valor máximo captado <br><br>
+                                <span>11:30 - 10/10</span>
+                                <div class="imgValoresDtMax">
+                                    <img src="./img/icon-3.png">
+                                </div>
+                            </div>
+                            <div class="valorMinimo">
+                                Valor mínimo captado <br><br>
+                                <span>598</span>
+                                <div class="imgValoresMinimo">
+                                    <img src="./img/icon-2.png">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="dtValorMaximo">
-                            Data do valor máximo captado <br><br>
-                            <span>11:30 - 10/10</span>
-                            <div class="imgValoresDtMax">
+
+
+                        <div class="lastKpi">
+                            Data do valor mínimo captado <br><br>
+                            <span>11:00 - 10/10</span>
+                            <div class="imgValoresDtMin">
                                 <img src="./img/icon-3.png">
                             </div>
                         </div>
-                        <div class="valorMinimo">
-                            Valor mínimo captado <br><br>
-                            <span>598</span>
-                            <div class="imgValoresMinimo">
-                                <img src="./img/icon-2.png">
-                            </div>
-                        </div>
-                    </div>
-                    
 
-                    <div class="lastKpi">
-                        Data do valor mínimo captado <br><br>
-                        <span>11:00 - 10/10</span>
-                        <div class="imgValoresDtMin">
-                            <img src="./img/icon-3.png">
-                        </div>
                     </div>
 
-                </div>
-                <div class="graficoLuminosidade">
-                    <canvas id="luminosidadeLinha"></canvas>
-                    <canvas id="luminosidadeBarra"></canvas>
+                    <div class="graficoLuminosidade">
+                        <canvas id="luminosidadeLinha"></canvas>
+                        <canvas id="luminosidadeBarra"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
 
         </div>
-        </div>
-            
-        <script>
-            function verLuminosidade() {
-                 const div = document.getElementById("luminosidade");
+    </div>
 
-                if (div.style.display === "none" || div.style.display === "") {
-                div.style.display = "block"; // Mostra a div
-                } else {
-                div.style.display = "none"; // Esconde a div
-                }
+    <script>
+        function verLuminosidade() {
+            const luminosidade = document.getElementById("luminosidade");
+
+            if (luminosidade.style.display === "none") {
+                luminosidade.style.display = "grid"; // Mostra a div
+            } else {
+                luminosidade.style.display = "none"; // Esconde a div
             }
+        }
 
-            function verEtileno() {
-                const div = document.getElementById("etileno");
+        function verEtileno() {
+            const div = document.getElementById("etileno");
 
-                if (div.style.display === "none" || div.style.display === "") {
+            if (div.style.display === "none" || div.style.display === "") {
                 div.style.display = "block"; // Mostra a div
-                } else {
+            } else {
                 div.style.display = "none"; // Esconde a div
-                }
             }
-          </script>
-       
-        
+        }
+    </script>
 
-        
 
-         
+
+
+
+
     </div>
     <!-- ETILENO -->
 
