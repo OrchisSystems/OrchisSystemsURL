@@ -20,10 +20,7 @@ const chatIA = new GoogleGenerativeAI(process.env.MINHA_CHAVE);
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
-var medidasRouter = require("./src/routes/medidas");
-var aquariosRouter = require("./src/routes/aquarios");
-var empresasRouter = require("./src/routes/empresas");
+var coletaSensorRouter = require("./src/routes/coletaSensor");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,10 +30,8 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
-app.use("/medidas", medidasRouter);
-app.use("/aquarios", aquariosRouter);
-app.use("/empresas", empresasRouter);
+app.use("/coletaSensor", coletaSensorRouter);
+
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
