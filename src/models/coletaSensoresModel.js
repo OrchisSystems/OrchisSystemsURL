@@ -13,9 +13,53 @@ function coletaSensor() {
 }
 
 
+function coletaKpiMaxEtileno() {
+    var instrucaoSql = `
+    select valorEtileno as Etileno,
+    time(dataColetaEtileno) as DataColeta
+    from MedidaSensor order by valorEtileno desc limit 1;
+`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+function coletaKpiMinEtileno() {
+    var instrucaoSql = `
+    select valorEtileno as Etileno,
+    time(dataColetaEtileno) as DataColeta
+    from MedidaSensor order by valorEtileno limit 1;
+`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function coletaKpiMaxLuminosidade() {
+    var instrucaoSql = `
+    select valorLuminosidade as Luminosidade,
+    time(dataColetaLuminosidade) as DataColeta
+    from MedidaSensor order by valorLuminosidade desc limit 1;
+`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function coletaKpiMinLuminosidade() {
+    var instrucaoSql = `
+    select valorLuminosidade as Luminosidade,
+    time(dataColetaLuminosidade) as DataColeta
+    from MedidaSensor order by valorLuminosidade limit 1;
+`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
-    coletaSensor
+    coletaSensor,
+    coletaKpiMaxEtileno,
+    coletaKpiMinEtileno,
+    coletaKpiMaxLuminosidade,
+    coletaKpiMinLuminosidade
 };
 
 

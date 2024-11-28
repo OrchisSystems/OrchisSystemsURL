@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./estilo_dash.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0"></script>
-    <script src="./dashboard.js"></script>
+    
     <title>Dashboards</title>
 </head>
 <body>
@@ -33,35 +33,35 @@
                     <div class="kpi">
                         Data do valor máximo captado
                         <div class="kpiValor">
-                        <span>11:30 - 10/10</span>
+                        <span id="DataValorMaximoLuminosidade">11:30 - 10/10</span>
                             <img src="./img/icon-3.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Data do valor mínimo captado
                         <div class="kpiValor">
-                        <span>11:00 - 10/10</span>
+                        <span id="DataValorMinimoLuminosidade">11:00 - 10/10</span>
                             <img src="./img/icon-3.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Valor máximo captado
                         <div class="kpiValor">
-                            <span>856 </span>
+                            <span id="valorMaximoLuminosidade">856 </span>
                             <img src="./img/icon-2.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Valor mínimo captado
                         <div class="kpiValor">
-                            <span>598</span>
-                            <img src="./img/icon-2.png">
+                            <span id="valorMinimoLuminosidade">598</span>
+                            <img " src="./img/icon-2.png">
                         </div>
                     </div>
                     <div class="ultimoKpi">
                         Valores fora da faixa optima determinada
                         <div class="kpiValor">
-                            <span>2</span>
+                            <span id="alertasLuminosidade">2</span>
                             <img src="./img/icon-1.png">
                         </div>
                     </div>
@@ -82,35 +82,35 @@
                     <div class="kpi">
                         Data do valor máximo captado
                         <div class="kpiValor">
-                        <span>11:30 - 10/10</span>
+                        <span id="DataValorMaximoEtileno">11:30 - 10/10</span>
                             <img src="./img/icon-3.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Data do valor mínimo captado
                         <div class="kpiValor">
-                        <span>12:00 - 10/10</span>
+                        <span id="DataValorMinimoEtileno">12:00 - 10/10</span>
                             <img src="./img/icon-3.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Valor máximo captado
                         <div class="kpiValor">
-                            <span>900 </span>
+                            <span id="valorMaxEtileno"></span>
                             <img src="./img/icon-2.png">
                         </div>
                     </div>
                     <div class="kpi">
                         Valor mínimo captado
                         <div class="kpiValor">
-                            <span>300</span>
+                            <span id="valorMinimoEtileno">300</span>
                             <img src="./img/icon-2.png">
                         </div>
                     </div>
                     <div class="ultimoKpi">
                         Valores fora da faixa optima determinada
                         <div class="kpiValor">
-                            <span>1</span>
+                            <span id="alertasEtileno">1</span>
                             <img src="./img/icon-1.png">
                         </div>
                     </div>
@@ -123,6 +123,8 @@
     </div>
 
     <script>
+
+
         function trocarTabela() {
             const luminosidade = document.getElementById("containerLuminosidade");
             const etileno = document.getElementById("containerEtileno");
@@ -136,5 +138,8 @@
             }
         }
     </script>
+
+
+<script src="./dashboard.js"></script>
 </body>
 </html>

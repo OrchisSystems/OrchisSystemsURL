@@ -9,4 +9,20 @@ router.post("/coletaSensor", function (req, res) {
     coletaSensorController.coletaSensorController(req, res);
 })
 
+router.post("/KpiEtilenoMax", function (req, res) {
+    coletaSensorController.coletaKpiMaxEtilenoController(req, res);
+})
+
+router.post("/KpiEtilenoMin", function (req, res) {
+    coletaSensorController.coletaKpiMinEtilenoController(req, res);
+})
+
+router.post("/KpiLuminosidadeMax", function (req, res) {
+    coletaSensorController.coletaKpiMaxLuminosidadeController(req, res);
+})
+router.post("/KpiLuminosidadeMin", function (req, res) {
+    coletaSensorController.coletaKpiMinLuminosidadeController(req, res);
+})
+
+
 module.exports = router;

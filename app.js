@@ -31,6 +31,8 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/coletaSensor", coletaSensorRouter);
+app.use("/KpiMax", coletaSensorRouter);
+app.use("/KpiMin", coletaSensorRouter);
 
 
 app.use((req, res, next) => {
