@@ -41,6 +41,29 @@
         box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
         width: 20%;
     }
+    .botoes{
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .medidas{
+        display: flex;
+        flex-direction: column;
+        padding: 0.2rem;
+    }
+    .variaveis{
+        display: flex;
+        flex-direction: row;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <body>
@@ -49,46 +72,47 @@
         <img style="margin-left: 14%;" src="./imagens/logo.png" alt="">
         <img style="width: 20%;" src="./imagens/Usuario.png" alt="">
     </header>
-    <center>
+    <div class="container">
         <h1>Gerenciar Estufas</h1>
-        <div id="banners">
-            <div id="dados">
-
-                <div id="medidas">
-                    <div class="separacao">
+                <div class="medidas">
                         <div class="input-medida">
-                            <label for="gas-min">Gás Min</label>
+                            <label for="estufa-estufa">Estufa</label>
                             <input type="text" class="input_medidas">
                         </div>
-                        <br>
-                        <div class="input-medida">
-                            <label for="gas-max">Luminosidade Min</label>
-                            <input type="text" class="input_medidas">
+                    <div class="variaveis">
+                        <div class="separacao">
+                            <div class="input-medida">
+                                <label for="gas-min">Etileno Max</label>
+                                <input type="text" class="input_medidas">
+                            </div>
+                            <div class="input-medida">
+                                <label for="gas-max">Etileno Min</label>
+                                <input type="text" class="input_medidas">
+                            </div>
+                        </div>
+                        <div class="separacao">
+                            <div class="input-medida">
+                                <label for="lum-min">Luminosidade Max</label>
+                                <input type="text" class="input_medidas">
+                            </div>
+                            <div class="input-medida">
+                                <label for="lum-max">Luminosidade Min</label>
+                                <input type="text" class="input_medidas">
+                            </div>
                         </div>
                     </div>
-
-                    <div class="separacao">
-                        <div class="input-medida">
-                            <label for="lum-min">Gás Max</label>
-                            <input type="text" class="input_medidas">
-                        </div>
-                        <br>
-                        <div class="input-medida">
-                            <label for="lum-max">Luminosidade Max</label>
-                            <input type="text" class="input_medidas">
+                    <div class="botoes">
+                            <div id="botão">
+                                <button>Criar</button>
+                            </div>
+                            <div id="botão">
+                                <button>Atualizar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="botão">
-                    <button></button>
                 </div>
             </div>
-            <div id="estufa">
-
-                <div class="input-medida">
-                    <label for="estufa-estufa">Estufa</label>
-                    <input type="text" class="input_medidas">
-                </div>
+            <!-- <div id="estufa">
                 <div class="input-medida">
                     <label for="estufa-local">Local</label>
                     <input type="text" class="input_medidas">
@@ -97,8 +121,8 @@
                     <button></button>
                 </div>
             </div>
-        </div>
-        
+        </div> -->
+<!--         
         <div class="tabelaEstufa">
             <div class="divCheckBox">
                 <input id="checkBoxMarcarTodos" type="checkbox">
@@ -133,7 +157,7 @@
         </tbody>
         </table>
      
-    </center>
+    </center> -->
 
 </body>
 
