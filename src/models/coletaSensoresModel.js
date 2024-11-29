@@ -1,4 +1,3 @@
-const { inserirNovaEstufa } = require("../controllers/coletaSensoresController");
 var database = require("../database/config")
 
 
@@ -54,9 +53,17 @@ function coletaKpiMinLuminosidade() {
     return database.executar(instrucaoSql);
 }
 
-function inserirNovaEstufa(){
+function inserirNovaEstufa(maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa){
     var instrucaoSql=`
-    INSERT INTO Estufa VALUES`
+    insert into Estufa (maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa) values  ('${maxEtileno}', '${minEtileno}', '${maxLuminosidade}', '${minLuminosidade}', '${fkEmpresa}')`
+
+    return database.executar(instrucaoSql);
+}
+
+function atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minLuminosidade){
+    var instrucaoSql=`
+    update Estufa set maxEtileno = ${maxEtileno}, minEtileno = ${minEtileno}, maxLuminosidade = ${maxLuminosidade}, minLuminosidade = ${minLuminosidade}  where idEstufa = ${idEstufa}`
+    return database.executar(instrucaoSql);
 }
 
 
@@ -66,7 +73,8 @@ module.exports = {
     coletaKpiMinEtileno,
     coletaKpiMaxLuminosidade,
     coletaKpiMinLuminosidade,
-    inserirNovaEstufa
+    inserirNovaEstufa,
+    atualizarEstufa
 };
 
 

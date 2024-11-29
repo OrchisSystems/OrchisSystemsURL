@@ -26,8 +26,12 @@ router.post("/KpiLuminosidadeMin", function (req, res) {
 })
 
 router.post("/inserirNovaEstufa", function(req,res){
-    coletaSensorController.inserirNovaEstufa(req,res)
+    coletaSensorController.inserirNovaEstufaController(req,res)
 })
 
+
+router.post("/atualizarEstufa", function(req,res){
+    coletaSensorController.atualizarEstufaController(req,res)
+})
 
 module.exports = router;

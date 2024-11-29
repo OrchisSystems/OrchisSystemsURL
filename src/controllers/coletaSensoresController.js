@@ -96,8 +96,37 @@ function coletaKpiMinLuminosidadeController(req,res){
 }
 
 
-function inserirNovaEstufa(req, res){
-    coletaSensorModel.inserirNovaEstufa()
+function inserirNovaEstufaController(req, res){
+    var maxEtileno = req.body.maxEtilenoServer;
+    var minEtileno = req.body.minEtilenoServer;
+    var maxLuminosidade = req.body.maxLuminosidadeServer;
+    var minLuminosidade = req.body.minLuminosidadeServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+
+    coletaSensorModel.inserirNovaEstufa(maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa)
+        .then(function(resultado){
+            res.json(resultado)
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+}
+
+function atualizarEstufaController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    var maxEtileno = req.body.maxEtilenoServer;
+    var minEtileno = req.body.minEtilenoServer;
+    var maxLuminosidade = req.body.maxLuminosidadeServer;
+    var minLuminosidade = req.body.minLuminosidadeServer;
+
+    coletaSensorModel.atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minLuminosidade)
         .then(function(resultado){
             res.json(resultado)
         }
@@ -114,7 +143,8 @@ function inserirNovaEstufa(req, res){
 }
 
 module.exports = {
-    inserirNovaEstufa,
+    atualizarEstufaController,
+    inserirNovaEstufaController,
     coletaSensorController,
     coletaKpiMaxEtilenoController,
     coletaKpiMinEtilenoController,

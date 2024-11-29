@@ -33,6 +33,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/coletaSensor", coletaSensorRouter);
 app.use("/KpiMax", coletaSensorRouter);
 app.use("/KpiMin", coletaSensorRouter);
+app.use("/inserirNovaEstufa", coletaSensorRouter);
 
 
 app.use((req, res, next) => {

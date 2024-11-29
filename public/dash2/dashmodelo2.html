@@ -81,27 +81,27 @@
         <div class="medidas">
             <div class="input-medida">
                 <label for="estufa-estufa">Estufa</label>
-                <input type="text" class="input_medidas">
+                <input type="text" class="input_medidas" id="input_id_estufa">
             </div>
             <div class="variaveis">
                 <div class="separacao">
                     <div class="input-medida">
                         <label for="gas-min">Etileno Max</label>
-                        <input type="text" class="input_medidas">
+                        <input type="text" class="input_medidas" id="input_max_etileno">
                     </div>
                     <div class="input-medida">
                         <label for="gas-max">Etileno Min</label>
-                        <input type="text" class="input_medidas">
+                        <input type="text" class="input_medidas" id="input_min_etileno">
                     </div>
                 </div>
                 <div class="separacao">
                     <div class="input-medida">
                         <label for="lum-min">Luminosidade Max</label>
-                        <input type="text" class="input_medidas">
+                        <input type="text" class="input_medidas" id="input_max_luminosidade">
                     </div>
                     <div class="input-medida">
                         <label for="lum-max">Luminosidade Min</label>
-                        <input type="text" class="input_medidas">
+                        <input type="text" class="input_medidas" id="input_min_luminosidade">
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <button onclick="adicionarEstufa()">Criar</button>
                 </div>
                 <div id="botão">
-                    <button>Atualizar</button>
+                    <button onclick="atualizarEstufa()">Atualizar</button>
                 </div>
             </div>
         </div>
@@ -119,7 +119,12 @@
 
     <script>
         function adicionarEstufa() {
-            aguardar();
+            var maxEtileno = input_max_etileno.value
+            var minEtileno = input_min_etileno.value
+            var maxLuminosidade = input_max_luminosidade.value
+            var minLuminosidade = input_min_luminosidade.value
+            var fkEmpresa = sessionStorage.ID_USUARIO
+            console.log(fkEmpresa)
 
             fetch("/coletaSensor/inserirNovaEstufa", {
                 method: "POST",
@@ -127,7 +132,60 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    //Inserir nova estufa
+                                
+                    maxEtilenoServer: maxEtileno,
+                    minEtilenoServer: minEtileno,
+                    maxLuminosidadeServer: maxLuminosidade,
+                    minLuminosidadeServer: minLuminosidade,
+                    fkEmpresaServer: fkEmpresa
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        //Guardar o valor da estufa no section storage
+
+
+                        setTimeout(function () {
+                            window.location = "../dash2/dash.html";
+                        }, 2000);
+
+                    });
+
+                } else {
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+
+        function atualizarEstufa(){
+            var idEstufa = input_id_estufa.value
+            var maxEtileno = input_max_etileno.value
+            var minEtileno = input_min_etileno.value
+            var maxLuminosidade = input_max_luminosidade.value
+            var minLuminosidade = input_min_luminosidade.value
+
+            fetch("/coletaSensor/atualizarEstufa", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                
+                    idEstufaServer: idEstufa,
+                    maxEtilenoServer: maxEtileno,
+                    minEtilenoServer: minEtileno,
+                    maxLuminosidadeServer: maxLuminosidade,
+                    minLuminosidadeServer: minLuminosidade,
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
@@ -160,7 +218,6 @@
 
             return false;
         }
-
     </script>
     <!-- <div id="estufa">
                 <div class="input-medida">
