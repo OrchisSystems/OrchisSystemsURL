@@ -20,8 +20,13 @@ router.post("/KpiEtilenoMin", function (req, res) {
 router.post("/KpiLuminosidadeMax", function (req, res) {
     coletaSensorController.coletaKpiMaxLuminosidadeController(req, res);
 })
+
 router.post("/KpiLuminosidadeMin", function (req, res) {
     coletaSensorController.coletaKpiMinLuminosidadeController(req, res);
+})
+
+router.post("/inserirNovaEstufa", function(req,res){
+    coletaSensorController.inserirNovaEstufa(req,res)
 })
 
 

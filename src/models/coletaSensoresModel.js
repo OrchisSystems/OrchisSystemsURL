@@ -1,3 +1,4 @@
+const { inserirNovaEstufa } = require("../controllers/coletaSensoresController");
 var database = require("../database/config")
 
 
@@ -53,13 +54,19 @@ function coletaKpiMinLuminosidade() {
     return database.executar(instrucaoSql);
 }
 
+function inserirNovaEstufa(){
+    var instrucaoSql=`
+    INSERT INTO Estufa VALUES`
+}
+
 
 module.exports = {
     coletaSensor,
     coletaKpiMaxEtileno,
     coletaKpiMinEtileno,
     coletaKpiMaxLuminosidade,
-    coletaKpiMinLuminosidade
+    coletaKpiMinLuminosidade,
+    inserirNovaEstufa
 };
 
 
