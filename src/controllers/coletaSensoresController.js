@@ -19,6 +19,34 @@ function coletaSensorController(req,res){
     );
 }
 
+function coletaGraficoEtileno(req,res){
+    coletaSensorModel.coletaGraficoEtileno()
+    .then (
+        function (resultado){
+            req.json(resultado)
+        }
+    ).catch (
+        function(erro){
+            console.log(erro), console.log("Houve um erro na coleta dos dados de Etileno")
+            res.status(500).json(erro.sqlMessage)
+        }
+    )
+}
+
+function coletaGraficoLuminosidade(req, res){
+    coletaSensorModel.coletaGraficoLuminosidade()
+    .then (
+        function(resultado){
+            req.json(resultado)
+        }
+    ).catch(
+        function (erro){
+            console.log(erro), console.log("Houve um erro na coleta dos dados de Luminosidade")
+            res.status(500).json(erro.sqlMessage)
+        }
+    )
+}
+
 function coletaKpiMaxEtilenoController(req,res){
 
     coletaSensorModel.coletaKpiMaxEtileno()
@@ -144,6 +172,8 @@ function atualizarEstufaController(req, res){
 
 module.exports = {
     atualizarEstufaController,
+    coletaGraficoEtileno,
+    coletaGraficoLuminosidade,
     inserirNovaEstufaController,
     coletaSensorController,
     coletaKpiMaxEtilenoController,

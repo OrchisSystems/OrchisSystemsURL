@@ -13,6 +13,18 @@ function coletaSensor() {
 }
 
 
+
+function coletaGraficoEtileno(fkEmpresa){
+    var instrucaoSql=`SELECT valorEtileno FROM MedidaSensor LIMIT 5 where  idEmpresa = '${fkEmpresa}'`
+
+    return database.executar(instrucaoSql)
+}
+
+function coletaGraficoLuminosidade(fkEmpresa){
+    var instrucaoSql=`SELECT valorLuminosidade FROM MedidaSensor LIMIT 5 where idEmpresa = '${fkEmpresa}'
+    `
+}
+
 function coletaKpiMaxEtileno() {
     var instrucaoSql = `
     select valorEtileno as Etileno,
@@ -69,6 +81,8 @@ function atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minL
 
 module.exports = {
     coletaSensor,
+    coletaGraficoEtileno,
+    coletaGraficoLuminosidade,
     coletaKpiMaxEtileno,
     coletaKpiMinEtileno,
     coletaKpiMaxLuminosidade,

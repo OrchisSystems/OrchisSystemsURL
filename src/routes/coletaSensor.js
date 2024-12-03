@@ -34,4 +34,12 @@ router.post("/atualizarEstufa", function(req,res){
     coletaSensorController.atualizarEstufaController(req,res)
 })
 
+router.post("/coletaGraficoEtileno", function(req, res){
+    coletaSensorController.coletaGraficoEtileno(req, res)
+})
+
+router.post("/coletaGraficoEtileno", function(req, res){
+    coletaSensorController.coletaGraficoEtileno(res, res)
+})
+
 module.exports = router;

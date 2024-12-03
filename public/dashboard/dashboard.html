@@ -27,7 +27,7 @@
                 Sua estufa apresentou um período de aumento de luminosidade.
                 Cuidado, isso pode prejudicar a sua produção!<img src="./img/image 13.png">
             </div>
-            <button id="botaoluminosidade" onclick="trocarTabela()">Luminosidade</button>
+            <button id="botaoluminosidade" onclick="trocarTabela(), coletaGraficoEtileno()">Luminosidade</button>
             <div class="kpiGrafico">
                 <div class="grupoKpi">
                     <div class="kpi">
@@ -67,7 +67,9 @@
                     </div>
                 </div>
                 <div class="grafico">
-                    <canvas id="luminosidadeLinha"></canvas>
+                    <canvas id="luminosidadeLinha">
+
+                    </canvas>
                 </div>
             </div>
         </div>
@@ -76,7 +78,7 @@
                 Sua estufa apresentou um período de baixa concentração de etileno.
                 Cuidado, isso pode prejudicar a sua produção! <img src="./img/image 13.png">
             </div>
-            <button id="botaoetileno" onclick="trocarTabela()">Concentração de Etileno</button>
+            <button id="botaoetileno" onclick="trocarTabela(), coletaGraficoLuminosidade()">Concentração de Etileno</button>
             <div class="kpiGrafico">
                 <div class="grupoKpi">
                     <div class="kpi">
@@ -137,6 +139,28 @@
                 etileno.style.display = "none"
             }
         }
+
+        function coletaGraficoEtileno(){
+            var grafico = document.getElementById("etilenoLinha")
+            var data = new FormData()
+
+            
+            fetch("/coletaSensor/coletaGraficoEtileno" , {
+                method: "POST",
+                headers:{
+                    "Content-Type" : "application/json"
+                } , 
+                body: json.stringify({
+                    valor1Server : valor1
+
+                })
+            })
+
+            
+
+        }
+
+        
     </script>
 
 
