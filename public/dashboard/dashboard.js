@@ -29,10 +29,10 @@ fetch("/coletaSensor/KpiEtilenoMax", {
 
         resposta.json().then(json => {
             console.log(json);
-            
+
             valorMaximoEtileno.innerHTML = json[0].Etileno
             DataValorMaximoEtileno.innerHTML = json[0].DataColeta
-            
+
 
         });
 
@@ -63,10 +63,10 @@ fetch("/coletaSensor/KpiEtilenoMin", {
 
         resposta.json().then(json => {
             console.log(json);
-            
+
             valorMinimoEtileno.innerHTML = json[0].Etileno
             DataValorMinimoEtileno.innerHTML = json[0].DataColeta
-            
+
 
         });
 
@@ -97,10 +97,10 @@ fetch("/coletaSensor/KpiLuminosidadeMax", {
 
         resposta.json().then(json => {
             console.log(json);
-            
+
             valorMaximoLuminosidade.innerHTML = json[0].Luminosidade
             DataValorMaximoLuminosidade.innerHTML = json[0].DataColeta
-            
+
 
         });
 
@@ -131,10 +131,10 @@ fetch("/coletaSensor/KpiLuminosidadeMin", {
 
         resposta.json().then(json => {
             console.log(json);
-            
+
             valorMinimoLuminosidade.innerHTML = json[0].Luminosidade
             DataValorMinimoLuminosidade.innerHTML = json[0].DataColeta
-            
+
 
         });
 
@@ -178,13 +178,12 @@ fetch("/coletaSensor/coletaSensor", {
             for (i = 0; i < json.length; i++) {
                 ValorLuminosidade.push(json[i].Luminosidade)
                 DataColeta.push(json[i].DataColeta)
-                ValorEtileno.push(json[i].Etileno)
+
             }
 
             const linhaLuminosidade = document.getElementById('luminosidadeLinha');
-            const linhaetileno = document.getElementById('etilenoLinha');
-       
-            
+
+
 
             const dataLuminosidade = {
                 labels: DataColeta,
@@ -201,18 +200,92 @@ fetch("/coletaSensor/coletaSensor", {
             const configLuminosidade = {
                 type: 'line',
                 data: dataLuminosidade,
-                options:{
-                    responsive: true, 
+                options: {
+                    responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true 
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                line1: {
+                                    type: 'line',
+                                    yMin: 35, // Posição da linha no eixo y
+                                    yMax: 35, // Posição da linha no eixo y
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Luminosidade',
+                                        enabled: true,
+                                        position: 'end'
+                                    }
+                                },
+                                line2: {
+                                    type: 'line',
+                                    yMin: 350, // Posição da linha no eixo y
+                                    yMax: 350, // Posição da linha no eixo y
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Luminosidade',
+                                        enabled: true,
+                                        position: 'end'
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+            };
+
+
+
+            new Chart(linhaLuminosidade, configLuminosidade);
+
+
+        });
+
+
+
+    } else {
+
+        console.log("Houve um erro ao armazenar sua pontuação!");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+            finalizarAguardar(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+
+fetch("/coletaSensor/coletaSensor", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(function (resposta) {
+    console.log("Peguei os dados do sensor")
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+
+            for (i = 0; i < json.length; i++) {
+                ValorEtileno.push(json[i].Etileno)
             }
-           
-         
-            
+
+            const linhaetileno = document.getElementById('etilenoLinha');
+
+
+
 
             const dataEtileno = {
                 labels: DataColeta,
@@ -229,23 +302,53 @@ fetch("/coletaSensor/coletaSensor", {
             const configEtileno = {
                 type: 'line',
                 data: dataEtileno,
-                options:{
-                    responsive: true, 
+                options: {
+                    responsive: true,
                     scales: {
                         y: {
-                            beginAtZero: true 
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                line3: {
+                                    type: 'line',
+                                    yMin: 35,
+                                    yMax: 35,
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Luminosidade Mínima',
+                                        enabled: true,
+                                        position: 'end'
+                                    }
+                                },
+                                line4: {
+                                    type: 'line',
+                                    yMin: 350, // Posição da linha no eixo y
+                                    yMax: 350, // Posição da linha no eixo y
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Luminosidade Máxima',
+                                        enabled: true,
+                                        position: 'end'
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-            }
-           
-            new Chart(linhaetileno, configEtileno);
-            new Chart(linhaLuminosidade, configLuminosidade);
+            };
 
-        
+            new Chart(linhaetileno, configEtileno);
+
+
+
         });
 
-        
+
 
     } else {
 
@@ -260,4 +363,3 @@ fetch("/coletaSensor/coletaSensor", {
 }).catch(function (erro) {
     console.log(erro);
 })
-

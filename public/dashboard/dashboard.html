@@ -20,109 +20,111 @@
             </div>
         </header>
         <h1>Dashboards</h1>
+        <div class="dashboard">
+            <div id="containerLuminosidade" >
+                <div class="alert-luminosidade" style="display: block;">
+                    Sua estufa apresentou um período de aumento de luminosidade.
+                    Cuidado, isso pode prejudicar a sua produção!<img src="./img/image 13.png">
+                </div>
+                <button id="botaoluminosidade" onclick="trocarTabela()">Luminosidade</button>
+                <div class="kpiGrafico">
+                    <div class="grupoKpi">
+                        <div class="kpi">
+                            Data do valor máximo captado
+                            <div class="kpiValor">
+                            <span id="DataValorMaximoLuminosidade">11:30 - 10/10</span>
+                                <img src="./img/icon-3.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Data do valor mínimo captado
+                            <div class="kpiValor">
+                            <span id="DataValorMinimoLuminosidade">11:00 - 10/10</span>
+                                <img src="./img/icon-3.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Valor máximo captado
+                            <div class="kpiValor">
+                                <span id="valorMaximoLuminosidade">856 </span>
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Valor mínimo captado
+                            <div class="kpiValor">
+                                <span id="valorMinimoLuminosidade">598</span>
+                                <img " src="./img/icon-2.png">
+                            </div>
+                        </div>
+                        <div class="ultimoKpi">
+                            Valores fora da faixa optima determinada
+                            <div class="kpiValor">
+                                <span id="alertasLuminosidade">2</span>
+                                <img src="./img/icon-1.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="luminosidadeLinha">
+    
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <div id="containerEtileno" style="display: none;">
+                <div class="alert-etileno">
+                    Sua estufa apresentou um período de baixa concentração de etileno.
+                    Cuidado, isso pode prejudicar a sua produção! <img src="./img/image 13.png">
+                </div>
+                <button id="botaoetileno" onclick="trocarTabela(), coletaGraficoLuminosidade()">Concentração de Etileno</button>
+                <div class="kpiGrafico">
+                    <div class="grupoKpi">
+                        <div class="kpi">
+                            
+                            Data do valor máximo captado
+                            <div class="kpiValor">
+                            <span id="DataValorMaximoEtileno">11:30 - 10/10</span>
+                                <img src="./img/icon-3.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Data do valor mínimo captado
+                            <div class="kpiValor">
+                            <span id="DataValorMinimoEtileno">12:00 - 10/10</span>
+                                <img src="./img/icon-3.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Valor máximo captado
+                            <div class="kpiValor">
+                                <span id="valorMaxEtileno"></span>
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                        <div class="kpi">
+                            Valor mínimo captado
+                            <div class="kpiValor">
+                                <span id="valorMinimoEtileno">300</span>
+                                <img src="./img/icon-2.png">
+                            </div>
+                        </div>
+                        <div class="ultimoKpi">
+                            Valores fora da faixa optima determinada
+                            <div class="kpiValor">
+                                <span id="alertasEtileno">1</span>
+                                <img src="./img/icon-1.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="etilenoLinha"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </center>
-    <div class="dashboard">
-        <div id="containerLuminosidade">
-            <div class="alert-luminosidade">
-                Sua estufa apresentou um período de aumento de luminosidade.
-                Cuidado, isso pode prejudicar a sua produção!<img src="./img/image 13.png">
-            </div>
-            <button id="botaoluminosidade" onclick="trocarTabela(), coletaGraficoEtileno()">Luminosidade</button>
-            <div class="kpiGrafico">
-                <div class="grupoKpi">
-                    <div class="kpi">
-                        Data do valor máximo captado
-                        <div class="kpiValor">
-                        <span id="DataValorMaximoLuminosidade">11:30 - 10/10</span>
-                            <img src="./img/icon-3.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Data do valor mínimo captado
-                        <div class="kpiValor">
-                        <span id="DataValorMinimoLuminosidade">11:00 - 10/10</span>
-                            <img src="./img/icon-3.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Valor máximo captado
-                        <div class="kpiValor">
-                            <span id="valorMaximoLuminosidade">856 </span>
-                            <img src="./img/icon-2.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Valor mínimo captado
-                        <div class="kpiValor">
-                            <span id="valorMinimoLuminosidade">598</span>
-                            <img " src="./img/icon-2.png">
-                        </div>
-                    </div>
-                    <div class="ultimoKpi">
-                        Valores fora da faixa optima determinada
-                        <div class="kpiValor">
-                            <span id="alertasLuminosidade">2</span>
-                            <img src="./img/icon-1.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="grafico">
-                    <canvas id="luminosidadeLinha">
-
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div id="containerEtileno" style="display: none;">
-            <div class="alert-etileno">
-                Sua estufa apresentou um período de baixa concentração de etileno.
-                Cuidado, isso pode prejudicar a sua produção! <img src="./img/image 13.png">
-            </div>
-            <button id="botaoetileno" onclick="trocarTabela(), coletaGraficoLuminosidade()">Concentração de Etileno</button>
-            <div class="kpiGrafico">
-                <div class="grupoKpi">
-                    <div class="kpi">
-                        Data do valor máximo captado
-                        <div class="kpiValor">
-                        <span id="DataValorMaximoEtileno">11:30 - 10/10</span>
-                            <img src="./img/icon-3.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Data do valor mínimo captado
-                        <div class="kpiValor">
-                        <span id="DataValorMinimoEtileno">12:00 - 10/10</span>
-                            <img src="./img/icon-3.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Valor máximo captado
-                        <div class="kpiValor">
-                            <span id="valorMaxEtileno"></span>
-                            <img src="./img/icon-2.png">
-                        </div>
-                    </div>
-                    <div class="kpi">
-                        Valor mínimo captado
-                        <div class="kpiValor">
-                            <span id="valorMinimoEtileno">300</span>
-                            <img src="./img/icon-2.png">
-                        </div>
-                    </div>
-                    <div class="ultimoKpi">
-                        Valores fora da faixa optima determinada
-                        <div class="kpiValor">
-                            <span id="alertasEtileno">1</span>
-                            <img src="./img/icon-1.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="grafico">
-                    <canvas id="etilenoLinha"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
 
@@ -133,32 +135,13 @@
 
             if (etileno.style.display == "none") {
                 luminosidade.style.display = "none";
-                etileno.style.display = ""
+                etileno.style.display = "block"
             } else {
-                luminosidade.style.display = "";
+                luminosidade.style.display = "block";
                 etileno.style.display = "none"
             }
         }
 
-        function coletaGraficoEtileno(){
-            var grafico = document.getElementById("etilenoLinha")
-            var data = new FormData()
-
-            
-            fetch("/coletaSensor/coletaGraficoEtileno" , {
-                method: "POST",
-                headers:{
-                    "Content-Type" : "application/json"
-                } , 
-                body: json.stringify({
-                    valor1Server : valor1
-
-                })
-            })
-
-            
-
-        }
 
         
     </script>

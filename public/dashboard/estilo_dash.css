@@ -165,12 +165,14 @@ h1 {
   padding: 25px;
   border-radius: 15px;
   width: 80%;
+  text-align: start;
 }
 
 .kpiValor{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 
 .ultimoKpi{
@@ -191,7 +193,7 @@ span{
 
 #containerLuminosidade,
 #containerEtileno {
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
 }
@@ -204,7 +206,3 @@ span{
 }
 
 /*---------- ESTILIZAÇÃO DO GRAFICO ----------*/
-
-.grafico {
- width: 100%;
-}
