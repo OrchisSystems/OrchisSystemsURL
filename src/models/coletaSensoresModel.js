@@ -55,6 +55,7 @@ function coletaKpiMaxLuminosidade() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
 function coletaKpiMinLuminosidade() {
     var instrucaoSql = `
     select valorLuminosidade as Luminosidade,
@@ -78,6 +79,53 @@ function atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minL
     return database.executar(instrucaoSql);
 }
 
+function valorMaximoLuminosidadeEstufa(fkEstufa) {
+    var instrucaoSql = `
+    select valorLuminosidade as Luminosidade,
+    from MedidaSensor where fkEstufa = ${fkEstufa} order by valorLuminosidade limit 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function valorMaximoEtilenoEstufa(fkEstufa) {
+    var instrucaoSql = `
+    select valorEtileno as Etileno,
+    from MedidaSensor where fkEstufa = ${fkEstufa} order by valorEtileno limit 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function pegarQuantidadeEstufas(fkEmpresa) {
+    var instrucaoSql = `
+    SELECT count(idEstufa)
+    FROM Estufa
+    WHERE fkEmpresa = ${fkEmpresa}
+    GROUP BY fkEmpresa;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+function pegarIdsEstufas(fkEmpresa) {
+    var instrucaoSql = `
+    SELECT idEstufa as idEstufa
+    FROM Estufa
+    WHERE fkEmpresa = '${fkEmpresa}'
+    GROUP BY idEstufa;`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function pegarMetricaEstufas(idEstufa) {
+    var instrucaoSql = `
+    SELECT maxEtileno, maxLuminosidade
+    FROM Estufa
+    WHERE idEstufa = ${idEstufa}`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     coletaSensor,
@@ -88,7 +136,12 @@ module.exports = {
     coletaKpiMaxLuminosidade,
     coletaKpiMinLuminosidade,
     inserirNovaEstufa,
-    atualizarEstufa
+    atualizarEstufa,
+    pegarMetricaEstufas,
+    pegarIdsEstufas,
+    pegarQuantidadeEstufas,
+    valorMaximoEtilenoEstufa,
+    valorMaximoLuminosidadeEstufa
 };
 
 

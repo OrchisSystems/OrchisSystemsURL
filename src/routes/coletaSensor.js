@@ -42,4 +42,25 @@ router.post("/coletaGraficoEtileno", function(req, res){
     coletaSensorController.coletaGraficoEtileno(res, res)
 })
 
+router.post("/pegarMaximoEtileno", function(req, res){
+    coletaSensorController.pegarMaximoEtilenoController(res, res)
+})
+
+router.post("/pegarMaximoLuminosidade", function(req, res){
+    coletaSensorController.pegarMaximoLuminosidadeController(res, res)
+})
+
+router.post("/pegarIdsEstufas", function(req, res){
+    coletaSensorController.pegarIdsEstufasController(res, res)
+})
+
+router.post("/pegarMetricaEstufas", function(req, res){
+    coletaSensorController.pegarMetricaEstufasController(res, res)
+})
+
+router.post("/pegarQuantidadeEstufas", function(req, res){
+    coletaSensorController.pegarQuantidadeEstufasController(res, res)
+})
+
+
 module.exports = router;

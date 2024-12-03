@@ -170,6 +170,102 @@ function atualizarEstufaController(req, res){
     )
 }
 
+function pegarMaximoEtilenoController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    coletaSensorModel.pegarMaximoEtileno(idEstufa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function pegarMaximoLuminosidadeController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    coletaSensorModel.pegarMaximoLuminosidade(idEstufa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function pegarIdsEstufasController(req, res){
+    var fkEmpresa = req.body.fkEmpresaServer;
+    coletaSensorModel.pegarIdsEstufas(fkEmpresa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function pegarMetricaEstufasController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    coletaSensorModel.pegarMetricaEstufas(idEstufa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function pegarQuantidadeEstufasController(req, res){
+    var fkEmpresa = req.body.fkEmpresaServer;
+    coletaSensorModel.pegarQuantidadeEstufas(fkEmpresa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
 module.exports = {
     atualizarEstufaController,
     coletaGraficoEtileno,
@@ -179,5 +275,10 @@ module.exports = {
     coletaKpiMaxEtilenoController,
     coletaKpiMinEtilenoController,
     coletaKpiMaxLuminosidadeController,
-    coletaKpiMinLuminosidadeController
+    coletaKpiMinLuminosidadeController,
+    pegarMaximoEtilenoController,
+    pegarMaximoLuminosidadeController,
+    pegarIdsEstufasController,
+    pegarMetricaEstufasController,
+    pegarQuantidadeEstufasController
 };

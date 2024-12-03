@@ -34,6 +34,11 @@ app.use("/coletaSensor", coletaSensorRouter);
 app.use("/KpiMax", coletaSensorRouter);
 app.use("/KpiMin", coletaSensorRouter);
 app.use("/inserirNovaEstufa", coletaSensorRouter);
+app.use("/pegarMaximoEtileno", coletaSensorRouter);
+app.use("/pegarMaximoLuminosidade", coletaSensorRouter);
+app.use("/pegarIdsEstufas", coletaSensorRouter);
+app.use("/pegarMetricaEstufas", coletaSensorRouter);
+app.use("/pegarQuantidadeEstufas", coletaSensorRouter);
 
 
 app.use((req, res, next) => {
