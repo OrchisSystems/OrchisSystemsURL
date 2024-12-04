@@ -8,15 +8,13 @@ var metricaLuminosidade = 0
 var qtdEstufas = 0
 var statusEstufa = ""
 var idDaEstufaClicada = ""
+var perfilCliente = ""
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
         adicionarEstufa()
 });
-
-
-
 
 
 async function adicionarEstufa() {
@@ -32,8 +30,20 @@ async function adicionarEstufa() {
         await pegarMaximoLuminosidade(listaIds[index]);
         await pegarMetricasEstufa(listaIds[index]);
 
-        var avisoRuimEtileno = metricaEtileno - ((metricaEtileno * 20) / 100)
-        var avisoRuimLuminosidade = metricaLuminosidade - ((metricaLuminosidade * 20) / 100)
+        var multiplicadorDePerfil = 0
+
+        if (perfildoCliente == "Conservador"){
+            multiplicadorDePerfil = 20
+        }
+        else if (perfildoCliente == "Moderado"){
+            multiplicadorDePerfil = 12
+        }
+        else if (perfildoCliente == "Agressivo"){
+            multiplicadorDePerfil = 5
+        }
+
+        var avisoRuimEtileno = metricaEtileno - ((metricaEtileno * multiplicadorDePerfil) / 100)
+        var avisoRuimLuminosidade = metricaLuminosidade - ((metricaLuminosidade * multiplicadorDePerfil) / 100)
 
         if ((valorMaxEtileno > metricaEtileno) ||
         (valorMaxLuminosidade > metricaLuminosidade)) {
@@ -220,6 +230,7 @@ function pegarMetricasEstufa(idEstufa) {
             // Preenche as métricas
             metricaEtileno = json[0].Etileno;
             metricaLuminosidade = json[0].Luminosidade;
+            perfildoCliente = json[0].perfilCliente;
 
             // Resolve a Promise com as métricas (caso tudo corra bem)
             resolve({ metricaEtileno, metricaLuminosidade });

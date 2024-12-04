@@ -104,10 +104,10 @@
                 </div>
                 <div class="input-medida">
                     <label for="perfil-cliente">Perfil do Cliente</label>
-                    <select id = "perfilCliente">
-                        <option value="conservador">Conservador</option>
-                        <option value="moderado">Moderado</option>
-                        <option value="agressivo">Agressivo</option>
+                    <select id = "input_perfilCliente">
+                        <option value="Conservador">Conservador</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Agressivo">Agressivo</option>
                     </select>
                 </div>
             </div>
@@ -152,6 +152,8 @@
             var maxLuminosidade = input_max_luminosidade.value
             var minLuminosidade = input_min_luminosidade.value
             var fkEmpresa = sessionStorage.ID_USUARIO
+            var perfilCliente = input_perfilCliente.value
+            console.log(perfilCliente)
             console.log(fkEmpresa)
 
             fetch("/coletaSensor/inserirNovaEstufa", {
@@ -165,6 +167,7 @@
                     minEtilenoServer: minEtileno,
                     maxLuminosidadeServer: maxLuminosidade,
                     minLuminosidadeServer: minLuminosidade,
+                    perfilClienteServer: perfilCliente,
                     fkEmpresaServer: fkEmpresa
                 })
             }).then(function (resposta) {
