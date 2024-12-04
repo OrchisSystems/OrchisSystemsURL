@@ -103,3 +103,12 @@ h2{
     color: #B81476;
     font-weight: bold;
 }
+header a{
+    width: 100px;
+}
+header div{
+    width: 100px;
+}
+header img{
+    width: 100px;
+}
