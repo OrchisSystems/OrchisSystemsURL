@@ -1,8 +1,8 @@
 var coletaSensorModel = require("../models/coletaSensoresModel")
 
 function coletaSensorController(req,res){
-
-    coletaSensorModel.coletaSensor()
+    var idEstufa = req.body.idEstufaClicadaServer
+    coletaSensorModel.coletaSensor(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -20,7 +20,8 @@ function coletaSensorController(req,res){
 }
 
 function coletaGraficoEtileno(req,res){
-    coletaSensorModel.coletaGraficoEtileno()
+    var idEstufa = req.body.idDaEstufaClicada
+    coletaSensorModel.coletaGraficoEtileno(idEstufa)
     .then (
         function (resultado){
             req.json(resultado)
@@ -34,7 +35,8 @@ function coletaGraficoEtileno(req,res){
 }
 
 function coletaGraficoLuminosidade(req, res){
-    coletaSensorModel.coletaGraficoLuminosidade()
+    var idEstufa = req.body.idDaEstufaClicada
+    coletaSensorModel.coletaGraficoLuminosidade(idEstufa)
     .then (
         function(resultado){
             req.json(resultado)

@@ -1,17 +1,18 @@
 
 var fkEmpresa = sessionStorage.ID_USUARIO
-var valorMaximoEtileno = 0
-var valorMaximoLuminosidade = 0
+var valorMaxEtileno = 0
+var valorMaxLuminosidade = 0
 var listaIds = []
 var metricaEtileno = 0
 var metricaLuminosidade = 0
 var qtdEstufas = 0
 var statusEstufa = ""
+var idDaEstufaClicada = ""
 
 
 async function adicionarEstufa() {
     await pegarIdsEstufas(fkEmpresa);
-    await pegarQuantidadeEstufas(fkEmpresa);
+    // await pegarQuantidadeEstufas(fkEmpresa);
     estufas.innerHTML = ``
     var contadorEstufa = 1
 
@@ -25,12 +26,12 @@ async function adicionarEstufa() {
         var avisoRuimEtileno = metricaEtileno - ((metricaEtileno * 20) / 100)
         var avisoRuimLuminosidade = metricaLuminosidade - ((metricaLuminosidade * 20) / 100)
 
-        if ((valorMaximoEtileno > metricaEtileno) ||
-        (valorMaximoLuminosidade > metricaLuminosidade)) {
+        if ((valorMaxEtileno > metricaEtileno) ||
+        (valorMaxLuminosidade > metricaLuminosidade)) {
             statusEstufa = "Muito Ruim"
         }
-        else if ((valorMaximoEtileno > avisoRuimEtileno) ||
-        (valorMaximoLuminosidade > avisoRuimLuminosidade)) {
+        else if ((valorMaxEtileno > avisoRuimEtileno) ||
+        (valorMaxLuminosidade > avisoRuimLuminosidade)) {
         statusEstufa = "Ruim"
         }
         else{
@@ -38,7 +39,7 @@ async function adicionarEstufa() {
         }
 
 
-        estufas.innerHTML += `<a href="../dashboard/dashboard.html">
+        estufas.innerHTML += `<a onclick="redirecionarEstufa(${listaIds[index]})">
                 <div id="${listaIds[index]}" class="cadaEstufa">
                     <h2>Estufa ${contadorEstufa}</h2>
                     <div class="conteudoEstufa">
@@ -76,7 +77,7 @@ async function pegarMaximoEtileno(idEstufa) {
             resposta.json().then(json => {
                 console.log(json);
 
-                valorMaximoEtileno = json[0].Etileno
+                valorMaxEtileno = json[0].Etileno
 
 
             });
@@ -114,7 +115,7 @@ async function pegarMaximoLuminosidade(idEstufa) {
             resposta.json().then(json => {
                 console.log(json);
 
-                valorMaximoLuminosidade = json[0].Luminosidade
+                valorMaxLuminosidade = json[0].Luminosidade
 
 
             });
@@ -229,6 +230,44 @@ async function pegarQuantidadeEstufas(fkEmpresa) {
             resposta.json().then(json => {
                 console.log(json);
                 qtdEstufas = json[0].quantidade
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao pegar as métricas");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+ async function redirecionarEstufa(id){
+    var idEstufaClicada = id
+    console.log(idEstufaClicada)
+    await fetch("/coletaSensor/coletaSensor", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idEstufaClicadaServer: idEstufaClicada
+        })
+    }).then(function (resposta) {
+        console.log("Redirecionei a estufa")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                window.location = "../dashboard/dashboard.html"
 
             });
 

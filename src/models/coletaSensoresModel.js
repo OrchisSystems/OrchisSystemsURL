@@ -1,12 +1,12 @@
 var database = require("../database/config")
 
 
-function coletaSensor() {
+function coletaSensor(idEstufa) {
     var instrucaoSql = `
         select valorEtileno as Etileno,
         time(dataColetaEtileno) as DataColeta,
         valorLuminosidade as Luminosidade
-        from MedidaSensor;
+        from MedidaSensor where fkEstufa = ${idEstufa} ORDER BY DataColeta LIMIT 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -14,15 +14,15 @@ function coletaSensor() {
 
 
 
-function coletaGraficoEtileno(fkEmpresa){
-    var instrucaoSql=`SELECT valorEtileno FROM MedidaSensor LIMIT 5 where  idEmpresa = '${fkEmpresa}'`
+function coletaGraficoEtileno(idEstufa){
+    var instrucaoSql=`SELECT valorEtileno FROM MedidaSensor where fkEstufa = '${idEstufa}' ORDER BY  LIMIT 5;`
 
     return database.executar(instrucaoSql)
 }
 
-function coletaGraficoLuminosidade(fkEmpresa){
-    var instrucaoSql=`SELECT valorLuminosidade FROM MedidaSensor LIMIT 5 where idEmpresa = '${fkEmpresa}'
-    `
+function coletaGraficoLuminosidade(idEstufa){
+    var instrucaoSql=`SELECT valorLuminosidade FROM MedidaSensor LIMIT 5 where fkEstufa = '${idEstufa}' LIMIT 5;`
+    return database.executar(instrucaoSql)
 }
 
 function coletaKpiMaxEtileno() {

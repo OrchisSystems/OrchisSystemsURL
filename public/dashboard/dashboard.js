@@ -197,6 +197,8 @@ fetch("/coletaSensor/coletaSensor", {
 
             }
 
+            
+
             const configLuminosidade = {
                 type: 'line',
                 data: dataLuminosidade,
