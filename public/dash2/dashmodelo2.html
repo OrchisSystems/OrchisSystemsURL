@@ -45,6 +45,8 @@
     .botoes {
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
         padding: 0.5rem;
         gap: 1rem;
         margin-bottom: 1rem;
@@ -68,20 +70,38 @@
         justify-content: center;
         align-items: center;
     }
+    select{
+        height: 5.5vh;
+        width: 30vh;
+        padding: 1.5px;
+        border: none;
+        border-radius: 15px;
+        margin-top: 2px;
+    }
 </style>
 
 <body>
     <header>
         <a onclick="abrirMenu()"><img src="./imagens/Menu.png" alt=""></a>
-        <img style="margin-left: 14%;" src="./imagens/logo.png" alt="">
+        <a href="./dash.html"><img style="margin-left: 14%;" src="./imagens/logo.png" alt=""></a>
         <img style="width: 20%;" src="./imagens/Usuario.png" alt="">
     </header>
     <div class="container">
         <h1>Gerenciar Estufas</h1>
         <div class="medidas">
-            <div class="input-medida">
-                <label for="estufa-estufa">Estufa</label>
-                <input type="text" class="input_medidas" id="input_id_estufa">
+            <div class="botoes">
+                <div class="input-medida">
+                    <label for="estufa-estufa">Estufa</label>
+                    <input type="text" class="input_medidas" id="input_id_estufa">
+                </div>
+                <div class="input-medida">
+                    <label for="perfil-cliente">Perfil do Cliente</label>
+                    <select id = "perfilCliente">
+                        <option value="conservador">Conservador</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="agressivo">Agressivo</option>
+                    </select>
+                </div>
             </div>
             <div class="variaveis">
                 <div class="separacao">

@@ -10,6 +10,15 @@ var statusEstufa = ""
 var idDaEstufaClicada = ""
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+        adicionarEstufa()
+});
+
+
+
+
+
 async function adicionarEstufa() {
     await pegarIdsEstufas(fkEmpresa);
     // await pegarQuantidadeEstufas(fkEmpresa);
@@ -136,43 +145,55 @@ async function pegarMaximoLuminosidade(idEstufa) {
 }
 
 async function pegarIdsEstufas(fkEmpresa) {
-    await fetch("/coletaSensor/pegarIdsEstufas", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            fkEmpresaServer: fkEmpresa
-        })
-    }).then(function (resposta) {
-        console.log("Peguei os dados dos Ids das estufas!")
+    return new Promise((resolve, reject) => {
+        fetch("/coletaSensor/pegarIdsEstufas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkEmpresaServer: fkEmpresa
+            })
+        }).then(function (resposta) {
+            console.log("Peguei os dados dos Ids das estufas!");
 
-        if (resposta.ok) {
-            console.log(resposta);
+            if (resposta.ok) {
+                console.log(resposta);
 
-            resposta.json().then(json => {
-                console.log(json);
+                // Processando a resposta JSON
+                resposta.json().then(json => {
+                    console.log(json);
 
-                for (i = 0; i < json.length; i++)
-                    listaIds.push([json[i].idEstufa])
+                    // Armazenando os dados
+                    for (let i = 0; i < json.length; i++) {
+                        listaIds.push([json[i].idEstufa]);
+                    }
 
+                    // Resolva a Promise com a lista de IDs
+                    resolve(listaIds); // Resolver a Promise com os dados
+                }).catch(err => {
+                    console.error("Erro ao parsear JSON:", err);
+                    reject(err); // Rejeita a Promise se houver erro no parsing
+                });
 
-            });
+            } else {
+                console.log("Houve um erro ao pegar os Ids das estufas!");
 
-        } else {
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    reject(new Error(texto)); // Rejeitar com a mensagem de erro
+                }).catch(err => {
+                    reject(err); // Rejeitar caso erro no texto
+                });
+            }
 
-            console.log("Houve um erro ao pegas os Ids das estufas!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                finalizarAguardar(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+        }).catch(function (erro) {
+            console.error("Erro na requisição:", erro);
+            reject(erro); // Rejeitar caso haja erro na requisição
+        });
+    });
 }
+
 
 function pegarMetricasEstufa(idEstufa) {
     return new Promise((resolve, reject) => {
