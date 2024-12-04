@@ -120,7 +120,7 @@ function pegarIdsEstufas(fkEmpresa) {
 
 function pegarMetricasEstufa(idEstufa) {
     var instrucaoSql = `
-    SELECT maxEtileno as Etileno, maxLuminosidade as Luminosidade, perfilCliente as perfilCliente
+    SELECT maxEtileno, maxLuminosidade, minEtileno, minLuminosidade, perfilCliente
     FROM Estufa
     WHERE idEstufa = '${idEstufa}';`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -3,8 +3,10 @@ var fkEmpresa = sessionStorage.ID_USUARIO
 var valorMaxEtileno = 0
 var valorMaxLuminosidade = 0
 var listaIds = []
-var metricaEtileno = 0
-var metricaLuminosidade = 0
+var metricaMaxEtileno = 0
+var metricaMaxLuminosidade = 0
+var metricaMinEtileno = 0
+var metricaMinLuminosidade = 0
 var qtdEstufas = 0
 var statusEstufa = ""
 var idDaEstufaClicada = ""
@@ -42,11 +44,11 @@ async function adicionarEstufa() {
             multiplicadorDePerfil = 5
         }
 
-        var avisoRuimEtileno = metricaEtileno - ((metricaEtileno * multiplicadorDePerfil) / 100)
-        var avisoRuimLuminosidade = metricaLuminosidade - ((metricaLuminosidade * multiplicadorDePerfil) / 100)
+        var avisoRuimEtileno = metricaMaxEtileno - ((metricaMaxEtileno * multiplicadorDePerfil) / 100)
+        var avisoRuimLuminosidade = metricaMaxLuminosidade - ((metricaMaxLuminosidade * multiplicadorDePerfil) / 100)
 
-        if ((valorMaxEtileno > metricaEtileno) ||
-        (valorMaxLuminosidade > metricaLuminosidade)) {
+        if ((valorMaxEtileno > metricaMaxEtileno) ||
+        (valorMaxLuminosidade > metricaMaxLuminosidade)) {
             statusEstufa = "Muito Ruim"
         }
         else if ((valorMaxEtileno > avisoRuimEtileno) ||
@@ -228,12 +230,18 @@ function pegarMetricasEstufa(idEstufa) {
         .then(json => {
             console.log(json);
             // Preenche as métricas
-            metricaEtileno = json[0].Etileno;
-            metricaLuminosidade = json[0].Luminosidade;
+            metricaMaxEtileno = json[0].maxEtileno;
+            metricaMaxLuminosidade = json[0].maxLuminosidade;
+            metricaMinEtileno = json[0].minEtileno;
+            metricaMinLuminosidade = json[0].minLuminosidade;
             perfildoCliente = json[0].perfilCliente;
+            sessionStorage.MAX_ETILENO = metricaMaxEtileno
+            sessionStorage.MAX_LUMINOSIDADE = metricaMaxLuminosidade
+            sessionStorage.MIN_ETILENO = metricaMinEtileno
+            sessionStorage.MIN_LUMINOSIDADE = metricaMinLuminosidade
 
             // Resolve a Promise com as métricas (caso tudo corra bem)
-            resolve({ metricaEtileno, metricaLuminosidade });
+            resolve({ metricaMaxEtileno, metricaMaxLuminosidade, });
         })
         .catch(erro => {
             // Se algo der errado (ex: falha na requisição), rejeita a Promise com o erro

@@ -38,7 +38,6 @@ fetch("/coletaSensor/KpiEtilenoMax", {
             valorMaximoEtileno.innerHTML = json[0].Etileno
             DataValorMaximoEtileno.innerHTML = json[0].DataColeta
 
-
         });
 
     } else {
@@ -222,24 +221,24 @@ fetch("/coletaSensor/coletaSensor", {
                             annotations: {
                                 line1: {
                                     type: 'line',
-                                    yMin: 35, // Posição da linha no eixo y
-                                    yMax: 35, // Posição da linha no eixo y
+                                    yMin: sessionStorage.MIN_LUMINOSIDADE, // Posição da linha no eixo y
+                                    yMax: sessionStorage.MIN_LUMINOSIDADE, // Posição da linha no eixo y
                                     borderColor: 'red',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Luminosidade',
+                                        content: 'Mínimo Luminosidade',
                                         enabled: true,
                                         position: 'end'
                                     }
                                 },
                                 line2: {
                                     type: 'line',
-                                    yMin: 350, // Posição da linha no eixo y
-                                    yMax: 350, // Posição da linha no eixo y
+                                    yMin: sessionStorage.MAX_LUMINOSIDADE, // Posição da linha no eixo y
+                                    yMax: sessionStorage.MAX_LUMINOSIDADE, // Posição da linha no eixo y
                                     borderColor: 'red',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Luminosidade',
+                                        content: 'Máximo Luminosidade',
                                         enabled: true,
                                         position: 'end'
                                     }
@@ -327,24 +326,24 @@ fetch("/coletaSensor/coletaSensor", {
                             annotations: {
                                 line3: {
                                     type: 'line',
-                                    yMin: 35,
-                                    yMax: 35,
+                                    yMin: sessionStorage.MIN_ETILENO,
+                                    yMax: sessionStorage.MIN_ETILENO,
                                     borderColor: 'red',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Luminosidade Mínima',
+                                        content: 'Etileno Mínimo',
                                         enabled: true,
                                         position: 'end'
                                     }
                                 },
                                 line4: {
                                     type: 'line',
-                                    yMin: 350, // Posição da linha no eixo y
-                                    yMax: 350, // Posição da linha no eixo y
+                                    yMin: sessionStorage.MAX_ETILENO, // Posição da linha no eixo y
+                                    yMax: sessionStorage.MAX_ETILENO, // Posição da linha no eixo y
                                     borderColor: 'red',
                                     borderWidth: 2,
                                     label: {
-                                        content: 'Luminosidade Máxima',
+                                        content: 'Etileno Máxima',
                                         enabled: true,
                                         position: 'end'
                                     }
