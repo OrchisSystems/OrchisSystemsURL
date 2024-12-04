@@ -14,8 +14,8 @@ var perfilCliente = ""
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-        adicionarEstufa()
+document.addEventListener('DOMContentLoaded', function () {
+    adicionarEstufa()
 });
 
 
@@ -23,7 +23,7 @@ async function adicionarEstufa() {
     await pegarIdsEstufas(fkEmpresa);
     // await pegarQuantidadeEstufas(fkEmpresa);
     estufas.innerHTML = ``
-    var contadorEstufa = 1
+    var contadorEstufa = 0
 
 
 
@@ -34,13 +34,13 @@ async function adicionarEstufa() {
 
         var multiplicadorDePerfil = 0
 
-        if (perfildoCliente == "Conservador"){
+        if (perfildoCliente == "Conservador") {
             multiplicadorDePerfil = 20
         }
-        else if (perfildoCliente == "Moderado"){
+        else if (perfildoCliente == "Moderado") {
             multiplicadorDePerfil = 12
         }
-        else if (perfildoCliente == "Agressivo"){
+        else if (perfildoCliente == "Agressivo") {
             multiplicadorDePerfil = 5
         }
 
@@ -48,28 +48,33 @@ async function adicionarEstufa() {
         var avisoRuimLuminosidade = metricaMaxLuminosidade - ((metricaMaxLuminosidade * multiplicadorDePerfil) / 100)
 
         if ((valorMaxEtileno > metricaMaxEtileno) ||
-        (valorMaxLuminosidade > metricaMaxLuminosidade)) {
+            (valorMaxLuminosidade > metricaMaxLuminosidade)) {
             statusEstufa = "Muito Ruim"
         }
         else if ((valorMaxEtileno > avisoRuimEtileno) ||
-        (valorMaxLuminosidade > avisoRuimLuminosidade)) {
-        statusEstufa = "Ruim"
+            (valorMaxLuminosidade > avisoRuimLuminosidade)) {
+            statusEstufa = "Ruim"
         }
-        else{
+        else {
             statusEstufa = "Muito Bom"
         }
 
-
-        estufas.innerHTML += `<a onclick="redirecionarEstufa(${listaIds[index]})">
+        if (contadorEstufa % 3 == 0 ) {
+            estufas.innerHTML += `<div style="width: 100%;"></div>`;
+        }
+        
+        estufas.innerHTML += `
+            <a onclick="redirecionarEstufa(${listaIds[index]})">
                 <div id="${listaIds[index]}" class="cadaEstufa">
-                    <h2>Estufa ${contadorEstufa}</h2>
+                    <h2>Estufa ${contadorEstufa + 1}</h2>
                     <div class="conteudoEstufa">
                         Status: ${statusEstufa} <br>
                         <img src="./imagens/estufa${statusEstufa}.png">
                     </div>
                 </div>
-            </a>`
-        contadorEstufa++
+            </a>`;
+        
+        contadorEstufa++;
     }
 }
 
@@ -216,38 +221,38 @@ function pegarMetricasEstufa(idEstufa) {
             },
             body: JSON.stringify({ idEstufaServer: idEstufa })
         })
-        .then(resposta => {
-            console.log("Peguei as métricas da estufa");
+            .then(resposta => {
+                console.log("Peguei as métricas da estufa");
 
-            if (resposta.ok) {
-                return resposta.json(); // Retorna o JSON para ser processado
-            } else {
-                return resposta.text().then(texto => {
-                    reject(new Error(`Erro ao pegar métricas: ${texto}`)); // Rejeita a Promise com o erro
-                });
-            }
-        })
-        .then(json => {
-            console.log(json);
-            // Preenche as métricas
-            metricaMaxEtileno = json[0].maxEtileno;
-            metricaMaxLuminosidade = json[0].maxLuminosidade;
-            metricaMinEtileno = json[0].minEtileno;
-            metricaMinLuminosidade = json[0].minLuminosidade;
-            perfildoCliente = json[0].perfilCliente;
-            sessionStorage.MAX_ETILENO = metricaMaxEtileno
-            sessionStorage.MAX_LUMINOSIDADE = metricaMaxLuminosidade
-            sessionStorage.MIN_ETILENO = metricaMinEtileno
-            sessionStorage.MIN_LUMINOSIDADE = metricaMinLuminosidade
+                if (resposta.ok) {
+                    return resposta.json(); // Retorna o JSON para ser processado
+                } else {
+                    return resposta.text().then(texto => {
+                        reject(new Error(`Erro ao pegar métricas: ${texto}`)); // Rejeita a Promise com o erro
+                    });
+                }
+            })
+            .then(json => {
+                console.log(json);
+                // Preenche as métricas
+                metricaMaxEtileno = json[0].maxEtileno;
+                metricaMaxLuminosidade = json[0].maxLuminosidade;
+                metricaMinEtileno = json[0].minEtileno;
+                metricaMinLuminosidade = json[0].minLuminosidade;
+                perfildoCliente = json[0].perfilCliente;
+                sessionStorage.MAX_ETILENO = metricaMaxEtileno
+                sessionStorage.MAX_LUMINOSIDADE = metricaMaxLuminosidade
+                sessionStorage.MIN_ETILENO = metricaMinEtileno
+                sessionStorage.MIN_LUMINOSIDADE = metricaMinLuminosidade
 
-            // Resolve a Promise com as métricas (caso tudo corra bem)
-            resolve({ metricaMaxEtileno, metricaMaxLuminosidade, });
-        })
-        .catch(erro => {
-            // Se algo der errado (ex: falha na requisição), rejeita a Promise com o erro
-            console.error("Erro na requisição:", erro);
-            reject(erro);
-        });
+                // Resolve a Promise com as métricas (caso tudo corra bem)
+                resolve({ metricaMaxEtileno, metricaMaxLuminosidade, });
+            })
+            .catch(erro => {
+                // Se algo der errado (ex: falha na requisição), rejeita a Promise com o erro
+                console.error("Erro na requisição:", erro);
+                reject(erro);
+            });
     });
 }
 
@@ -288,11 +293,11 @@ async function pegarQuantidadeEstufas(fkEmpresa) {
     })
 }
 
-function redirecionarEstufa(id){
+function redirecionarEstufa(id) {
     window.location = '../dashboard/dashboard.html'
-   sessionStorage.FK_ESTUFA = id
+    sessionStorage.FK_ESTUFA = id
 }
 
-function sairSessao(){
+function sairSessao() {
     sessionStorage.clear();
 }
