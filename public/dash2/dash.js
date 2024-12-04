@@ -292,3 +292,7 @@ function redirecionarEstufa(id){
     window.location = '../dashboard/dashboard.html'
    sessionStorage.FK_ESTUFA = id
 }
+
+function sairSessao(){
+    sessionStorage.clear();
+}
