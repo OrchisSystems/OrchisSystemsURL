@@ -9,34 +9,12 @@ var qtdEstufas = 0
 var statusEstufa = ""
 
 
-
-
-
-function verificarStatus() {
-
-    var avisoRuimEtileno = ((metricaEtileno * 20) / 100) - metricaEtileno
-    var avisoRuimLuminosidade = ((metricaLuminosidade * 20) / 100) - metricaLuminosidade
-
-    if ((valorMaximoEtileno > metricaEtileno) ||
-        (valorMaximoLuminosidade > metricaLuminosidade)) {
-        statusEstufa = "Muito Ruim"
-    }
-    else if ((valorMaximoEtileno > avisoRuimEtileno) ||
-        (valorMaximoLuminosidade > avisoRuimLuminosidade)) {
-        statusEstufa = "Ruim"
-    }
-
-    else {
-        statusEstufa = "Muito Bom"
-    }
-}
-
-
 async function adicionarEstufa() {
-    pegarIdsEstufas(fkEmpresa);
+    await pegarIdsEstufas(fkEmpresa);
     await pegarQuantidadeEstufas(fkEmpresa);
     estufas.innerHTML = ``
     var contadorEstufa = 1
+
 
 
     for (index = 0; index < listaIds.length; index++) {
@@ -44,7 +22,21 @@ async function adicionarEstufa() {
         await pegarMaximoLuminosidade(listaIds[index]);
         await pegarMetricasEstufa(listaIds[index]);
 
-        verificarStatus()
+        var avisoRuimEtileno = metricaEtileno - ((metricaEtileno * 20) / 100)
+        var avisoRuimLuminosidade = metricaLuminosidade - ((metricaLuminosidade * 20) / 100)
+
+        if ((valorMaximoEtileno > metricaEtileno) ||
+        (valorMaximoLuminosidade > metricaLuminosidade)) {
+            statusEstufa = "Muito Ruim"
+        }
+        else if ((valorMaximoEtileno > avisoRuimEtileno) ||
+        (valorMaximoLuminosidade > avisoRuimLuminosidade)) {
+        statusEstufa = "Ruim"
+        }
+        else{
+            statusEstufa = "Muito Bom"
+        }
+
 
         estufas.innerHTML += `<a href="../dashboard/dashboard.html">
                 <div id="${listaIds[index]}" class="cadaEstufa">
@@ -181,42 +173,43 @@ async function pegarIdsEstufas(fkEmpresa) {
     })
 }
 
-async function pegarMetricasEstufa(idEstufa) {
-    await fetch("/coletaSensor/pegarMetricasEstufa", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idEstufaServer: idEstufa
+function pegarMetricasEstufa(idEstufa) {
+    return new Promise((resolve, reject) => {
+        fetch("/coletaSensor/pegarMetricasEstufa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ idEstufaServer: idEstufa })
         })
-    }).then(function (resposta) {
-        console.log("Peguei as métricas da estufa")
+        .then(resposta => {
+            console.log("Peguei as métricas da estufa");
 
-        if (resposta.ok) {
-            console.log(resposta);
+            if (resposta.ok) {
+                return resposta.json(); // Retorna o JSON para ser processado
+            } else {
+                return resposta.text().then(texto => {
+                    reject(new Error(`Erro ao pegar métricas: ${texto}`)); // Rejeita a Promise com o erro
+                });
+            }
+        })
+        .then(json => {
+            console.log(json);
+            // Preenche as métricas
+            metricaEtileno = json[0].Etileno;
+            metricaLuminosidade = json[0].Luminosidade;
 
-            resposta.json().then(json => {
-                console.log(json);
-                metricaEtileno = json[0].Etileno
-                metricaLuminosidade = json[0].Luminosidade
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao pegar as métricas");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                finalizarAguardar(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+            // Resolve a Promise com as métricas (caso tudo corra bem)
+            resolve({ metricaEtileno, metricaLuminosidade });
+        })
+        .catch(erro => {
+            // Se algo der errado (ex: falha na requisição), rejeita a Promise com o erro
+            console.error("Erro na requisição:", erro);
+            reject(erro);
+        });
+    });
 }
+
 
 async function pegarQuantidadeEstufas(fkEmpresa) {
     await fetch("/coletaSensor/pegarQuantidadeEstufas", {
