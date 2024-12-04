@@ -64,9 +64,9 @@ h1{
 }
 
 h2{
-    background-image: linear-gradient(#B81476, #672485); /*Adicionando o gradiente*/
-    background-clip: text; /*apagar tudo que não estiver atras do texto*/
-    color: #ffffff; /*deixa a cor transparente*/
+    background: linear-gradient(#B81476, #672485); 
+    background-clip: text; 
+    color: #ffffff; 
 }
 
 #menuLateral{
