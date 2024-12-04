@@ -3,26 +3,25 @@ var database = require("../database/config")
 
 function coletaSensor(idEstufa) {
     var instrucaoSql = `
-        select valorEtileno as Etileno,
-        time(dataColetaEtileno) as DataColeta,
-        valorLuminosidade as Luminosidade
-        from MedidaSensor where fkEstufa = ${idEstufa} ORDER BY DataColeta LIMIT 5;
+        SELECT *
+        FROM (
+            SELECT 
+                valorEtileno as Etileno,
+                time(dataColetaEtileno) as DataColeta,
+                valorLuminosidade as Luminosidade
+            FROM 
+                MedidaSensor 
+            WHERE 
+                fkEstufa = ${idEstufa}
+            ORDER BY 
+                idMedidaSensor DESC 
+            LIMIT 5
+        ) as subquery
+        ORDER BY 
+            DataColeta ASC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
-
-
-
-function coletaGraficoEtileno(idEstufa){
-    var instrucaoSql=`SELECT valorEtileno FROM MedidaSensor where fkEstufa = '${idEstufa}' ORDER BY  LIMIT 5;`
-
-    return database.executar(instrucaoSql)
-}
-
-function coletaGraficoLuminosidade(idEstufa){
-    var instrucaoSql=`SELECT valorLuminosidade FROM MedidaSensor LIMIT 5 where fkEstufa = '${idEstufa}' LIMIT 5;`
-    return database.executar(instrucaoSql)
 }
 
 function coletaKpiMaxEtileno(idEstufa) {
@@ -79,6 +78,7 @@ function atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minL
     return database.executar(instrucaoSql);
 }
 
+
 function valorMaximoLuminosidadeEstufa(fkEstufa) {
     var instrucaoSql = `
     select valorLuminosidade as Luminosidade
@@ -129,8 +129,6 @@ function pegarMetricasEstufa(idEstufa) {
 
 module.exports = {
     coletaSensor,
-    coletaGraficoEtileno,
-    coletaGraficoLuminosidade,
     coletaKpiMaxEtileno,
     coletaKpiMinEtileno,
     coletaKpiMaxLuminosidade,
