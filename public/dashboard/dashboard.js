@@ -13,7 +13,9 @@ var valorMaximoEtileno = document.getElementById("valorMaxEtileno");
 var valorMinimoEtileno = document.getElementById('valorMinimoEtileno');
 var avisosEtileno = document.getElementById('avisosEtileno');
 
-
+setInterval(function() {
+    location.reload(); // Atualiza a página
+}, 5000);
 
 
 fetch("/coletaSensor/KpiEtilenoMax", {
