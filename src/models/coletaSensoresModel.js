@@ -81,7 +81,7 @@ function atualizarEstufa(idEstufa, maxEtileno, minEtileno, maxLuminosidade, minL
 
 function valorMaximoLuminosidadeEstufa(fkEstufa) {
     var instrucaoSql = `
-    select valorLuminosidade as Luminosidade,
+    select valorLuminosidade as Luminosidade
     from MedidaSensor where fkEstufa = ${fkEstufa} order by valorLuminosidade limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -90,7 +90,7 @@ function valorMaximoLuminosidadeEstufa(fkEstufa) {
 
 function valorMaximoEtilenoEstufa(fkEstufa) {
     var instrucaoSql = `
-    select valorEtileno as Etileno,
+    select valorEtileno as Etileno
     from MedidaSensor where fkEstufa = ${fkEstufa} order by valorEtileno limit 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -118,11 +118,11 @@ function pegarIdsEstufas(fkEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function pegarMetricaEstufas(idEstufa) {
+function pegarMetricasEstufa(idEstufa) {
     var instrucaoSql = `
-    SELECT maxEtileno, maxLuminosidade
+    SELECT maxEtileno as Etileno, maxLuminosidade as Luminosidade
     FROM Estufa
-    WHERE idEstufa = ${idEstufa}`;
+    WHERE idEstufa = '${idEstufa}';`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -137,7 +137,7 @@ module.exports = {
     coletaKpiMinLuminosidade,
     inserirNovaEstufa,
     atualizarEstufa,
-    pegarMetricaEstufas,
+    pegarMetricasEstufa,
     pegarIdsEstufas,
     pegarQuantidadeEstufas,
     valorMaximoEtilenoEstufa,

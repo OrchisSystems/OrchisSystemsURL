@@ -172,7 +172,7 @@ function atualizarEstufaController(req, res){
 
 function pegarMaximoEtilenoController(req, res){
     var idEstufa = req.body.idEstufaServer;
-    coletaSensorModel.pegarMaximoEtileno(idEstufa)
+    coletaSensorModel.valorMaximoEtilenoEstufa(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -191,7 +191,7 @@ function pegarMaximoEtilenoController(req, res){
 
 function pegarMaximoLuminosidadeController(req, res){
     var idEstufa = req.body.idEstufaServer;
-    coletaSensorModel.pegarMaximoLuminosidade(idEstufa)
+    coletaSensorModel.valorMaximoLuminosidadeEstufa(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -227,9 +227,9 @@ function pegarIdsEstufasController(req, res){
     );
 }
 
-function pegarMetricaEstufasController(req, res){
+function pegarMetricasEstufaController(req, res){
     var idEstufa = req.body.idEstufaServer;
-    coletaSensorModel.pegarMetricaEstufas(idEstufa)
+    coletaSensorModel.pegarMetricasEstufa(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -279,6 +279,6 @@ module.exports = {
     pegarMaximoEtilenoController,
     pegarMaximoLuminosidadeController,
     pegarIdsEstufasController,
-    pegarMetricaEstufasController,
+    pegarMetricasEstufaController,
     pegarQuantidadeEstufasController
 };

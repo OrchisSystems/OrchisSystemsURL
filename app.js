@@ -37,7 +37,7 @@ app.use("/inserirNovaEstufa", coletaSensorRouter);
 app.use("/pegarMaximoEtileno", coletaSensorRouter);
 app.use("/pegarMaximoLuminosidade", coletaSensorRouter);
 app.use("/pegarIdsEstufas", coletaSensorRouter);
-app.use("/pegarMetricaEstufas", coletaSensorRouter);
+app.use("/pegarMetricasEstufa", coletaSensorRouter);
 app.use("/pegarQuantidadeEstufas", coletaSensorRouter);
 
 

@@ -39,27 +39,27 @@ router.post("/coletaGraficoEtileno", function(req, res){
 })
 
 router.post("/coletaGraficoEtileno", function(req, res){
-    coletaSensorController.coletaGraficoEtileno(res, res)
+    coletaSensorController.coletaGraficoEtileno(req, res)
 })
 
 router.post("/pegarMaximoEtileno", function(req, res){
-    coletaSensorController.pegarMaximoEtilenoController(res, res)
+    coletaSensorController.pegarMaximoEtilenoController(req, res)
 })
 
 router.post("/pegarMaximoLuminosidade", function(req, res){
-    coletaSensorController.pegarMaximoLuminosidadeController(res, res)
+    coletaSensorController.pegarMaximoLuminosidadeController(req, res)
 })
 
 router.post("/pegarIdsEstufas", function(req, res){
-    coletaSensorController.pegarIdsEstufasController(res, res)
+    coletaSensorController.pegarIdsEstufasController(req, res)
 })
 
-router.post("/pegarMetricaEstufas", function(req, res){
-    coletaSensorController.pegarMetricaEstufasController(res, res)
+router.post("/pegarMetricasEstufa", function(req, res){
+    coletaSensorController.pegarMetricasEstufaController(req, res)
 })
 
 router.post("/pegarQuantidadeEstufas", function(req, res){
-    coletaSensorController.pegarQuantidadeEstufasController(res, res)
+    coletaSensorController.pegarQuantidadeEstufasController(req, res)
 })
 
 
