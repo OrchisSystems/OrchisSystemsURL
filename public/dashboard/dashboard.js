@@ -22,7 +22,10 @@ fetch("/coletaSensor/KpiEtilenoMax", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 
@@ -56,7 +59,10 @@ fetch("/coletaSensor/KpiEtilenoMin", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 
@@ -90,7 +96,10 @@ fetch("/coletaSensor/KpiLuminosidadeMax", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 
@@ -124,7 +133,10 @@ fetch("/coletaSensor/KpiLuminosidadeMin", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 
@@ -154,20 +166,14 @@ fetch("/coletaSensor/KpiLuminosidadeMin", {
     console.log(erro);
 })
 
-
-
-
-
-
-
-
-
-
 fetch("/coletaSensor/coletaSensor", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 
@@ -272,7 +278,10 @@ fetch("/coletaSensor/coletaSensor", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+        idEstufaClicadaServer: sessionStorage.FK_ESTUFA
+    }),
 }).then(function (resposta) {
     console.log("Peguei os dados do sensor")
 

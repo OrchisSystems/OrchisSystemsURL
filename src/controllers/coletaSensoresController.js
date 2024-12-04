@@ -50,8 +50,8 @@ function coletaGraficoLuminosidade(req, res){
 }
 
 function coletaKpiMaxEtilenoController(req,res){
-
-    coletaSensorModel.coletaKpiMaxEtileno()
+    var idEstufa = req.body.idEstufaClicadaServer
+    coletaSensorModel.coletaKpiMaxEtileno(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -69,8 +69,8 @@ function coletaKpiMaxEtilenoController(req,res){
 }
 
 function coletaKpiMinEtilenoController(req,res){
-
-    coletaSensorModel.coletaKpiMinEtileno()
+    var idEstufa = req.body.idEstufaClicadaServer
+    coletaSensorModel.coletaKpiMinEtileno(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -88,8 +88,8 @@ function coletaKpiMinEtilenoController(req,res){
 }
 
 function coletaKpiMaxLuminosidadeController(req,res){
-
-    coletaSensorModel.coletaKpiMaxLuminosidade()
+    var idEstufa = req.body.idEstufaClicadaServer
+    coletaSensorModel.coletaKpiMaxLuminosidade(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -107,8 +107,8 @@ function coletaKpiMaxLuminosidadeController(req,res){
 }
 
 function coletaKpiMinLuminosidadeController(req,res){
-
-    coletaSensorModel.coletaKpiMinLuminosidade()
+    var idEstufa = req.body.idEstufaClicadaServer
+    coletaSensorModel.coletaKpiMinLuminosidade(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);

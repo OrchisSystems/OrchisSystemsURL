@@ -269,40 +269,7 @@ async function pegarQuantidadeEstufas(fkEmpresa) {
     })
 }
 
- async function redirecionarEstufa(id){
-    var idEstufaClicada = id
-    console.log(idEstufaClicada)
-    await fetch("/coletaSensor/coletaSensor", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idEstufaClicadaServer: idEstufaClicada
-        })
-    }).then(function (resposta) {
-        console.log("Redirecionei a estufa")
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                window.location = "../dashboard/dashboard.html"
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao pegar as métricas");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-                finalizarAguardar(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+function redirecionarEstufa(id){
+    window.location = '../dashboard/dashboard.html'
+   sessionStorage.FK_ESTUFA = id
 }
