@@ -67,7 +67,7 @@ function coletaKpiMinLuminosidade(idEstufa) {
 
 function inserirNovaEstufa(maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa, perfilCliente){
     var instrucaoSql=`
-    insert into Estufa (maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa) values  ('${maxEtileno}', '${minEtileno}', '${maxLuminosidade}', '${minLuminosidade}', '${fkEmpresa}', '${perfilCliente}')`
+    insert into Estufa (maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa, perfilCliente) values  ('${maxEtileno}', '${minEtileno}', '${maxLuminosidade}', '${minLuminosidade}', '${fkEmpresa}', '${perfilCliente}')`
 
     return database.executar(instrucaoSql);
 }
