@@ -2,6 +2,8 @@
 var fkEmpresa = sessionStorage.ID_USUARIO
 var valorMaxEtileno = 0
 var valorMaxLuminosidade = 0
+var valorMinEtileno = 0
+var valorMinLuminosidade = 0
 var listaIds = []
 var metricaMaxEtileno = 0
 var metricaMaxLuminosidade = 0
@@ -44,15 +46,22 @@ async function adicionarEstufa() {
             multiplicadorDePerfil = 5
         }
 
-        var avisoRuimEtileno = metricaMaxEtileno - ((metricaMaxEtileno * multiplicadorDePerfil) / 100)
-        var avisoRuimLuminosidade = metricaMaxLuminosidade - ((metricaMaxLuminosidade * multiplicadorDePerfil) / 100)
+        var avisoRuimMaxEtileno = metricaMaxEtileno - ((metricaMaxEtileno * multiplicadorDePerfil) / 100)
+        var avisoRuimMinEtileno = metricaMinEtileno + ((metricaMinEtileno * multiplicadorDePerfil) / 100)
+
+        var avisoRuimMaxLuminosidade = metricaMaxLuminosidade - ((metricaMaxLuminosidade * multiplicadorDePerfil) / 100)
+        var avisoRuimMinLuminosidade = metricaMinLuminosidade + ((metricaMinLuminosidade * multiplicadorDePerfil) / 100)
 
         if ((valorMaxEtileno > metricaMaxEtileno) ||
-            (valorMaxLuminosidade > metricaMaxLuminosidade)) {
+            (valorMaxLuminosidade > metricaMaxLuminosidade) || 
+            (valorMinEtileno < metricaMinEtileno) ||
+            (valorMinLuminosidade < metricaMinLuminosidade)) {
             statusEstufa = "Muito Ruim"
         }
-        else if ((valorMaxEtileno > avisoRuimEtileno) ||
-            (valorMaxLuminosidade > avisoRuimLuminosidade)) {
+        else if ((valorMaxEtileno > avisoRuimMaxEtileno) ||
+            (valorMaxLuminosidade > avisoRuimMaxLuminosidade) ||
+            (valorMinEtileno < avisoRuimMinEtileno) ||
+            (valorMinLuminosidade < avisoRuimMinLuminosidade)) {
             statusEstufa = "Ruim"
         }
         else {
@@ -123,6 +132,44 @@ async function pegarMaximoEtileno(idEstufa) {
     })
 }
 
+async function pegarMinimoEtileno(idEstufa) {
+    await fetch("/coletaSensor/pegarMinimoEtileno", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idEstufaServer: idEstufa
+        })
+    }).then(function (resposta) {
+        console.log("Peguei o menor valor de etileno")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+
+                valorMinEtileno = json[0].Etileno
+
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao pegar o maximo do etileno!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
 async function pegarMaximoLuminosidade(idEstufa) {
     await fetch("/coletaSensor/pegarMaximoLuminosidade", {
         method: "POST",
@@ -160,6 +207,45 @@ async function pegarMaximoLuminosidade(idEstufa) {
         console.log(erro);
     })
 }
+
+async function pegarMinimoLuminosidade(idEstufa) {
+    await fetch("/coletaSensor/pegarMinimoLuminosidade", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idEstufaServer: idEstufa
+        })
+    }).then(function (resposta) {
+        console.log("Peguei o dado minimo de luminosidade")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+
+                valorMinLuminosidade = json[0].Luminosidade
+
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao pegar o maximo da luminosidade");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
 
 async function pegarIdsEstufas(fkEmpresa) {
     return new Promise((resolve, reject) => {

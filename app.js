@@ -1,5 +1,5 @@
 // var ambiente_processo = 'producao';
-var ambiente_processo = 'desenvolvimento';
+var ambiente_processo = 'producao';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 // Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
@@ -36,6 +36,8 @@ app.use("/KpiMin", coletaSensorRouter);
 app.use("/inserirNovaEstufa", coletaSensorRouter);
 app.use("/pegarMaximoEtileno", coletaSensorRouter);
 app.use("/pegarMaximoLuminosidade", coletaSensorRouter);
+app.use("/pegarMinimoEtileno", coletaSensorRouter);
+app.use("/pegarMinimoLuminosidade", coletaSensorRouter);
 app.use("/pegarIdsEstufas", coletaSensorRouter);
 app.use("/pegarMetricasEstufa", coletaSensorRouter);
 app.use("/pegarQuantidadeEstufas", coletaSensorRouter);

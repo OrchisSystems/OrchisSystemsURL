@@ -192,9 +192,48 @@ function pegarMaximoEtilenoController(req, res){
     );
 }
 
+
+function pegarMinimoEtilenoController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    coletaSensorModel.valorMinimoEtilenoEstufa(idEstufa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 function pegarMaximoLuminosidadeController(req, res){
     var idEstufa = req.body.idEstufaServer;
     coletaSensorModel.valorMaximoLuminosidadeEstufa(idEstufa)
+    .then(
+        function(resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro na coleta de novos Dados:",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function pegarMinimoLuminosidadeController(req, res){
+    var idEstufa = req.body.idEstufaServer;
+    coletaSensorModel.valorMinimoLuminosidadeEstufa(idEstufa)
     .then(
         function(resultado) {
             res.json(resultado);
@@ -280,7 +319,9 @@ module.exports = {
     coletaKpiMaxLuminosidadeController,
     coletaKpiMinLuminosidadeController,
     pegarMaximoEtilenoController,
+    pegarMinimoEtilenoController,
     pegarMaximoLuminosidadeController,
+    pegarMinimoLuminosidadeController,
     pegarIdsEstufasController,
     pegarMetricasEstufaController,
     pegarQuantidadeEstufasController

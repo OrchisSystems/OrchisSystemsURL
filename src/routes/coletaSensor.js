@@ -46,8 +46,17 @@ router.post("/pegarMaximoEtileno", function(req, res){
     coletaSensorController.pegarMaximoEtilenoController(req, res)
 })
 
+router.post("/pegarMinimoEtileno", function(req, res){
+    coletaSensorController.pegarMinimoEtilenoController(req, res)
+})
+
+
 router.post("/pegarMaximoLuminosidade", function(req, res){
     coletaSensorController.pegarMaximoLuminosidadeController(req, res)
+})
+
+router.post("/pegarMinimoLuminosidade", function(req, res){
+    coletaSensorController.pegarMinimomoLuminosidadeController(req, res)
 })
 
 router.post("/pegarIdsEstufas", function(req, res){
