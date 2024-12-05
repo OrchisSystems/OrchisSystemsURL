@@ -56,7 +56,7 @@ router.post("/pegarMaximoLuminosidade", function(req, res){
 })
 
 router.post("/pegarMinimoLuminosidade", function(req, res){
-    coletaSensorController.pegarMinimomoLuminosidadeController(req, res)
+    coletaSensorController.pegarMinimoLuminosidadeController(req, res)
 })
 
 router.post("/pegarIdsEstufas", function(req, res){
