@@ -132,8 +132,9 @@ function inserirNovaEstufaController(req, res){
     var maxLuminosidade = req.body.maxLuminosidadeServer;
     var minLuminosidade = req.body.minLuminosidadeServer;
     var fkEmpresa = req.body.fkEmpresaServer;
+    var perfilCliente = req.body.perfilClienteServer;
 
-    coletaSensorModel.inserirNovaEstufa(maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa)
+    coletaSensorModel.inserirNovaEstufa(maxEtileno, minEtileno, maxLuminosidade, minLuminosidade, fkEmpresa, perfilCliente)
         .then(function(resultado){
             res.json(resultado)
         }
