@@ -31,6 +31,8 @@ async function adicionarEstufa() {
 
     for (index = 0; index < listaIds.length; index++) {
         await pegarMaximoEtileno(listaIds[index]);
+        await pegarMinimoEtileno(listaIds[index]);
+        await pegarMinimoLuminosidade(listaIds[index]);
         await pegarMaximoLuminosidade(listaIds[index]);
         await pegarMetricasEstufa(listaIds[index]);
 
