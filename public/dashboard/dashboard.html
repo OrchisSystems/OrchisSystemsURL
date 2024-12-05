@@ -22,10 +22,8 @@
         <h1>Dashboards</h1>
         <div class="dashboard">
             <div id="containerLuminosidade" >
-                <div class="alert-luminosidade" style="display: block;">
-                    Sua estufa apresentou um período de aumento de luminosidade.
-                    Cuidado, isso pode prejudicar a sua produção!<img src="./img/image 13.png">
-                </div>
+               
+            
                 <button id="botaoluminosidade" onclick="trocarTabela()">Luminosidade</button>
                 <div class="kpiGrafico">
                     <div class="grupoKpi">
@@ -57,13 +55,7 @@
                                 <img " src="./img/icon-2.png">
                             </div>
                         </div>
-                        <div class="ultimoKpi">
-                            Valores fora da faixa optima determinada
-                            <div class="kpiValor">
-                                <span id="alertasLuminosidade"></span>
-                                <img src="./img/icon-1.png">
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="grafico">
                         <canvas id="luminosidadeLinha">
@@ -73,10 +65,7 @@
                 </div>
             </div>
             <div id="containerEtileno" style="display: none;">
-                <div class="alert-etileno">
-                    Sua estufa apresentou um período de baixa concentração de etileno.
-                    Cuidado, isso pode prejudicar a sua produção! <img src="./img/image 13.png">
-                </div>
+                
                 <button id="botaoetileno" onclick="trocarTabela()">Concentração de Etileno</button>
                 <div class="kpiGrafico">
                     <div class="grupoKpi">
@@ -109,13 +98,7 @@
                                 <img src="./img/icon-2.png">
                             </div>
                         </div>
-                        <div class="ultimoKpi">
-                            Valores fora da faixa optima determinada
-                            <div class="kpiValor">
-                                <span id="alertasEtileno"></span>
-                                <img src="./img/icon-1.png">
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="grafico">
                         <canvas id="etilenoLinha"></canvas>
